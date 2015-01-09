@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+
+	body {
+		background-color: #EBAAAA;
+	}
+
+	ol, ul, li {
+		margin: 0px;
+		padding: 0px;
+	}
+
+	ol, ul {
+		list-style-type: none;
+		/* border : 1px solid blue; */
+		background-color: white;
+	}
+
+	li > div {
+		padding: 0.5em;
+		font-size: x-large;
+		/* border : 1px solid red; */
+	}
+
+	li {
+		margin: 0.5em;
+		/* border: 1px solid black; */
+	}
+
+	.drag-handle {
+		cursor: move;
+		color: #BBB;
+	}
+	</style>
+
+</head>
+<body>
+	<div style="width: 30%; margin-left: 10px">
+		<ul id="handle-1">
+			<li>
+				<div>
+					<span class="drag-handle">☰</span>
+					<span class="equip-icon"></span>
+					<span class="equip-name">Alpha</span>
+				</div>
+			</li>
+			<li>
+				<div>
+					<span class="drag-handle">☰</span>
+					<span class="equip-icon"></span>
+					<span class="equip-name">Beta</span>
+				</div>
+			</li>
+			<li>
+				<div>
+					<span class="drag-handle">☰</span>
+					<span class="equip-icon"></span>
+					<span class="equip-name">Delta</span>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<script src="lib/Sortable.js"></script>
+	<script>
+		(function (){
+			var console = window.console;
+
+			if( !console.log ){
+				console.log = function (){
+					alert([].join.apply(arguments, ' '));
+				};
+			}
+
+			Sortable.create(document.getElementById('handle-1'), {
+				handle: '.drag-handle',
+				animation: 150
+			});
+		})();
+	</script>
+</body>
+</html>
