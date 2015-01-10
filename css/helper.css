@@ -1,0 +1,63 @@
+body {
+	background-color: #EBAAAA;
+}
+ol, ul, li {
+	margin: 0px;
+	padding: 0px;
+}
+ol, ul {
+	list-style-type: none;
+	background-color: white;
+}
+li > div {
+	padding: 0.5em;
+}
+li {
+	margin: 0.5em;
+}
+.drag-handle {
+	cursor: move;
+	color: #BBB;
+}
+
+.equip-icon {
+	padding-right: 44px;
+	padding-top: 10px;
+	background-repeat: no-repeat;
+}
+
+.main-cannon-light {
+	background-image: url("../image/MainCanonLight.png");
+}
+
+.main-cannon-medium {
+	background-image: url("../image/MainCanonMedium.png");
+}
+
+.main-cannon-heavy {
+	background-image: url("../image/MainCanonHeavy.png");
+}
+
+.high-angle-gun {
+	background-image: url("../image/HighAngleGun.png");
+}
+
+.anti-air-gun {
+	background-image: url("../image/AAGun.png");
+}
+
+.anti-air-fire-director {
+	background-image: url("../image/AntiAircraftFireDirector.png");
+}
+
+.torpedo {
+	background-image: url("../image/Torpedo.png");
+}
+
+.anit-sub-weapon {
+	background-image: url("../image/ASW.png");
+}
+
+.soner {
+	background-image: url("../image/Soner.png");
+}

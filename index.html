@@ -1,40 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<style type="text/css">
-
-	body {
-		background-color: #EBAAAA;
-	}
-
-	ol, ul, li {
-		margin: 0px;
-		padding: 0px;
-	}
-
-	ol, ul {
-		list-style-type: none;
-		/* border : 1px solid blue; */
-		background-color: white;
-	}
-
-	li > div {
-		padding: 0.5em;
-		font-size: x-large;
-		/* border : 1px solid red; */
-	}
-
-	li {
-		margin: 0.5em;
-		/* border: 1px solid black; */
-	}
-
-	.drag-handle {
-		cursor: move;
-		color: #BBB;
-	}
-	</style>
-
+	<link rel="stylesheet" type="text/css" href="css/helper.css">
 </head>
 <body>
 	<div style="width: 30%; margin-left: 10px">
@@ -42,27 +9,70 @@
 			<li>
 				<div>
 					<span class="drag-handle">☰</span>
-					<span class="equip-icon"></span>
-					<span class="equip-name">Alpha</span>
+					<span class="equip-icon main-cannon-light"></span>
+					<span class="equip-name">轻型主炮</span>
 				</div>
 			</li>
 			<li>
 				<div>
 					<span class="drag-handle">☰</span>
-					<span class="equip-icon"></span>
-					<span class="equip-name">Beta</span>
+					<span class="equip-icon main-cannon-medium"></span>
+					<span class="equip-name">中型主炮</span>
 				</div>
 			</li>
 			<li>
 				<div>
 					<span class="drag-handle">☰</span>
-					<span class="equip-icon"></span>
-					<span class="equip-name">Delta</span>
+					<span class="equip-icon main-cannon-heavy"></span>
+					<span class="equip-name">重型主炮</span>
+				</div>
+			</li>
+			<li>
+				<div>
+					<span class="drag-handle">☰</span>
+					<span class="equip-icon high-angle-gun"></span>
+					<span class="equip-name">高角炮</span>
+				</div>
+			</li>
+			<li>
+				<div>
+					<span class="drag-handle">☰</span>
+					<span class="equip-icon anti-air-gun"></span>
+					<span class="equip-name">防空火炮</span>
+				</div>
+			</li>
+			<li>
+				<div>
+					<span class="drag-handle">☰</span>
+					<span class="equip-icon anti-air-fire-director"></span>
+					<span class="equip-name">防空指挥装置</span>
+				</div>
+			</li>
+			<li>
+				<div>
+					<span class="drag-handle">☰</span>
+					<span class="equip-icon torpedo"></span>
+					<span class="equip-name">鱼雷</span>
+				</div>
+			</li>
+			<li>
+				<div>
+					<span class="drag-handle">☰</span>
+					<span class="equip-icon anit-sub-weapon"></span>
+					<span class="equip-name">暴雷</span>
+				</div>
+			</li>
+			<li>
+				<div>
+					<span class="drag-handle">☰</span>
+					<span class="equip-icon soner"></span>
+					<span class="equip-name">水听</span>
 				</div>
 			</li>
 		</ul>
 	</div>
 	<script src="lib/Sortable.js"></script>
+	<script src="jquery.1.11.1.min.js"></script>
 	<script>
 		(function (){
 			var console = window.console;
@@ -78,6 +88,7 @@
 				animation: 150
 			});
 		})();
+
 	</script>
 </body>
 </html>
