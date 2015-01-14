@@ -207,7 +207,17 @@ var map_equipCategory_class = {
 var equips = kanColle.remodel.equips;
 
 //通过该方法, 返回一个
-var item_template = function() {
+var equip_template = function() {
+
+	/*	code in [HTML]
+		<li>
+			<div>
+				<span class="drag-handle">☰</span>
+				<span class="equip-icon anit-sub-weapon"></span>
+				<span class="equip-name">暴雷</span>
+			</div>
+		</li>
+	*/
 
 	var CLASS_HANDLE = 'drag-handle';
 	var CLASS_EQUIP_ICON = 'equip-icon';
@@ -219,22 +229,35 @@ var item_template = function() {
 		equipIcon,
 		equipName;
 
-	//需要设置class, 有且仅有CLASS_HANDLE
+	//有两个需要设置的属性:
+	//1. 固有class
+	//2. 设置方便拖拽的符号文字
 	handle = document.createElement('span');
 	handle.classList.add(CLASS_HANDLE);
+	handle.textContent = '☰';
 
-	//需要设置class, 总共两个, 仅需设置CLASS_EQUIP_ICON, 另一个为该元素固有clss, 可通过输入对象来实现class的填充
+	//两个需要设置的属性:
+	//1. 固有class
+	//2. 设置另外一个装备相关的class, 需要从对象之中获取
 	equipIcon = document.createElement('span');
 	equipIcon.classList.add(CLASS_EQUIP_ICON);
+	//TODO equipIcon.classList.add(Object.class)
 
-	//需要设置class, 有切仅有CLASS_EQUIP_NAME
+	//两个需要设置的属性:
+	//1. 固有class
+	//2. 从传送的对象之中获取的装备名称
 	equipName = document.createElement('span');
 	equipName.classList.add(CLASS_EQUIP_NAME);
+	equipName.textContent = 'test sample';
 
-	//用于存放handle, equipIcon, equipName
+	//按照顺序存放handle, equipIcon, equipName
 	container = document.createElement('div');
-	//TODO 引用对象之后, 将对象之中的属性填充到其中
-	//container.textContent = 'inputTextHere'
+	container.appendChild(handle);
+	container.appendChild(equipIcon);
+	container.appendChild(equipName);
 
 	list_item = document.createElement('li');
+	list_item.appendChild(container);
+
+	return list_item;
 };
