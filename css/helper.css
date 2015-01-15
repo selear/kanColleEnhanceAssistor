@@ -10,7 +10,7 @@ ol, ul, li {
 }
 ol, ul {
 	list-style-type: none;
-	background-color: white; /* //TODO 回头将颜色调调整到轻微灰色的程度 */
+	background-color: white; /* //TODO 回头将背景色调整到轻微灰色的程度 */
 }
 li > div {
 	padding: 0.5em;
@@ -40,9 +40,10 @@ div.tableCell {
 	color: #BBB;
 }
 .equip-icon {
-	padding-left: 44px;
-	/* 原图大小36*36, 44px属于边距微调;
-	该属性使得空元素, 也能够正确显示图片, 也考虑过使用<img>的方式来完成, 但是个人认为不便于DOM操作, 且需要JS配合不方便, padding-right属性与此属性效果相同 */
+	/* 原图大小36*36, 44px属于边距微调;	该属性使得空元素, 也能够正确显示图片,
+	   也考虑过使用<img>的方式来完成, 但是个人认为不便于DOM操作, 且需要JS配合不方便,
+	   该处使用padding-right与该效果相同 */
+	padding-left: 44px;	
 	padding-top: 10px;
 	background-repeat: no-repeat; /* 配合padding-left属性使用, 背景不出现重复图片 */
 }
