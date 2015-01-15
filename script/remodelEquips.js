@@ -154,62 +154,72 @@ var kanColle = {
 			'三式爆雷投射機': {
 				category: '',
 				remodelDetail: [{
-					assistant: '',
+					assistant: '-',
 					enableDays: [3, 4]
 				}],
 				remark: ''
-			},
-
-			search: function(equipName) {
-				return this[equipName];
-			},
-
-			searchToday : function() {
-
 			}
-		}
+		},
+
+		extractEquip: function(equipName) {
+			var equip = this.equips[equipName];
+			equip.name = equipName;
+			equip.clazz = this.map_category_class.extractClass(equip.category);
+			console.log(equip.name);
+			console.log(equip.clazz);
+
+			return equip;
+		},
+
+		map_category_class: {
+
+			map: {
+				'小口径主砲': 'main-cannon-light',
+				'中口径主砲': 'main-cannon-medium',
+				'大口径主砲': 'main-cannon-heavy',
+				'高角砲': 'high-angle-gun',
+				'対空機銃': 'anti-air-gun',
+				'高射装置': 'anti-air-fire-director',
+				'魚雷': 'torpedo',
+				'爆雷': 'anit-sub-weapon',
+				'聲納': 'soner',
+			},
+
+			extractClass: function(category) {
+
+				var clazz = this.map[category];
+
+				//如果输入了一个不正确的装备名称
+				if (clazz === undefined) {
+					throw 'in "map_category_class" : class is NOT found.';
+				}
+
+				return clazz;
+			},
+
+			extractCategory: function(classString) {
+
+				var map = this.map;
+
+				for (var key in map) {
+					if (map[key] === classString) {
+						return key;
+					} //如果全部没有找到
+				}
+
+				throw '无法找到class对应的装备类型';
+			}
+		},
 	}
 };
 
-//将装备类型, 与DOM属性class相关联起来
-var map_equipCategory_class = {
-
-	category: {
-		'小口径主砲': 'main-cannon-light',
-		'中口径主砲': 'main-cannon-medium',
-		'大口径主砲': 'main-cannon-heavy',
-		'高角砲': 'high-angle-gun',
-		'対空機銃': 'anti-air-gun',
-		'高射装置': 'anti-air-fire-director',
-		'魚雷': 'torpedo',
-		'爆雷': 'anit-sub-weapon',
-		'聲納': 'soner',
-	},
-
-	searchClass: function(equipName) {
-		return this.category[equipName];
-	},
-
-	searchCategory: function(classString) {
-
-		var category = this.category;
-
-		for (var propertyName in category) {
-			if (category[propertyName] === classString) {
-				return propertyName;
-			} //如果全部没有找到
-		}
-
-		throw '无法找到class对应的装备类型';
-	}
-};
-
-var equips = kanColle.remodel.equips;
+var equips = kanColle.remodel.equips; //TODO 正式运行删除
+var remodel = kanColle.remodel; //TODO 正式运行删除
 
 //通过该方法, 返回一个
 var equip_template = function() {
 
-	/*	code in [HTML]
+	/*	equip_template sample in [HTML]
 		<li>
 			<div>
 				<span class="drag-handle">☰</span>
@@ -260,4 +270,76 @@ var equip_template = function() {
 	list_item.appendChild(container);
 
 	return list_item;
+};
+
+/*
+	try to code in 'literal' format
+ */
+var test_equip_template = function(equipObj) {
+
+	/*	equip_template sample in [HTML]
+		<li>
+			<div>
+				<span class="drag-handle">☰</span>
+				<span class="equip-icon anit-sub-weapon"></span>
+				<span class="equip-name">暴雷</span>
+			</div>
+		</li>
+	*/
+	var CLASS_HANDLE = 'drag-handle';
+	var CLASS_EQUIP_ICON = 'equip-icon';
+	var CLASS_EQUIP_NAME = 'equip-name';
+
+	//有两个需要设置的属性:
+	//1. 固有class
+	//2. 设置方便拖拽的符号文字
+
+	var createHandle = function() {
+		var elem = document.createElement('span');
+		elem.classList.add(CLASS_HANDLE);
+		elem.textContent = '☰';
+		return elem;
+	};
+
+	//两个需要设置的属性:
+	//1. 固有class
+	//2. 设置另外一个装备相关的class, 需要从对象之中获取
+	var createEquipIcon = function(equipObj) {
+		var elem = document.createElement('span');
+		elem.classList.add(CLASS_EQUIP_ICON);
+		elem.classList.add(equipObj.clazz);
+
+		return elem;
+	};
+
+
+	//两个需要设置的属性:
+	//1. 固有class
+	//2. 从传送的对象之中获取的装备名称
+	var createEquipName = function(equipObj) {
+		var elem = document.createElement('span');
+		elem.classList.add(CLASS_EQUIP_NAME);
+		elem.textContent = equipObj.name;
+
+		return elem;
+	};
+
+	//按照顺序存放handle, equipIcon, equipName
+	var createContainer = function(equipObj) {
+		var elem = document.createElement('div');
+		elem.appendChild(createHandle());
+		elem.appendChild(createEquipIcon(equipObj));
+		elem.appendChild(createEquipName(equipObj));
+
+		return elem;
+	};
+
+	var createListItem = function(equipObj) {
+		var elem = document.createElement('li');
+		elem.appendChild(createContainer(equipObj));
+
+		return elem;
+	};
+
+	return createListItem(equipObj);
 };
