@@ -2,7 +2,57 @@
  *	equipObj通过kanColle.remodel.extractEquip('装备名称')的方式获取
  *	new Equip(equipObj).buildListElem()
  */
-function Equip(equipObj) {
+
+function Category(name) {
+
+	this.equipNames = kanColle.remodel.searchEquipnamesByCategory(name);
+	this.name = name;
+};
+
+Category.prototype = {
+
+	//创建包含所有装备的类别 
+	buildContainer: function() {
+		return document.createElement('div');
+	},
+
+	buildName: function() {
+		var nameDiv = document.createElement('div');
+		nameDiv.classList.add('name');
+		nameDiv.textContent = this.name;
+		return nameDiv;
+	},
+
+	buildList: function() {
+
+		var equip, index, list, names;
+		list = document.createElement('ol');
+		names = this.equipNames;
+
+		for (index in names) {
+			var listItem = buildEquip(names[index]);
+			list.appendChild(listItem);
+		}
+
+		return list;
+
+		function buildEquip(equipName) {
+			var equip = new Equip(equipName);
+			return equip.build();
+		}
+	},
+
+
+	build: function() {
+		var container = this.buildContainer();
+		container.appendChild(this.buildName());
+		container.appendChild(this.buildList());
+
+		return container;
+	}
+};
+
+function Equip(name) {
 	/*	[prototype] properties & functions
 		CLASS_HANDLE,
 		CLASS_EQUIP_ICON,
@@ -10,7 +60,7 @@ function Equip(equipObj) {
 		buildListElem()
 	*/
 
-	this.clazz = equipObj.clazz;
+	var equipObj = kanColle.remodel.extractEquip(name);
 	this.name = equipObj.name;
 };
 
@@ -24,26 +74,7 @@ function Equip(equipObj) {
 	</li>
 */
 Equip.prototype = {
-	CLASS_HANDLE : 'drag-handle',
-	CLASS_EQUIP_ICON : 'equip-icon',
-	CLASS_EQUIP_NAME : 'equip-name',
-	HANDLE_SYMBOL : '☰',
-	buildHandle : function() {
-		var elem = document.createElement('span');
-		elem.classList.add(this.CLASS_HANDLE);
-		elem.textContent = this.HANDLE_SYMBOL;
-		return elem;
-	},
-
-	buildIcon : function() {
-		var elem = document.createElement('span');
-		elem.classList.add(this.CLASS_EQUIP_ICON);
-		elem.classList.add(this.clazz);
-
-		return elem;
-	},
-
-	buildName : function() {
+	buildName: function() {
 		var elem = document.createElement('span');
 		elem.classList.add(this.CLASS_EQUIP_NAME);
 		elem.textContent = this.name;
@@ -51,19 +82,18 @@ Equip.prototype = {
 		return elem;
 	},
 
-	buildContainer : function() {
-		var elem = document.createElement('div');
-		elem.appendChild(this.buildHandle());
-		elem.appendChild(this.buildIcon());
-		elem.appendChild(this.buildName());
+	buildCheck: function() {
+		var checkbox = document.createElement('input');
+		checkbox.type = 'checkbox';
 
-		return elem;
+		return checkbox;
 	},
 
-	buildListElem : function() {
-		var elem = document.createElement('li');
-		elem.appendChild(this.buildContainer());
+	build: function() {
+		var item = document.createElement('li');
+		item.appendChild(this.buildName());
+		item.appendChild(this.buildCheck());
 
-		return elem;
+		return item;
 	}
 };
