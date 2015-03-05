@@ -4,6 +4,7 @@ var kanColle = {
 			'12.7cm連装砲': {
 				id: 1,
 				name: '12.7cm連装砲',
+				icon: '小口径主砲',
 				category: '小口径主砲',
 				detail: [{
 					assistant: '-',
@@ -14,6 +15,7 @@ var kanColle = {
 			'12.7cm連装砲B型改二': {
 				id: 2,
 				name: '12.7cm連装砲B型改二',
+				icon: '小口径主砲',
 				category: '小口径主砲',
 				detail: [{
 					assistant: '夕立改二<br>绫波改二',
@@ -24,6 +26,7 @@ var kanColle = {
 			'25mm連装機銃': {
 				id: 3,
 				name: '25mm連装機銃',
+				icon: '対空機銃',
 				category: '対空機銃',
 				detail: [{
 					assistant: '五十鈴改二',
@@ -34,6 +37,7 @@ var kanColle = {
 			'25mm三連装機銃': {
 				id: 4,
 				name: '25mm三連装機銃',
+				icon: '対空機銃',
 				category: '対空機銃',
 				detail: [{
 					assistant: '五十鈴改二',
@@ -46,6 +50,7 @@ var kanColle = {
 			'91式高射装置': {
 				id: 5,
 				name: '91式高射装置',
+				icon: '高射装置',
 				category: '高射装置',
 				detail: [{
 					assistant: '摩耶<br>秋月',
@@ -56,6 +61,7 @@ var kanColle = {
 			'94式高射装置': {
 				id: 6,
 				name: '94式高射装置',
+				icon: '高射装置',
 				category: '高射装置',
 				detail: [{
 					assistant: '秋月',
@@ -66,6 +72,7 @@ var kanColle = {
 			'14cm単装砲': {
 				id: 7,
 				name: '14cm単装砲',
+				icon: '中口径主砲',
 				category: '中口径主砲',
 				detail: [{
 					assistant: '-',
@@ -76,6 +83,7 @@ var kanColle = {
 			'14cm連装砲': {
 				id: 8,
 				name: '14cm連装砲',
+				icon: '中口径主砲',
 				category: '中口径主砲',
 				detail: [{
 					assistant: '夕張',
@@ -86,6 +94,7 @@ var kanColle = {
 			'20.3cm連装砲': {
 				id: 9,
 				name: '20.3cm連装砲',
+				icon: '中口径主砲',
 				category: '中口径主砲',
 				detail: [{
 					assistant: '青葉, 衣笠',
@@ -96,6 +105,7 @@ var kanColle = {
 			'20.3cm(2号)連装砲': {
 				id: 10,
 				name: '20.3cm(2号)連装砲',
+				icon: '中口径主砲',
 				category: '中口径主砲',
 				detail: [{
 					assistant: '妙高',
@@ -106,6 +116,7 @@ var kanColle = {
 			'20.3cm(3号)連装砲': {
 				id: 11,
 				name: '20.3cm(3号)連装砲',
+				icon: '中口径主砲',
 				category: '中口径主砲',
 				detail: [{
 					assistant: '三隈',
@@ -116,7 +127,8 @@ var kanColle = {
 			'10cm高角砲＋高射装置': {
 				id: 12,
 				name: '10cm高角砲＋高射装置',
-				category: '高角砲',
+				icon: '高角砲',
+				category: '小口径主砲',
 				detail: [{
 					assistant: '秋月',
 					enableDays: [1, 2, 3, 4]
@@ -126,6 +138,7 @@ var kanColle = {
 			'35.6cm連装砲': {
 				id: 13,
 				name: '35.6cm連装砲',
+				icon: '大口径主砲',
 				category: '大口径主砲',
 				detail: [{
 					assistant: '扶桑',
@@ -136,6 +149,7 @@ var kanColle = {
 			'41cm連装砲': {
 				id: 14,
 				name: '41cm連装砲',
+				icon: '大口径主砲',
 				category: '大口径主砲',
 				detail: [{
 					assistant: '長門',
@@ -149,6 +163,7 @@ var kanColle = {
 			'61cm四連装魚雷': {
 				id: 15,
 				name: '61cm四連装魚雷',
+				icon: '魚雷',
 				category: '魚雷',
 				detail: [{
 					assistant: '-',
@@ -159,6 +174,7 @@ var kanColle = {
 			'61cm四連装(酸素)魚雷': {
 				id: 16,
 				name: '61cm四連装(酸素)魚雷',
+				icon: '魚雷',
 				category: '魚雷',
 				detail: [{
 					assistant: '北上<br>大井',
@@ -169,6 +185,7 @@ var kanColle = {
 			'61cm五連装(酸素)魚雷': {
 				id: 17,
 				name: '61cm五連装(酸素)魚雷',
+				icon: '魚雷',
 				category: '魚雷',
 				detail: [{
 					assistant: '島風',
@@ -179,6 +196,7 @@ var kanColle = {
 			'九四式爆雷投射機': {
 				id: 18,
 				name: '九四式爆雷投射機',
+				icon: '爆雷',
 				category: '爆雷',
 				detail: [{
 					assistant: '-',
@@ -189,6 +207,7 @@ var kanColle = {
 			'三式爆雷投射機': {
 				id: 19,
 				name: '三式爆雷投射機',
+				icon: '爆雷',
 				category: '爆雷',
 				detail: [{
 					assistant: '-',
@@ -198,6 +217,24 @@ var kanColle = {
 			}
 		},
 
+		/*
+		 *  访问路径: kanColle.remodel.extractEquip(equipName)
+		 *  返回数据: 一个数据对象
+		 *
+		 *  返回数据对象sample:
+			{
+				id: 19,
+				name: '三式爆雷投射機',
+				icon: '爆雷',
+				category: '爆雷',
+				detail: [{
+					assistant: '-',
+					enableDays: [3, 4]
+				}],
+				remark: ''
+			}
+		 */
+		//函数名使用extract，主要考虑到返回的是装备对象。
 		extractEquip: function(equipName) {
 			var equip = this.equips[equipName];
 
@@ -205,13 +242,18 @@ var kanColle = {
 				return { name : '未能寻找到该装备名称'};
 			}
 
-			equip.clazz = this.map_category_class.searchClass(equip.category);
+			equip.clazz = this.map_icon_class.searchClass(equip.category);
 
 			return equip;
 		},
 
-		extractCategoryEquips: function(categoryName) {
-			var equipNames = [];
+		/*
+		 *	访问路径: kanColle.remodel.extractCategoryEquipnames(categoryName)
+		 *  返回数据: 包含装备名称的数组
+		 */
+		//函数名称使用search开头，主要是考虑到返回数组仅包含'string'，而非'object'
+		searchEquipnamesByCategory: function(categoryName) {
+			var equipnames = [];
 
 			var equip, category;
 			for(var index in this.equips) {
@@ -220,14 +262,14 @@ var kanColle = {
 				category = equip.category;
 
 				if(category === categoryName) {
-					equipNames.push(equip.name);
+					equipnames.push(equip.name);
 				}
 			}
 
-			return equipNames;
+			return equipnames;
 		},
 
-		map_category_class: {
+		map_icon_class: {
 
 			map: {
 				'小口径主砲': 'main-cannon-light',
@@ -247,18 +289,18 @@ var kanColle = {
 
 				//如果输入了一个不正确的装备名称
 				if (clazz === undefined) {
-					throw 'in "map_category_class" : class is NOT found.';
+					throw 'in "map_icon_class" : class is NOT found.';
 				}
 
 				return clazz;
 			},
 
-			searchCategory: function(classString) {
+			searchCategory: function(classStr) {
 
 				var map = this.map;
 
 				for (var key in map) {
-					if (map[key] === classString) {
+					if (map[key] === classStr) {
 						return key;
 					} //如果全部没有找到
 				}
