@@ -16,7 +16,7 @@ Category.prototype = {
 		return document.createElement('div');
 	},
 
-	buildName: function() {
+	buildTitle: function() {
 		var nameDiv = document.createElement('div');
 		nameDiv.classList.add('name');
 		nameDiv.textContent = this.name;
@@ -24,7 +24,6 @@ Category.prototype = {
 	},
 
 	buildList: function() {
-
 		var equip, index, list, names;
 		list = document.createElement('ol');
 		names = this.equipNames;
@@ -45,7 +44,7 @@ Category.prototype = {
 
 	build: function() {
 		var container = this.buildContainer();
-		container.appendChild(this.buildName());
+		container.appendChild(this.buildTitle());
 		container.appendChild(this.buildList());
 
 		return container;
@@ -60,8 +59,8 @@ function Equip(name) {
 		buildListElem()
 	*/
 
-	var equipObj = kanColle.remodel.extractEquip(name);
-	this.name = equipObj.name;
+	var equip = kanColle.remodel.extractEquip(name);
+	this.name = equip.name;
 };
 
 /*	Equip sample in [HTML]
@@ -74,9 +73,10 @@ function Equip(name) {
 	</li>
 */
 Equip.prototype = {
+
 	buildName: function() {
 		var elem = document.createElement('span');
-		elem.classList.add(this.CLASS_EQUIP_NAME);
+		//	elem.classList.add(this.CLASS_EQUIP_NAME);
 		elem.textContent = this.name;
 
 		return elem;
@@ -85,12 +85,16 @@ Equip.prototype = {
 	buildCheck: function() {
 		var checkbox = document.createElement('input');
 		checkbox.type = 'checkbox';
+		checkbox.value = this.name;
 
 		return checkbox;
 	},
 
 	build: function() {
 		var item = document.createElement('li');
+
+		/*item.id = this.id;*/
+
 		item.appendChild(this.buildName());
 		item.appendChild(this.buildCheck());
 
