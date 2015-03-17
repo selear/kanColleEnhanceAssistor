@@ -1,76 +1,28 @@
-body {
-	background-color: #EBAAAA; /* 明石的发色 */
-}
-
-/* remove horizontal spacing in <ul> with list-style-type:none */
-/* 该注释仅针对<ol>, <ul>元素, 同时, <ol>, <ul>元素 */
-ol, ul, li {
-	margin: 0px;
-	padding: 0px;
-}
-ol, ul {
-	list-style-type: none;
-	background-color: white; /* //TODO 回头将背景色调整到轻微灰色的程度 */
-}
-li > div {
-	padding: 0.5em;
-}
-li {
-	margin: 0.5em;
-}
-div.content {
-	width: 45%;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	margin-left: auto;
-	margin-right: auto;
-}
-div.tableContainer {
-	display: table;
-	border-spacing: 10px;
-}
-div.tableRow {
-	display: table-row;
-}
-div.tableCell {
-	display: table-cell;
-}
-.drag-handle {
-	cursor: move; /* 可以抓取handle部分指针icon不同 */
-	color: #BBB;
-}
-.equip-icon {
-	/* 原图大小36*36, 44px属于边距微调;	该属性使得空元素, 也能够正确显示图片,
-	   也考虑过使用<img>的方式来完成, 但是个人认为不便于DOM操作, 且需要JS配合不方便,
-	   该处使用padding-right与该效果相同 */
-	padding-left: 44px;	
-	padding-top: 10px;
-	background-repeat: no-repeat; /* 配合padding-left属性使用, 背景不出现重复图片 */
-}
-.main-cannon-light {
-	background-image: url("../image/MainCanonLight.png");
-}
-.main-cannon-medium {
-	background-image: url("../image/MainCanonMedium.png");
-}
-.main-cannon-heavy {
-	background-image: url("../image/MainCanonHeavy.png");
-}
-.high-angle-gun {
-	background-image: url("../image/HighAngleGun.png");
-}
-.anti-air-gun {
-	background-image: url("../image/AAGun.png");
-}
-.anti-air-fire-director {
-	background-image: url("../image/AntiAircraftFireDirector.png");
-}
-.torpedo {
-	background-image: url("../image/Torpedo.png");
-}
-.anit-sub-weapon {
-	background-image: url("../image/ASW.png");
-}
-.soner {
-	background-image: url("../image/Soner.png");
-}
+body { background-color: rgb(152, 212, 200); }
+/* 清除ol, ul, li元素的样式 */
+ol, ul, li { margin: 0px; padding: 0px; }
+ol, ul { list-style-type: none; }
+li { padding: 8px; }
+/* 网易NEC, Grid */
+.g-bd { width: 520px; margin: 0 auto; }
+.g-mn, .g-sd { background-color: #FFF; padding: 12px; margin: 8px; }
+.g-sd { float: right; width: 160px; }
+.g-mn { float: left; width: 280px; }
+.u-menu.z-show { display: block; }
+.name { height: 64px; line-height: 64px; overflow: hidden; font-size: 1.4em; color: #333; }
+.name:hover { background: #f7f7f7; }
+.name:active { background: #f0f0f0; }
+/* 原图大小36*36, 44px属于边距微调;
+该属性使得空元素, 也能够正确显示图片, 也考虑过使用<img>的方式来完成, 但是个人认为不便于DOM操作, 且需要JS配合不方便, 该处使用padding-right与该效果相同 */
+.category-icon { padding-left: 44px; background-repeat: no-repeat; }
+.equip-icon { padding-left: 25px; background-repeat: no-repeat; background-size: contain; }
+.main-cannon-light { background-image: url("../image/MainCanonLight.png"); }
+.main-cannon-medium { background-image: url("../image/MainCanonMedium.png"); }
+.main-cannon-heavy { background-image: url("../image/MainCanonHeavy.png"); }
+.high-angle-gun { background-image: url("../image/HighAngleGun.png"); }
+.anti-air-gun { background-image: url("../image/AAGun.png"); }
+.anti-air-fire-director { background-image: url("../image/AntiAircraftFireDirector.png"); }
+.torpedo { background-image: url("../image/Torpedo.png"); }
+.anit-sub-weapon { background-image: url("../image/ASW.png"); }
+.soner { background-image: url("../image/Soner.png"); }
+.armour-piercing-shell { background-image: url("../image/APS.png") }
