@@ -1,5 +1,7 @@
 var kanColle = {
 	remodel: {
+		categoryOrder: ['小口径主砲', '中口径主砲', '大口径主砲', '魚雷', '反潛裝備', '特種裝備'],
+		defaultChecked: ['20.3cm(2号)連装砲', '20.3cm(3号)連装砲', '41cm連装砲', '46cm三連装砲', '61cm五連装(酸素)魚雷', '九一式徹甲弾'],
 		equips: {
 			/* 小口径主砲,  */
 			'12.7cm連装砲': {
@@ -54,7 +56,7 @@ var kanColle = {
 				}],
 				remark: ''
 			},
-			'15.5cm三連装砲' : {
+			'15.5cm三連装砲': {
 				name: '15.5cm三連装砲',
 				icon: '中口径主砲',
 				category: '中口径主砲',
@@ -364,11 +366,13 @@ var kanColle = {
 		extractEquip: function(equipName) {
 			var equip = this.equips[equipName];
 
-			if(equip === undefined) {
-				return { name : '未能寻找到该装备名称'};
+			if (equip === undefined) {
+				return {
+					name: '未能寻找到该装备名称'
+				};
 			}
 
-			equip.clazz = this.map_icon_class.searchClass(equip.category);
+			equip.clazz = this.map_icon_class.searchClass(equip.icon);
 
 			return equip;
 		},
@@ -382,16 +386,47 @@ var kanColle = {
 			var equipnames = [];
 
 			var equip, category;
-			for(var index in this.equips) {
+			for (var index in this.equips) {
 
 				equip = this.equips[index];
 				category = equip.category;
 
-				if(category === categoryName) {
+				if (category === categoryName) {
 					equipnames.push(equip.name);
 				}
 			}
 			return equipnames;
+		},
+
+		searchCategoryIconClazzByName: function(categoryName) {
+			return this.map_icon_class.searchClass(categoryName);
+		},
+
+		calcCategorySize: function(categoryName) {
+
+			var equipnames = this.searchEquipnamesByCategory(categoryName);
+			return equipnames.length;
+		},
+
+		calcDefaultSts: function() {
+
+			var defaultIndex, i, defaultCheckedSts;
+			defaultIndex = 0;
+			defaultCheckedSts = '';
+
+			var names = Object.keys(this.equips);
+
+			for (i in names) {
+
+				var name = names[i];
+				if (name === this.defaultChecked[defaultIndex]) {
+					defaultCheckedSts += 1;
+					defaultIndex++;
+				} else {
+					defaultCheckedSts += 0;
+				}
+			}
+			return defaultCheckedSts;
 		},
 
 		map_icon_class: {
@@ -406,8 +441,9 @@ var kanColle = {
 				'魚雷': 'torpedo',
 				'爆雷': 'anit-sub-weapon',
 				'聲呐': 'soner',
-				'反潛裝備' : 'anit-sub-weapon',
-				'特種裝備' : 'armour-piercing-shell'
+				'反潛裝備': 'anit-sub-weapon',
+				'特種裝備': 'armour-piercing-shell',
+				'対艦強化弾' : 'armour-piercing-shell',
 			},
 
 			searchClass: function(category) {
@@ -416,7 +452,7 @@ var kanColle = {
 
 				//如果输入了一个不正确的装备名称
 				if (clazz === undefined) {
-					throw 'in "map_icon_class" : class is NOT found.';
+					throw 'in "map_icon_class" : ' + category + ' is NOT found.';
 				}
 
 				return clazz;
