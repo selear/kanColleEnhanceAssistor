@@ -15,8 +15,8 @@ Category.prototype = {
 	icon: 'category-icon',
 	displayNone: 'f-dn',
 	textLeft: 'f-tal',
-	textFont: 'f-ff1',
 	textBold: 'f-fwb',
+	unselectable : 'unselectable',
 
 	//创建包含所有装备的类别 
 	buildContainer: function() {
@@ -37,8 +37,8 @@ Category.prototype = {
 
 		title.classList.add('name');
 		title.classList.add(this.textLeft);
-		title.classList.add(this.textFont);
 		title.classList.add(this.textBold);
+		title.classList.add(this.unselectable);
 
 		title.appendChild(icon);
 		title.appendChild(name);
@@ -110,7 +110,6 @@ function Equip(name, checked) {
 Equip.prototype = {
 
 	icon: 'equip-icon',
-	textFont: 'f-ff1',
 	textRight: 'f-fr',
 
 	buildName: function() {
