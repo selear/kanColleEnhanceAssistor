@@ -1,4 +1,5 @@
 (function() {
+
 	var checkboxSts = loadCheckboxSts();
 
 	renderingSelectPart(checkboxSts);
@@ -39,10 +40,38 @@ function renderingSelectPart(checkboxSts) {
 function loadCheckboxSts() {
 
 	var storage = getLocalStorage();
-	var restoredSts = storage.getItem('checkedSts');
-	if (!restoredSts) {
-		restoredSts = kanColle.remodel.calcDefaultSts();
+	var restoredSts = null;
+
+	//1. 如果支持localStorage
+	//2. 不支持localStorage, 只支持Cookie
+	if (typeof storage == 'object') { //支持localStorage, 1. 先读取获取原有的数据; 2. 获取默认数据
+
+		restoredSts = storage.getItem('checkedSts');
+		if (restoredSts != null) {
+			//DEBUG console.log('checkboxSts load from localStorage : ' + restoredSts);
+			return restoredSts;
+		}
 	}
+
+	if (typeof storage == 'string') { //不支持本地存储
+
+		var cookies = document.cookie.split(';');
+		var cookieName;
+		for (var i in cookies) {
+			var cArr = cookies[i].split('=');
+			cookieName = cArr[0];
+
+			if (cookieName == 'checkedSts') {
+				var cookieVal = cArr[1];
+				//DEBUG console.log('checkboxSts load from cookie : ' + cookieVal);
+				return cookieVal;
+				break;
+			}
+		}
+	}
+
+	restoredSts = kanColle.remodel.calcDefaultSts();
+	//DEBUG console.log('checkboxSts load from defaultSettings : ' + restoredSts);
 	return restoredSts;
 }
 
@@ -50,14 +79,16 @@ function getLocalStorage() {
 
 	if (typeof localStorage == 'object') {
 		return localStorage;
-	} else if (typeof globalStorage == 'object') {
-		return globalStorage[location.host];
-	} else {
-		throw new Error('本浏览器不支持本次存储功能，勾选的改修装备暂无法存储');
 	}
+
+	if (typeof globalStorage == 'object') {
+		return globalStorage[location.host];
+	}
+	return document.cookie;
 }
 
 var checkedEquips, availiableEquips;
+
 function report() {
 
 	checkedEquips = [];
@@ -97,27 +128,41 @@ function report() {
 		}
 	});
 
+	//TODO 修改
 	saveCheckedSts();
 
 	function saveCheckedSts() {
+
 		var storage = getLocalStorage();
-		storage.setItem('checkedSts', checkedSts);
+		//storage隶属于localStorage
+		if(typeof storage == 'object') {
+			storage.setItem('checkedSts', checkedSts);
+			//DEBUG console.log('checkedSts saved in localStorage : ' + checkedSts);
+		}
+
+		var cookieName = 'checkedSts';
+		var cookieVal = checkedSts;
+		var expireDate = new Date();
+		expireDate.setMonth(expireDate.getMonth() + 6);
+
+		document.cookie = cookieName + '=' + cookieVal + ';expires=' + expireDate.toGMTString();
+		//DEBUG console.log('checkedSts saved in cookie : ' + cookieVal);
 	}
 
 	var report = '';
-	report += '可改修装备 :\n\n' + generateAssistShipsReport(availiableEquips);
+	report += '改修报告 :\n\n' + generateAssistShipsReport(availiableEquips);
 
 	report = report.replace(/\n/g, '<br>');
-	report = report.replace(/\t/g, '||');
+	report = report.replace(/\t/g, '&emsp;|&emsp;');
 
 	$('.g-sd').html(report);
 
-	// console.log('勾选装备序列 : ' + checkedSts + '\n\t\t' + storage.getItem('checkedSts'));
+	//DEBUG console.log('勾选装备序列 : ' + checkedSts + '\n\t\t' + storage.getItem('checkedSts'));
 
 	function generateAssistShipsReport(array) {
 
 		if (array.length === 0) {
-			return '今日没有可以改修的装备';
+			return '今日没有可改修的装备';
 		}
 
 		//var title = '可改修装备有 ' + array.length + ' 个\n';
