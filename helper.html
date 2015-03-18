@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/nec.css">
     <link rel="stylesheet" type="text/css" href="css/helper.css"></head>
@@ -11,20 +12,20 @@
         <div class="g-hd"></div>
 
         <div class="g-bd f-cb">
-            <div class="g-mn"></div>
-            <div class="g-sd">
-                test
+
+            <div class="g-mn">
+                <input type="button" onclick="report()" style="width:280px;" value="今日改修"/>
             </div>
+            <div class="g-sd">点击按钮获取当天的改修装备</div>
         </div>
 
-        <div class="g-ft"></div>
+        <div class="g-ft">
+        </div>
 
-    </div>
+        <script src="lib/jquery.1.11.1.min.js"></script>
+        <script src="script/equipData.js"></script>
+        <script src="script/models.js"></script>
+        <script src="script/helper.js"></script>
 
-    <script src="lib/jquery.1.11.1.min.js"></script>
-    <script src="script/equipData.js"></script>
-    <script src="script/models.js"></script>
-    <script src="script/helper.js"></script>
-    
 </body>
 </html>
