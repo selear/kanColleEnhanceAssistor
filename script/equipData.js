@@ -318,6 +318,9 @@ var kanColle = {
 				detail: [{
 					assistant: '秋月',
 					enableDays: [0, 1, 2, 3, 4, 5, 6]
+				}, {
+					assistant: '吹雪改二',
+					enableDays: [0, 4, 5, 6]
 				}],
 				remark: '消費装備:10cm連装高角砲'
 			},
@@ -339,8 +342,11 @@ var kanColle = {
 					assistant: '五十鈴改二',
 					enableDays: [1, 2, 3]
 				}, {
-					assistant: '摩耶',
+					assistant: '摩耶/摩耶改',
 					enableDays: [2, 3, 4]
+				}, {
+					assistant: '摩耶改二',
+					enableDays: [0, 1, 5, 6]
 				}],
 			},
 
