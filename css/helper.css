@@ -4,9 +4,9 @@ ol, ul, li { margin: 0px; padding: 0px; }
 ol, ul { list-style-type: none; }
 li { padding: 8px; }
 /* 网易NEC, Grid */
-.g-bd { width: 520px; margin: 0 auto; }
+.g-bd { width: 640px; margin: 0 auto; }
 .g-mn, .g-sd { background-color: #FFF; padding: 12px; margin: 8px; }
-.g-sd { float: right; width: 160px; }
+.g-sd { float: right; width: 280px; }
 .g-mn { float: left; width: 280px; }
 .u-menu.z-show { display: block; }
 .name { height: 64px; line-height: 64px; overflow: hidden; font-size: 1.4em; color: #333; }
