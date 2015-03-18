@@ -2,7 +2,6 @@
  *	equipObj通过kanColle.remodel.extractEquip('装备名称')的方式获取
  *	new Equip(equipObj).buildListElem()
  */
-
 function Category(name, checkedStsArray) {
 
 	this.equipNames = kanColle.remodel.searchEquipnamesByCategory(name);
@@ -105,6 +104,7 @@ function Equip(name, checked) {
 	this.name = equip.name;
 	this.clazz = equip.clazz;
 	this.checked = checked;
+
 };
 
 Equip.prototype = {
@@ -159,8 +159,8 @@ Equip.prototype = {
 	},
 
 	build: function() {
-		var item = document.createElement('li');
 
+		var item = document.createElement('li');
 		var label = document.createElement('label');
 
 		label.appendChild(this.buildName());
@@ -169,5 +169,5 @@ Equip.prototype = {
 		item.appendChild(label);
 
 		return item;
-	}
+	},
 };
