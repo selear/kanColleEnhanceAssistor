@@ -162,8 +162,8 @@ Equip.prototype = {
 		var item = document.createElement('li');
 		var label = initLabel();
 
-		label.appendChild(this.buildCheckbox());
 		label.appendChild(this.buildName());
+		label.appendChild(this.buildCheckbox());
 		
 		item.appendChild(label);
 
