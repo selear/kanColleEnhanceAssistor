@@ -93,12 +93,6 @@ Category.prototype = {
 };
 
 function Equip(name, checked) {
-	/*	[prototype] properties & functions
-		CLASS_HANDLE,
-		CLASS_EQUIP_ICON,
-		CLASS_EQUIP_NAME,
-		buildListElem()
-	*/
 
 	var equip = kanColle.remodel.extractEquip(name);
 	this.name = equip.name;
@@ -115,16 +109,15 @@ Equip.prototype = {
 	buildName: function() {
 		var name = document.createElement('span');
 
-		var icon = buildIcon(this);
-		var text = buildText(this);
-
+		var icon = initIcon(this);
+		var text = initText(this);
 		
 		name.appendChild(icon);
 		name.appendChild(text);
 
 		return name;
 
-		function buildIcon(that) {
+		function initIcon(that) {
 
 			var icon = document.createElement('span');
 			icon.classList.add(that.icon);
@@ -133,7 +126,7 @@ Equip.prototype = {
 			return icon;
 		}
 
-		function buildText(that) {
+		function initText(that) {
 
 			var text = document.createElement('span');
 			text.textContent = that.name;
@@ -141,32 +134,44 @@ Equip.prototype = {
 		}
 	},
 
-	buildCheck: function() {
+	buildCheckbox: function() {
 
-		var input = document.createElement('input');
-		input.type = 'checkbox';
-		input.value = this.name;
+		var checkbox = initCheckbox(this);
+
 		if (this.checked == 1) {
-			input.checked = true;
+			checkbox.checked = true;
 		} else {
-			input.checked = false;
+			checkbox.checked = false;
 		}
 
-		input.classList.add(this.textRight);
+		checkbox.classList.add(this.textRight);
 
-		return input;
+		return checkbox;
+
+		function initCheckbox(that) {
+			var input = document.createElement('input');
+			input.type = 'checkbox';
+			input.value = that.name;
+
+			return input;
+		}
 	},
 
 	build: function() {
 
 		var item = document.createElement('li');
-		var label = document.createElement('label');
+		var label = initLabel();
 
+		label.appendChild(this.buildCheckbox());
 		label.appendChild(this.buildName());
-		label.appendChild(this.buildCheck());
-
+		
 		item.appendChild(label);
 
 		return item;
-	},
+
+		function initLabel() {
+			var elem = document.createElement('label');
+			return elem;
+		}
+	}
 };
