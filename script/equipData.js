@@ -1,6 +1,6 @@
 var kanColle = {
 	remodel: {
-		categoryNameList: ['小口径主砲', '中口径主砲', '大口径主砲', '魚雷', '反潛裝備', '特種裝備'],
+		categoryNameList: ['小口径主砲/副砲', '中口径主砲', '大口径主砲', '魚雷', '反潛裝備', '特種裝備'],
 		defaultSelected: ['20.3cm(2号)連装砲', '20.3cm(3号)連装砲', '41cm連装砲', '46cm三連装砲', '61cm五連装(酸素)魚雷', '九一式徹甲弾'],
 
 		/*
@@ -90,9 +90,11 @@ var kanColle = {
 
 			map: {
 				'小口径主砲': 'main-cannon-light',
+				'小口径主砲/副砲' : 'main-cannon-light',
 				'中口径主砲': 'main-cannon-medium',
 				'大口径主砲': 'main-cannon-heavy',
 				'高角砲': 'high-angle-gun',
+				'副砲' : 'secondary-canon',
 				'対空機銃': 'anti-air-gun',
 				'高射装置': 'anti-air-fire-director',
 				'魚雷': 'torpedo',
@@ -133,11 +135,11 @@ var kanColle = {
 
 kanColle.remodel.equips = {};
 
-/* 小口径主砲 */
+/* 小口径主砲/副砲 */
 kanColle.remodel.equips['12.7cm連装砲'] = {
 	name: '12.7cm連装砲',
 	icon: '小口径主砲',
-	category: '小口径主砲',
+	category: '小口径主砲/副砲',
 	detail: [{
 		assistant: '-',
 		enableDays: [0, 1, 2, 3, 4, 5, 6]
@@ -148,7 +150,7 @@ kanColle.remodel.equips['12.7cm連装砲'] = {
 kanColle.remodel.equips['12.7cm連装砲B型改二'] = {
 	name: '12.7cm連装砲B型改二',
 	icon: '小口径主砲',
-	category: '小口径主砲',
+	category: '小口径主砲/副砲',
 	detail: [{
 		assistant: '夕立改二, 绫波改二',
 		enableDays: [1, 2, 3]
@@ -156,15 +158,60 @@ kanColle.remodel.equips['12.7cm連装砲B型改二'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['10cm高角砲＋高射装置'] = {
-	name: '10cm高角砲＋高射装置',
+kanColle.remodel.equips['10cm高角砲+高射装置'] = {
+	name: '10cm高角砲+高射装置',
 	icon: '高角砲',
-	category: '小口径主砲',
+	category: '小口径主砲/副砲',
 	detail: [{
 		assistant: '秋月',
 		enableDays: [1, 2, 3, 4]
 	}],
 	remark: '消費装備:10cm連装高角砲'
+};
+
+kanColle.remodel.equips['90mm単装高角砲'] = {
+	name: '90mm単装高角砲',
+	icon: '高角砲',
+	category: '小口径主砲/副砲',
+	detail: [{
+		assistant: 'Littorio',
+		enableDays: [1, 2, 3, 4]
+	}, {
+		assistant: 'Roma',
+		enableDays: [0, 4, 5, 6]
+	}],
+	remark: '初期の改修から消費装備が必要\n消費装備:10cm連装高角砲'
+};
+
+kanColle.remodel.equips['15.2cm単装砲'] = {
+	name: '15.2cm単装砲',
+	icon: '副砲',
+	category: '小口径主砲/副砲',
+	detail: [{
+		assistant: '阿賀野',
+		enableDays: [1, 2]
+	}, {
+		assistant: '金剛改二',
+		enableDays: [1]
+	}, {
+		assistant: '山城',
+		enableDays: [1, 2, 3]
+	}],
+	remark: ''
+};
+
+kanColle.remodel.equips['OTO 152mm三連装速射砲'] = {
+	name: 'OTO 152mm三連装速射砲',
+	icon: '副砲',
+	category: '小口径主砲/副砲',
+	detail: [{
+		assistant: 'Littorio',
+		enableDays: [0, 2, 3, 6]
+	}, {
+		assistant: 'Roma',
+		enableDays: [0, 1, 4, 5]
+	}],
+	remark: '消費装備:15.5cm三連装砲'
 };
 
 /* 中口径主砲 */
@@ -271,6 +318,34 @@ kanColle.remodel.equips['38cm連装砲改'] = {
 	remark: '初期の改修から消費装備が必要\n消費装備:41cm連装砲'
 };
 
+kanColle.remodel.equips['381mm/50 三連装砲'] = {
+	name: '381mm/50 三連装砲',
+	icon: '大口径主砲',
+	category: '大口径主砲',
+	detail: [{
+		assistant: 'Littorio',
+		enableDays: [2, 3, 4, 5]
+	}, {
+		assistant: 'Roma',
+		enableDays: [0, 1, 6]
+	}],
+	remark: '初期の改修から消費装備が必要\n消費装備:35.6cm連装砲\n更新消費:25mm連装機銃'
+}
+
+kanColle.remodel.equips['381mm/50 三連装砲改'] = {
+	name: '381mm/50 三連装砲改',
+	icon: '大口径主砲',
+	category: '大口径主砲',
+	detail: [{
+		assistant: 'Littorio',
+		enableDays: [0, 1, 6]
+	}, {
+		assistant: 'Roma',
+		enableDays: [2, 3, 4, 5]
+	}],
+	remark: '初期の改修から消費装備が必要\n消費装備:41cm連装砲'
+}
+
 kanColle.remodel.equips['41cm連装砲'] = {
 	name: '41cm連装砲',
 	icon: '大口径主砲',
@@ -311,6 +386,20 @@ kanColle.remodel.equips['46cm三連装砲'] = {
 		enableDays: [0, 1]
 	}],
 	remark: '初期の改修から消費装備が必要'
+};
+
+kanColle.remodel.equips['試製51cm連装砲'] = {
+	name: '試製51cm連装砲',
+	icon: '大口径主砲',
+	category: '大口径主砲',
+	detail: [{
+		assistant: '大和改',
+		enableDays: [1, 2]
+	}, {
+		assistant: '武蔵改',
+		enableDays: [1, 3]
+	}],
+	remark: '初期の改修から消費装備が必要\n消費装備:46cm三連装砲'
 };
 
 /* 魚雷 */
