@@ -153,7 +153,7 @@ function report() {
 	report += '改修报告 :\n\n' + generateAssistShipsReport(availiableEquips);
 
 	report = report.replace(/\n/g, '<br>');
-	report = report.replace(/\t/g, '&emsp;|&emsp;');
+	report = report.replace(/\t/g, '<br>&emsp;-->&emsp;');
 
 	$('.g-sd').html(report);
 
