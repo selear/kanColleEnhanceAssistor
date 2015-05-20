@@ -22,6 +22,7 @@ label {	display: block; }
 .main-cannon-medium { background-image: url("../image/MainCanonMedium.png"); }
 .main-cannon-heavy { background-image: url("../image/MainCanonHeavy.png"); }
 .high-angle-gun { background-image: url("../image/HighAngleGun.png"); }
+.secondary-canon { background-image: url("../image/SecondaryCanon.png"); }
 .anti-air-gun { background-image: url("../image/AAGun.png"); }
 .anti-air-fire-director { background-image: url("../image/AntiAircraftFireDirector.png"); }
 .torpedo { background-image: url("../image/Torpedo.png"); }
