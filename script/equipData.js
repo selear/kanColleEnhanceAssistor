@@ -192,7 +192,7 @@ kanColle.remodel.equips['15.2cm単装砲'] = {
 		enableDays: [1, 2]
 	}, {
 		assistant: '金剛改二',
-		enableDays: [1]
+		enableDays: [1, 6]
 	}, {
 		assistant: '山城',
 		enableDays: [1, 2, 3]
