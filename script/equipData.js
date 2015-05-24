@@ -189,10 +189,10 @@ kanColle.remodel.equips['15.2cm単装砲'] = {
 	category: '小口径主砲/副砲',
 	detail: [{
 		assistant: '阿賀野',
-		enableDays: [1, 2]
+		enableDays: [0, 1, 2]
 	}, {
-		assistant: '金剛改二',
-		enableDays: [1, 6]
+		assistant: '金剛',
+		enableDays: [0, 1, 6]
 	}, {
 		assistant: '山城',
 		enableDays: [1, 2, 3]
