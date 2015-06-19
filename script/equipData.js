@@ -1,6 +1,6 @@
 var kanColle = {
 	remodel: {
-		categoryNameList: ['小口径主砲/副砲', '中口径主砲', '大口径主砲', '魚雷', '反潛裝備', '特種裝備'],
+		categoryNameList: ['小口径主砲/副砲', '中口径主砲', '大口径主砲', '魚雷', '反潛裝備', '特種裝備', '電探'],
 		defaultSelected: ['20.3cm(2号)連装砲', '20.3cm(3号)連装砲', '41cm連装砲', '46cm三連装砲', '61cm五連装(酸素)魚雷', '九一式徹甲弾'],
 
 		/*
@@ -103,6 +103,8 @@ var kanColle = {
 				'反潛裝備': 'anti-sub-weapon',
 				'特種裝備': 'armour-piercing-shell',
 				'対艦強化弾': 'armour-piercing-shell',
+				'電探': 'rader',
+				'探照灯': 'search-light'
 			},
 
 			searchClass: function(category) {
@@ -135,8 +137,10 @@ var kanColle = {
 
 kanColle.remodel.equips = {};
 
+var equips = kanColle.remodel.equips
+
 /* 小口径主砲/副砲 */
-kanColle.remodel.equips['12.7cm連装砲'] = {
+equips['12.7cm連装砲'] = {
 	name: '12.7cm連装砲',
 	icon: '小口径主砲',
 	category: '小口径主砲/副砲',
@@ -147,7 +151,7 @@ kanColle.remodel.equips['12.7cm連装砲'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['12.7cm連装砲B型改二'] = {
+equips['12.7cm連装砲B型改二'] = {
 	name: '12.7cm連装砲B型改二',
 	icon: '小口径主砲',
 	category: '小口径主砲/副砲',
@@ -158,7 +162,7 @@ kanColle.remodel.equips['12.7cm連装砲B型改二'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['10cm高角砲+高射装置'] = {
+equips['10cm高角砲+高射装置'] = {
 	name: '10cm高角砲+高射装置',
 	icon: '高角砲',
 	category: '小口径主砲/副砲',
@@ -169,7 +173,7 @@ kanColle.remodel.equips['10cm高角砲+高射装置'] = {
 	remark: '消費装備:10cm連装高角砲'
 };
 
-kanColle.remodel.equips['90mm単装高角砲'] = {
+equips['90mm単装高角砲'] = {
 	name: '90mm単装高角砲',
 	icon: '高角砲',
 	category: '小口径主砲/副砲',
@@ -183,7 +187,7 @@ kanColle.remodel.equips['90mm単装高角砲'] = {
 	remark: '初期の改修から消費装備が必要\n消費装備:10cm連装高角砲'
 };
 
-kanColle.remodel.equips['15.2cm単装砲'] = {
+equips['15.2cm単装砲'] = {
 	name: '15.2cm単装砲',
 	icon: '副砲',
 	category: '小口径主砲/副砲',
@@ -200,7 +204,7 @@ kanColle.remodel.equips['15.2cm単装砲'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['OTO 152mm三連装速射砲'] = {
+equips['OTO 152mm三連装速射砲'] = {
 	name: 'OTO 152mm三連装速射砲',
 	icon: '副砲',
 	category: '小口径主砲/副砲',
@@ -215,7 +219,7 @@ kanColle.remodel.equips['OTO 152mm三連装速射砲'] = {
 };
 
 /* 中口径主砲 */
-kanColle.remodel.equips['14cm単装砲'] = {
+equips['14cm単装砲'] = {
 	name: '14cm単装砲',
 	icon: '中口径主砲',
 	category: '中口径主砲',
@@ -226,7 +230,7 @@ kanColle.remodel.equips['14cm単装砲'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['14cm連装砲'] = {
+equips['14cm連装砲'] = {
 	name: '14cm連装砲',
 	icon: '中口径主砲',
 	category: '中口径主砲',
@@ -237,7 +241,38 @@ kanColle.remodel.equips['14cm連装砲'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['15.5cm三連装砲'] = {
+equips['15.2cm連装砲'] = {
+	name: '15.2cm連装砲',
+	icon: '中口径主砲',
+	category: '中口径主砲',
+	detail: [{
+		assistant: '阿賀野',
+		enableDays: [4, 5, 6]
+	}, {
+		assistant: '能代',
+		enableDays: [0, 1, 5, 6]
+	}, {
+		assistant: '矢矧',
+		enableDays: [1, 2, 3, 4]
+	}],
+	remark: '更新:22号対水上電探'
+};
+
+equips['15.2cm連装砲改'] = {
+	name: '15.2cm連装砲改',
+	icon: '中口径主砲',
+	category: '中口径主砲',
+	detail: [{
+		assistant: '矢矧',
+		enableDays: [3, 4, 5, 6]
+	}, {
+		assistant: '酒匂',
+		enableDays: [0, 1, 2, 6]
+	}],
+	remark: '消費:15.2cm連装砲'
+};
+
+equips['15.5cm三連装砲'] = {
 	name: '15.5cm三連装砲',
 	icon: '中口径主砲',
 	category: '中口径主砲',
@@ -251,7 +286,7 @@ kanColle.remodel.equips['15.5cm三連装砲'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['20.3cm連装砲'] = {
+equips['20.3cm連装砲'] = {
 	name: '20.3cm連装砲',
 	icon: '中口径主砲',
 	category: '中口径主砲',
@@ -262,7 +297,7 @@ kanColle.remodel.equips['20.3cm連装砲'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['20.3cm(2号)連装砲'] = {
+equips['20.3cm(2号)連装砲'] = {
 	name: '20.3cm(2号)連装砲',
 	icon: '中口径主砲',
 	category: '中口径主砲',
@@ -273,7 +308,7 @@ kanColle.remodel.equips['20.3cm(2号)連装砲'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['20.3cm(3号)連装砲'] = {
+equips['20.3cm(3号)連装砲'] = {
 	name: '20.3cm(3号)連装砲',
 	icon: '中口径主砲',
 	category: '中口径主砲',
@@ -285,7 +320,7 @@ kanColle.remodel.equips['20.3cm(3号)連装砲'] = {
 };
 
 /* 大口径主砲 */
-kanColle.remodel.equips['35.6cm連装砲'] = {
+equips['35.6cm連装砲'] = {
 	name: '35.6cm連装砲',
 	icon: '大口径主砲',
 	category: '大口径主砲',
@@ -296,7 +331,7 @@ kanColle.remodel.equips['35.6cm連装砲'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['38cm連装砲'] = {
+equips['38cm連装砲'] = {
 	name: '38cm連装砲',
 	icon: '大口径主砲',
 	category: '大口径主砲',
@@ -307,7 +342,7 @@ kanColle.remodel.equips['38cm連装砲'] = {
 	remark: '初期の改修から消費装備が必要\n消費装備:35.6cm連装砲\n更新消費:41cm連装砲'
 };
 
-kanColle.remodel.equips['38cm連装砲改'] = {
+equips['38cm連装砲改'] = {
 	name: '38cm連装砲改',
 	icon: '大口径主砲',
 	category: '大口径主砲',
@@ -318,7 +353,7 @@ kanColle.remodel.equips['38cm連装砲改'] = {
 	remark: '初期の改修から消費装備が必要\n消費装備:41cm連装砲'
 };
 
-kanColle.remodel.equips['381mm/50 三連装砲'] = {
+equips['381mm/50 三連装砲'] = {
 	name: '381mm/50 三連装砲',
 	icon: '大口径主砲',
 	category: '大口径主砲',
@@ -332,7 +367,7 @@ kanColle.remodel.equips['381mm/50 三連装砲'] = {
 	remark: '初期の改修から消費装備が必要\n消費装備:35.6cm連装砲\n更新消費:25mm連装機銃'
 }
 
-kanColle.remodel.equips['381mm/50 三連装砲改'] = {
+equips['381mm/50 三連装砲改'] = {
 	name: '381mm/50 三連装砲改',
 	icon: '大口径主砲',
 	category: '大口径主砲',
@@ -346,7 +381,7 @@ kanColle.remodel.equips['381mm/50 三連装砲改'] = {
 	remark: '初期の改修から消費装備が必要\n消費装備:41cm連装砲'
 }
 
-kanColle.remodel.equips['41cm連装砲'] = {
+equips['41cm連装砲'] = {
 	name: '41cm連装砲',
 	icon: '大口径主砲',
 	category: '大口径主砲',
@@ -360,7 +395,7 @@ kanColle.remodel.equips['41cm連装砲'] = {
 	remark: '初期の改修から消費装備が必要'
 };
 
-kanColle.remodel.equips['試製46cm連装砲'] = {
+equips['試製46cm連装砲'] = {
 	name: '試製46cm連装砲',
 	icon: '大口径主砲',
 	category: '大口径主砲',
@@ -374,7 +409,7 @@ kanColle.remodel.equips['試製46cm連装砲'] = {
 	remark: '初期の改修から消費装備が必要\n消費装備:41cm連装砲\n更新消費:41cm連装砲'
 };
 
-kanColle.remodel.equips['46cm三連装砲'] = {
+equips['46cm三連装砲'] = {
 	name: '46cm三連装砲',
 	icon: '大口径主砲',
 	category: '大口径主砲',
@@ -388,7 +423,7 @@ kanColle.remodel.equips['46cm三連装砲'] = {
 	remark: '初期の改修から消費装備が必要'
 };
 
-kanColle.remodel.equips['試製51cm連装砲'] = {
+equips['試製51cm連装砲'] = {
 	name: '試製51cm連装砲',
 	icon: '大口径主砲',
 	category: '大口径主砲',
@@ -403,7 +438,7 @@ kanColle.remodel.equips['試製51cm連装砲'] = {
 };
 
 /* 魚雷 */
-kanColle.remodel.equips['61cm三連装魚雷'] = {
+equips['61cm三連装魚雷'] = {
 	name: '61cm三連装魚雷',
 	icon: '魚雷',
 	category: '魚雷',
@@ -417,7 +452,7 @@ kanColle.remodel.equips['61cm三連装魚雷'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['61cm三連装(酸素)魚雷'] = {
+equips['61cm三連装(酸素)魚雷'] = {
 	name: '61cm三連装(酸素)魚雷',
 	icon: '魚雷',
 	category: '魚雷',
@@ -428,7 +463,7 @@ kanColle.remodel.equips['61cm三連装(酸素)魚雷'] = {
 	remark: '消費装備:61cm三連装魚雷\n更新装備:61cm四連装魚雷'
 };
 
-kanColle.remodel.equips['61cm四連装魚雷'] = {
+equips['61cm四連装魚雷'] = {
 	name: '61cm四連装魚雷',
 	icon: '魚雷',
 	category: '魚雷',
@@ -439,7 +474,7 @@ kanColle.remodel.equips['61cm四連装魚雷'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['61cm四連装(酸素)魚雷'] = {
+equips['61cm四連装(酸素)魚雷'] = {
 	name: '61cm四連装(酸素)魚雷',
 	icon: '魚雷',
 	category: '魚雷',
@@ -450,7 +485,7 @@ kanColle.remodel.equips['61cm四連装(酸素)魚雷'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['61cm五連装(酸素)魚雷'] = {
+equips['61cm五連装(酸素)魚雷'] = {
 	name: '61cm五連装(酸素)魚雷',
 	icon: '魚雷',
 	category: '魚雷',
@@ -462,7 +497,7 @@ kanColle.remodel.equips['61cm五連装(酸素)魚雷'] = {
 };
 
 /* 聲呐 */
-kanColle.remodel.equips['九四式爆雷投射機'] = {
+equips['九四式爆雷投射機'] = {
 	name: '九四式爆雷投射機',
 	icon: '爆雷',
 	category: '反潛裝備',
@@ -473,7 +508,7 @@ kanColle.remodel.equips['九四式爆雷投射機'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['三式爆雷投射機'] = {
+equips['三式爆雷投射機'] = {
 	name: '三式爆雷投射機',
 	icon: '爆雷',
 	category: '反潛裝備',
@@ -484,7 +519,7 @@ kanColle.remodel.equips['三式爆雷投射機'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['九三式水中聴音機'] = {
+equips['九三式水中聴音機'] = {
 	name: '九三式水中聴音機',
 	icon: '聲呐',
 	category: '反潛裝備',
@@ -498,7 +533,7 @@ kanColle.remodel.equips['九三式水中聴音機'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['三式水中探信儀'] = {
+equips['三式水中探信儀'] = {
 	name: '三式水中探信儀',
 	icon: '聲呐',
 	category: '反潛裝備',
@@ -513,7 +548,7 @@ kanColle.remodel.equips['三式水中探信儀'] = {
 };
 
 /* 特種裝備 */
-kanColle.remodel.equips['九一式徹甲弾'] = {
+equips['九一式徹甲弾'] = {
 	name: '九一式徹甲弾',
 	icon: '対艦強化弾',
 	category: '特種裝備',
@@ -527,7 +562,7 @@ kanColle.remodel.equips['九一式徹甲弾'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['一式徹甲弾'] = {
+equips['一式徹甲弾'] = {
 	name: '一式徹甲弾',
 	icon: '対艦強化弾',
 	category: '特種裝備',
@@ -541,7 +576,7 @@ kanColle.remodel.equips['一式徹甲弾'] = {
 	remark: '初期の改修から消費装備が必要\n消費装備(初期～★5):九一式徹甲弾\n消費装備;(★6 ～★9):一式徹甲弾'
 };
 
-kanColle.remodel.equips['91式高射装置'] = {
+equips['91式高射装置'] = {
 	name: '91式高射装置',
 	icon: '高射装置',
 	category: '特種裝備',
@@ -552,7 +587,7 @@ kanColle.remodel.equips['91式高射装置'] = {
 	remark: '消費装備:12.7cm連装高角砲\n更新消費:10cm連装高角砲'
 };
 
-kanColle.remodel.equips['94式高射装置'] = {
+equips['94式高射装置'] = {
 	name: '94式高射装置',
 	icon: '高射装置',
 	category: '特種裝備',
@@ -569,7 +604,7 @@ kanColle.remodel.equips['94式高射装置'] = {
 	remark: '消費装備:10cm連装高角砲'
 };
 
-kanColle.remodel.equips['25mm連装機銃'] = {
+equips['25mm連装機銃'] = {
 	name: '25mm連装機銃',
 	icon: '対空機銃',
 	category: '特種裝備',
@@ -580,7 +615,7 @@ kanColle.remodel.equips['25mm連装機銃'] = {
 	remark: ''
 };
 
-kanColle.remodel.equips['25mm三連装機銃'] = {
+equips['25mm三連装機銃'] = {
 	name: '25mm三連装機銃',
 	icon: '対空機銃',
 	category: '特種裝備',
@@ -594,4 +629,100 @@ kanColle.remodel.equips['25mm三連装機銃'] = {
 		assistant: '摩耶改二',
 		enableDays: [0, 1, 5, 6]
 	}],
+	remark: ''
 };
+
+equips['探照灯'] = {
+	name: '探照灯',
+	icon: '探照灯',
+	category: '特種裝備',
+	detail: [{
+		assistant: '暁',
+		enableDays: [4, 5, 6]
+	}, {
+		assistant: '神通',
+		enableDays: [0, 5, 6]
+	}, {
+		assistant: '青葉, 綾波',
+		enableDays: [1, 2, 3]
+	}],
+	remark: '更新:熟練見張員'
+};
+
+equips['96式150cm探照灯'] = {
+	name: '96式150cm探照灯',
+	icon: '探照灯',
+	category: '特種裝備',
+	detail: [{
+		assistant: '比叡',
+		enableDays: [0, 1, 5, 6]
+	}, {
+		assistant: '霧島',
+		enableDays: [2, 3, 4, 5]
+	}],
+	remark: ''
+};
+
+equips['13号対空電探'] = {
+	name: '13号対空電探',
+	icon: '電探',
+	category: '電探',
+	detail: [{
+		assistant: '時雨改二',
+		enableDays: [0, 4, 5, 6]
+	}, {
+		assistant: '五十鈴改二',
+		enableDays: [0, 1, 5, 6]
+	}, {
+		assistant: '秋月',
+		enableDays: [2, 3, 4]
+	}],
+	remark: ''
+};
+
+equips['13号対空電探改'] = {
+	name: '13号対空電探改',
+	icon: '電探',
+	category: '電探',
+	detail: [{
+		assistant: '磯風改',
+		enableDays: [4, 5, 6]
+	}, {
+		assistant: '初霜改二',
+		enableDays: [0, 5, 6]
+	}, {
+		assistant: '雪風',
+		enableDays: [0, 1, 2, 3]
+	}],
+	remark: '消費:13号対空電探'
+};
+
+equips['21号対空電探'] = {
+	name: '21号対空電探',
+	icon: '電探',
+	category: '電探',
+	detail: [{
+		assistant: '伊勢',
+		enableDays: [0, 1, 5, 6]
+	}, {
+		assistant: '日向',
+		enableDays: [3, 4, 5, 6]
+	}],
+	remark: ''
+};
+
+equips['21号対空電探改'] = {
+	name: '21号対空電探改',
+	icon: '電探',
+	category: '電探',
+	detail: [{
+		assistant: '大和',
+		enableDays: [0, 4, 5, 6]
+	}, {
+		assistant: '武蔵',
+		enableDays: [2, 3, 4, 5]
+	}],
+	remark: '消費:21号対空電探'
+};
+
+equips = null;
