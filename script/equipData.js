@@ -90,11 +90,11 @@ var kanColle = {
 
 			map: {
 				'小口径主砲': 'main-cannon-light',
-				'小口径主砲/副砲' : 'main-cannon-light',
+				'小口径主砲/副砲': 'main-cannon-light',
 				'中口径主砲': 'main-cannon-medium',
 				'大口径主砲': 'main-cannon-heavy',
 				'高角砲': 'high-angle-gun',
-				'副砲' : 'secondary-canon',
+				'副砲': 'secondary-canon',
 				'対空機銃': 'anti-air-gun',
 				'高射装置': 'anti-air-fire-director',
 				'魚雷': 'torpedo',
@@ -723,6 +723,68 @@ equips['21号対空電探改'] = {
 		enableDays: [2, 3, 4, 5]
 	}],
 	remark: '消費:21号対空電探'
+};
+
+equips['22号対水上電探'] = {
+	name: '22号対水上電探',
+	icon: '電探',
+	category: '電探',
+	detail: [{
+		assistant: '日向',
+		enableDays: [0, 1, 5, 6]
+	}, {
+		assistant: '夕雲',
+		enableDays: [1, 2, 5, 6]
+	}, {
+		assistant: '島風',
+		enableDays: [3, 4, 5, 6]
+	}],
+	remark: ''
+};
+
+equips['22号対水上電探改四'] = {
+	name: '22号対水上電探改四',
+	icon: '電探',
+	category: '電探',
+	detail: [{
+		assistant: '妙高改二',
+		enableDays: [0, 4, 5, 6]
+	}, {
+		assistant: '羽黒改二',
+		enableDays: [0, 1, 5, 6]
+	}, {
+		assistant: '金剛改二',
+		enableDays: [2, 3, 4, 5]
+	}, ],
+	remark: '消費(初期～):22号対水上電探\n消費(★6 ～):22号対水上電探改四'
+};
+
+equips['32号対水上電探'] = {
+	name: '32号対水上電探',
+	icon: '電探',
+	category: '電探',
+	detail: [{
+		assistant: '伊勢',
+		enableDays: [3, 4, 5, 6]
+	}, {
+		assistant: '日向',
+		enableDays: [0, 1, 2]
+	}],
+	remark: '消費：22号対水上電探\n消費(更新)：32号対水上電探'
+};
+
+equips['32号対水上電探改'] = {
+	name: '32号対水上電探改',
+	icon: '電探',
+	category: '電探',
+	detail: [{
+		assistant: '伊勢',
+		enableDays: [0, 1, 2]
+	}, {
+		assistant: '日向',
+		enableDays: [3, 4, 5, 6]
+	}],
+	remark: '消費(初期～)：22号対水上電探\n消費(★6 ～)：32号対水上電探'
 };
 
 equips = null;
