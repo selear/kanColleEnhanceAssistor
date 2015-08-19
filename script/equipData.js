@@ -513,7 +513,7 @@ equips['三式爆雷投射機'] = {
 	icon: '爆雷',
 	category: '反潛裝備',
 	detail: [{
-		assistant: '-',
+		assistant: '五十鈴改二',
 		enableDays: [3, 4]
 	}],
 	remark: ''
