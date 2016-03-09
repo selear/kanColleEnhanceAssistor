@@ -104,7 +104,8 @@ var kanColle = {
 				'特種裝備': 'armour-piercing-shell',
 				'対艦強化弾': 'armour-piercing-shell',
 				'電探': 'rader',
-				'探照灯': 'search-light'
+				'探照灯': 'search-light',
+				'水上偵察機' : 'recon-sea-plane'
 			},
 
 			searchClass: function(category) {
@@ -144,10 +145,9 @@ equips['12.7cm連装砲'] = {
 	name: '12.7cm連装砲',
 	icon: '小口径主砲',
 	category: '小口径主砲/副砲',
-	detail: [{
-		assistant: '-',
-		enableDays: [0, 1, 2, 3, 4, 5, 6]
-	}],
+	detail: [
+		{assistant: '-', enableDays: [0, 1, 2, 3, 4, 5, 6]}
+	],
 	remark: ''
 };
 
@@ -155,10 +155,9 @@ equips['12.7cm連装砲B型改二'] = {
 	name: '12.7cm連装砲B型改二',
 	icon: '小口径主砲',
 	category: '小口径主砲/副砲',
-	detail: [{
-		assistant: '夕立改二, 绫波改二',
-		enableDays: [1, 2, 3]
-	}],
+	detail: [
+		{assistant: '夕立改二, 绫波改二', enableDays: [1, 2, 3]}
+	],
 	remark: ''
 };
 
@@ -166,10 +165,9 @@ equips['10cm高角砲+高射装置'] = {
 	name: '10cm高角砲+高射装置',
 	icon: '高角砲',
 	category: '小口径主砲/副砲',
-	detail: [{
-		assistant: '秋月',
-		enableDays: [1, 2, 3, 4]
-	}],
+	detail: [
+		{assistant: '秋月', enableDays: [1, 2, 3, 4]}
+	],
 	remark: '消費装備:10cm連装高角砲'
 };
 
@@ -177,30 +175,22 @@ equips['90mm単装高角砲'] = {
 	name: '90mm単装高角砲',
 	icon: '高角砲',
 	category: '小口径主砲/副砲',
-	detail: [{
-		assistant: 'Littorio',
-		enableDays: [1, 2, 3, 4]
-	}, {
-		assistant: 'Roma',
-		enableDays: [0, 4, 5, 6]
-	}],
-	remark: '初期の改修から消費装備が必要\n消費装備:10cm連装高角砲'
+	detail: [
+		{assistant: 'Littorio', enableDays: [1, 2, 3, 4]},
+		{assistant: 'Roma',	enableDays: [0, 4, 5, 6]}
+	],
+	remark: '消費：10cm連装高角砲'
 };
 
 equips['15.2cm単装砲'] = {
 	name: '15.2cm単装砲',
 	icon: '副砲',
 	category: '小口径主砲/副砲',
-	detail: [{
-		assistant: '阿賀野',
-		enableDays: [0, 1, 2]
-	}, {
-		assistant: '金剛',
-		enableDays: [0, 1, 6]
-	}, {
-		assistant: '山城',
-		enableDays: [1, 2, 3]
-	}],
+	detail: [
+		{assistant: '阿賀野', enableDays: [0, 1, 2]},
+		{assistant: '金剛', enableDays: [0, 1, 6]},
+		{assistant: '山城', enableDays: [1, 2, 3]}
+	],
 	remark: ''
 };
 
@@ -208,13 +198,10 @@ equips['OTO 152mm三連装速射砲'] = {
 	name: 'OTO 152mm三連装速射砲',
 	icon: '副砲',
 	category: '小口径主砲/副砲',
-	detail: [{
-		assistant: 'Littorio',
-		enableDays: [0, 2, 3, 6]
-	}, {
-		assistant: 'Roma',
-		enableDays: [0, 1, 4, 5]
-	}],
+	detail: [
+		{assistant: 'Littorio', enableDays: [0, 2, 3, 6]},
+		{assistant: 'Roma', enableDays: [0, 1, 4, 5]}
+	],
 	remark: '消費装備:15.5cm三連装砲'
 };
 
@@ -223,10 +210,9 @@ equips['14cm単装砲'] = {
 	name: '14cm単装砲',
 	icon: '中口径主砲',
 	category: '中口径主砲',
-	detail: [{
-		assistant: '-',
-		enableDays: [0, 1, 2, 3, 4, 5, 6]
-	}],
+	detail: [
+		{assistant: '-', enableDays: [0, 1, 2, 3, 4, 5, 6]}
+	],
 	remark: ''
 };
 
@@ -234,10 +220,9 @@ equips['14cm連装砲'] = {
 	name: '14cm連装砲',
 	icon: '中口径主砲',
 	category: '中口径主砲',
-	detail: [{
-		assistant: '夕張',
-		enableDays: [1, 4]
-	}],
+	detail: [
+		{assistant: '夕張', enableDays: [1, 4]}
+	],
 	remark: ''
 };
 
@@ -245,16 +230,11 @@ equips['15.2cm連装砲'] = {
 	name: '15.2cm連装砲',
 	icon: '中口径主砲',
 	category: '中口径主砲',
-	detail: [{
-		assistant: '阿賀野',
-		enableDays: [4, 5, 6]
-	}, {
-		assistant: '能代',
-		enableDays: [0, 1, 5, 6]
-	}, {
-		assistant: '矢矧',
-		enableDays: [1, 2, 3, 4]
-	}],
+	detail: [
+		{assistant: '阿賀野', enableDays: [4, 5, 6]},
+		{assistant: '能代', enableDays: [0, 1, 5, 6]},
+		{assistant: '矢矧', enableDays: [1, 2, 3, 4]}
+	],
 	remark: '更新:22号対水上電探'
 };
 
@@ -324,21 +304,42 @@ equips['35.6cm連装砲'] = {
 	name: '35.6cm連装砲',
 	icon: '大口径主砲',
 	category: '大口径主砲',
-	detail: [{
-		assistant: '扶桑',
-		enableDays: [0, 5, 6]
-	}],
-	remark: ''
+	detail: [
+		{assistant: '扶桑', enableDays: [0, 5, 6]}
+	],
+	remark: '⇒試製35.6cm三連装砲'
+};
+
+equips['試製35.6cm三連装砲'] = {
+	name: '試製35.6cm三連装砲',
+	icon: '大口径主砲',
+	category: '大口径主砲',
+	detail: [
+		{assistant: '金剛改二', enableDays: [3, 4]},
+		{assistant: '榛名改二', enableDays: [4, 5]},
+		{assistant: '扶桑改二', enableDays: [3, 4, 5, 6]},
+		{assistant: '山城改二', enableDays: [0, 4, 5, 6]}
+	],
+	remark: '消費：35.6cm連装砲'
+};
+
+equips['35.6cm連装砲(ダズル迷彩)'] = {
+	name: '35.6cm連装砲(ダズル迷彩)',
+	icon: '大口径主砲',
+	category: '大口径主砲',
+	detail: [
+		{assistant: '榛名改二', enableDays: [0, 1, 2, 3, 6]}
+	],
+	remark: '消費：35.6cm連装砲'
 };
 
 equips['38cm連装砲'] = {
 	name: '38cm連装砲',
 	icon: '大口径主砲',
 	category: '大口径主砲',
-	detail: [{
-		assistant: 'Bismarck',
-		enableDays: [4, 5, 6]
-	}],
+	detail: [
+		{assistant: 'Bismarck', enableDays: [4, 5, 6]}
+	],
 	remark: '初期の改修から消費装備が必要\n消費装備:35.6cm連装砲\n更新消費:41cm連装砲'
 };
 
@@ -346,10 +347,9 @@ equips['38cm連装砲改'] = {
 	name: '38cm連装砲改',
 	icon: '大口径主砲',
 	category: '大口径主砲',
-	detail: [{
-		assistant: 'Bismarck',
-		enableDays: [0, 1, 2]
-	}],
+	detail: [
+		{assistant: 'Bismarck', enableDays: [0, 1, 2]}
+	],
 	remark: '初期の改修から消費装備が必要\n消費装備:41cm連装砲'
 };
 
@@ -357,13 +357,10 @@ equips['381mm/50 三連装砲'] = {
 	name: '381mm/50 三連装砲',
 	icon: '大口径主砲',
 	category: '大口径主砲',
-	detail: [{
-		assistant: 'Littorio',
-		enableDays: [2, 3, 4, 5]
-	}, {
-		assistant: 'Roma',
-		enableDays: [0, 1, 6]
-	}],
+	detail: [
+		{assistant: 'Littorio', enableDays: [2, 3, 4, 5]},
+		{assistant: 'Roma', enableDays: [0, 1, 6]}
+	],
 	remark: '初期の改修から消費装備が必要\n消費装備:35.6cm連装砲\n更新消費:25mm連装機銃'
 }
 
@@ -371,13 +368,10 @@ equips['381mm/50 三連装砲改'] = {
 	name: '381mm/50 三連装砲改',
 	icon: '大口径主砲',
 	category: '大口径主砲',
-	detail: [{
-		assistant: 'Littorio',
-		enableDays: [0, 1, 6]
-	}, {
-		assistant: 'Roma',
-		enableDays: [2, 3, 4, 5]
-	}],
+	detail: [
+		{assistant: 'Littorio', enableDays: [0, 1, 6]},
+		{assistant: 'Roma', enableDays: [2, 3, 4, 5]}
+	],
 	remark: '初期の改修から消費装備が必要\n消費装備:41cm連装砲'
 }
 
@@ -385,27 +379,32 @@ equips['41cm連装砲'] = {
 	name: '41cm連装砲',
 	icon: '大口径主砲',
 	category: '大口径主砲',
-	detail: [{
-		assistant: '長門',
-		enableDays: [2, 5, 6]
-	}, {
-		assistant: '陸奥',
-		enableDays: [0, 1, 4]
-	}],
-	remark: '初期の改修から消費装備が必要'
+	detail: [
+		{assistant: '長門', enableDays: [2, 5, 6]},
+		{assistant: '陸奥', enableDays: [0, 1, 4]}
+	],
+	remark: '消費：同装備'
+};
+
+equips['試製41cm三連装砲'] = {
+	name: '試製41cm三連装砲',
+	icon: '大口径主砲',
+	category: '大口径主砲',
+	detail: [
+		{assistant: '長門改', enableDays: [0, 1, 3, 4]},
+		{assistant: '陸奥改', enableDays: [2, 3, 5, 6]}
+	],
+	remark: '消費：41cm連装砲'
 };
 
 equips['試製46cm連装砲'] = {
 	name: '試製46cm連装砲',
 	icon: '大口径主砲',
 	category: '大口径主砲',
-	detail: [{
-		assistant: '大和',
-		enableDays: [0, 1]
-	}, {
-		assistant: '武蔵',
-		enableDays: [2, 3]
-	}],
+	detail: [
+		{assistant: '大和', enableDays: [0, 1]},
+		{assistant: '武蔵', enableDays: [2, 3]}
+	],
 	remark: '初期の改修から消費装備が必要\n消費装備:41cm連装砲\n更新消費:41cm連装砲'
 };
 
@@ -413,13 +412,10 @@ equips['46cm三連装砲'] = {
 	name: '46cm三連装砲',
 	icon: '大口径主砲',
 	category: '大口径主砲',
-	detail: [{
-		assistant: '大和',
-		enableDays: [5, 6]
-	}, {
-		assistant: '武蔵',
-		enableDays: [0, 1]
-	}],
+	detail: [
+		{assistant: '大和', enableDays: [5, 6]},
+		{assistant: '武蔵', enableDays: [0, 1]}
+	],
 	remark: '初期の改修から消費装備が必要'
 };
 
@@ -427,13 +423,10 @@ equips['試製51cm連装砲'] = {
 	name: '試製51cm連装砲',
 	icon: '大口径主砲',
 	category: '大口径主砲',
-	detail: [{
-		assistant: '大和改',
-		enableDays: [1, 2]
-	}, {
-		assistant: '武蔵改',
-		enableDays: [1, 3]
-	}],
+	detail: [
+		{assistant: '大和改', enableDays: [1, 2]},
+		{assistant: '武蔵改', enableDays: [1, 3]}
+	],
 	remark: '初期の改修から消費装備が必要\n消費装備:46cm三連装砲'
 };
 
@@ -442,13 +435,10 @@ equips['61cm三連装魚雷'] = {
 	name: '61cm三連装魚雷',
 	icon: '魚雷',
 	category: '魚雷',
-	detail: [{
-		assistant: '吹雪',
-		enableDays: [4, 5, 6]
-	}, {
-		assistant: '叢雲',
-		enableDays: [0, 1, 2]
-	}],
+	detail: [
+		{assistant: '吹雪', enableDays: [4, 5, 6]},
+		{assistant: '叢雲', enableDays: [0, 1, 2]}
+	],
 	remark: ''
 };
 
@@ -456,10 +446,9 @@ equips['61cm三連装(酸素)魚雷'] = {
 	name: '61cm三連装(酸素)魚雷',
 	icon: '魚雷',
 	category: '魚雷',
-	detail: [{
-		assistant: '吹雪改二',
-		enableDays: [4, 5, 6]
-	}],
+	detail: [
+		{assistant: '吹雪改二', enableDays: [4, 5, 6]}
+	],
 	remark: '消費装備:61cm三連装魚雷\n更新装備:61cm四連装魚雷'
 };
 
@@ -467,10 +456,9 @@ equips['61cm四連装魚雷'] = {
 	name: '61cm四連装魚雷',
 	icon: '魚雷',
 	category: '魚雷',
-	detail: [{
-		assistant: '-',
-		enableDays: [0, 1, 2, 5, 6]
-	}],
+	detail: [
+		{assistant: '-', enableDays: [0, 1, 2, 5, 6]}
+	],
 	remark: ''
 };
 
@@ -478,10 +466,9 @@ equips['61cm四連装(酸素)魚雷'] = {
 	name: '61cm四連装(酸素)魚雷',
 	icon: '魚雷',
 	category: '魚雷',
-	detail: [{
-		assistant: '北上, 大井',
-		enableDays: [0, 1, 2, 3, 4, 5, 6]
-	}],
+	detail: [
+		{assistant: '北上, 大井', enableDays: [0, 1, 2, 3, 4, 5, 6]}
+	],
 	remark: ''
 };
 
@@ -489,10 +476,9 @@ equips['61cm五連装(酸素)魚雷'] = {
 	name: '61cm五連装(酸素)魚雷',
 	icon: '魚雷',
 	category: '魚雷',
-	detail: [{
-		assistant: '島風',
-		enableDays: [3, 4]
-	}],
+	detail: [
+		{assistant: '島風', enableDays: [3, 4]}
+	],
 	remark: ''
 };
 
@@ -501,10 +487,9 @@ equips['九四式爆雷投射機'] = {
 	name: '九四式爆雷投射機',
 	icon: '爆雷',
 	category: '反潛裝備',
-	detail: [{
-		assistant: '-',
-		enableDays: [3, 4]
-	}],
+	detail: [
+		{assistant: '-', enableDays: [3, 4]}
+	],
 	remark: ''
 };
 
@@ -512,24 +497,32 @@ equips['三式爆雷投射機'] = {
 	name: '三式爆雷投射機',
 	icon: '爆雷',
 	category: '反潛裝備',
-	detail: [{
-		assistant: '五十鈴改二',
-		enableDays: [3, 4]
-	}],
+	detail: [
+		{assistant: '五十鈴改二', enableDays: [3, 4]}
+	],
 	remark: ''
 };
 
-equips['九三式水中聴音機'] = {
-	name: '九三式水中聴音機',
+equips['九三式水中聴音機 - 三式水中探信儀'] = {
+	name: '九三式水中聴音機 - 三式水中探信儀',
 	icon: '聲呐',
 	category: '反潛裝備',
-	detail: [{
-		assistant: '夕張',
-		enableDays: [0, 5, 6]
-	}, {
-		assistant: '五十鈴改二',
-		enableDays: [1, 5, 6]
-	}],
+	detail: [
+		{assistant: '夕張',	enableDays: [0, 5, 6]},
+		{assistant: '五十鈴改二', enableDays: [1]}
+	],
+	remark: ''
+};
+
+equips['九三式水中聴音機 - 四式水中聴音機'] = {
+	name: '九三式水中聴音機 - 四式水中聴音機',
+	icon: '聲呐',
+	category: '反潛裝備',
+	detail: [
+		{assistant: '時雨改二', enableDays: [0, 4, 5, 6]},
+		{assistant: '五十鈴改二', enableDays: [4, 5]},
+		{assistant: '香取改', enableDays: [0, 5, 6]}
+	],
 	remark: ''
 };
 
@@ -537,13 +530,23 @@ equips['三式水中探信儀'] = {
 	name: '三式水中探信儀',
 	icon: '聲呐',
 	category: '反潛裝備',
-	detail: [{
-		assistant: '夕張',
-		enableDays: [2, 3]
-	}, {
-		assistant: '五十鈴改二',
-		enableDays: [0, 2, 3]
-	}],
+	detail: [
+		{assistant: '夕張', enableDays: [2, 3]},
+		{assistant: '五十鈴改二', enableDays: [0, 2, 3]}
+	],
+	remark: ''
+};
+
+equips['四式水中聴音機'] = {
+	name: '四式水中聴音機',
+	icon: '聲呐',
+	category: '反潛裝備',
+	detail: [
+		{assistant: '五十鈴改二', enableDays: [4, 5, 6]},
+		{assistant: '秋月', enableDays: [0]},
+		{assistant: '照月', enableDays: [3]},
+		{assistant: '香取改', enableDays: [1, 2]}
+	],
 	remark: ''
 };
 
@@ -552,13 +555,10 @@ equips['九一式徹甲弾'] = {
 	name: '九一式徹甲弾',
 	icon: '対艦強化弾',
 	category: '特種裝備',
-	detail: [{
-		assistant: '比叡',
-		enableDays: [3, 4, 5, 6]
-	}, {
-		assistant: '霧島',
-		enableDays: [0, 1, 5, 6]
-	}],
+	detail: [
+		{assistant: '比叡', enableDays: [3, 4, 5, 6]},
+		{assistant: '霧島', enableDays: [0, 1, 5, 6]}
+	],
 	remark: ''
 };
 
@@ -566,13 +566,10 @@ equips['一式徹甲弾'] = {
 	name: '一式徹甲弾',
 	icon: '対艦強化弾',
 	category: '特種裝備',
-	detail: [{
-		assistant: '金剛',
-		enableDays: [0, 5, 6]
-	}, {
-		assistant: '榛名',
-		enableDays: [1, 2, 3]
-	}],
+	detail: [
+		{assistant: '金剛', enableDays: [0, 5, 6]},
+		{assistant: '榛名', enableDays: [1, 2, 3]}
+	],
 	remark: '初期の改修から消費装備が必要\n消費装備(初期～★5):九一式徹甲弾\n消費装備;(★6 ～★9):一式徹甲弾'
 };
 
@@ -580,10 +577,9 @@ equips['91式高射装置'] = {
 	name: '91式高射装置',
 	icon: '高射装置',
 	category: '特種裝備',
-	detail: [{
-		assistant: '摩耶, 秋月',
-		enableDays: [0, 1, 5, 6]
-	}],
+	detail: [
+		{assistant: '摩耶, 秋月', enableDays: [0, 1, 5, 6]}
+	],
 	remark: '消費装備:12.7cm連装高角砲\n更新消費:10cm連装高角砲'
 };
 
@@ -591,16 +587,11 @@ equips['94式高射装置'] = {
 	name: '94式高射装置',
 	icon: '高射装置',
 	category: '特種裝備',
-	detail: [{
-		assistant: '秋月',
-		enableDays: [0, 1, 2, 3, 4, 5, 6]
-	}, {
-		assistant: '吹雪改二',
-		enableDays: [0, 4, 5, 6]
-	}, {
-		assistant: '摩耶改二',
-		enableDays: [0, 4, 5, 6]
-	}],
+	detail: [
+		{assistant: '秋月', enableDays: [0, 1, 2, 3, 4, 5, 6]},
+		{assistant: '吹雪改二', enableDays: [0, 4, 5, 6]},
+		{assistant: '摩耶改二', enableDays: [0, 4, 5, 6]}
+	],
 	remark: '消費装備:10cm連装高角砲'
 };
 
@@ -608,10 +599,9 @@ equips['25mm連装機銃'] = {
 	name: '25mm連装機銃',
 	icon: '対空機銃',
 	category: '特種裝備',
-	detail: [{
-		assistant: '五十鈴改二',
-		enableDays: [0, 5, 6]
-	}],
+	detail: [
+		{assistant: '五十鈴改二', enableDays: [0, 5, 6]}
+	],
 	remark: ''
 };
 
@@ -619,16 +609,11 @@ equips['25mm三連装機銃'] = {
 	name: '25mm三連装機銃',
 	icon: '対空機銃',
 	category: '特種裝備',
-	detail: [{
-		assistant: '五十鈴改二',
-		enableDays: [1, 2, 3]
-	}, {
-		assistant: '摩耶/摩耶改',
-		enableDays: [2, 3, 4]
-	}, {
-		assistant: '摩耶改二',
-		enableDays: [0, 1, 5, 6]
-	}],
+	detail: [
+		{assistant: '五十鈴改二', enableDays: [1, 2, 3]},
+		{assistant: '摩耶/摩耶改', enableDays: [2, 3, 4]},
+		{assistant: '摩耶改二', enableDays: [0, 1, 5, 6]}
+	],
 	remark: ''
 };
 
@@ -636,16 +621,11 @@ equips['探照灯'] = {
 	name: '探照灯',
 	icon: '探照灯',
 	category: '特種裝備',
-	detail: [{
-		assistant: '暁',
-		enableDays: [4, 5, 6]
-	}, {
-		assistant: '神通',
-		enableDays: [0, 5, 6]
-	}, {
-		assistant: '青葉, 綾波',
-		enableDays: [1, 2, 3]
-	}],
+	detail: [
+		{assistant: '暁', enableDays: [4, 5, 6]},
+		{assistant: '神通', enableDays: [0, 5, 6]},
+		{assistant: '青葉, 綾波', enableDays: [1, 2, 3]}
+	],
 	remark: '更新:熟練見張員'
 };
 
@@ -653,13 +633,10 @@ equips['96式150cm探照灯'] = {
 	name: '96式150cm探照灯',
 	icon: '探照灯',
 	category: '特種裝備',
-	detail: [{
-		assistant: '比叡',
-		enableDays: [0, 1, 5, 6]
-	}, {
-		assistant: '霧島',
-		enableDays: [2, 3, 4, 5]
-	}],
+	detail: [
+		{assistant: '比叡', enableDays: [0, 1, 5, 6]},
+		{assistant: '霧島', enableDays: [2, 3, 4, 5]}
+	],
 	remark: ''
 };
 
@@ -667,16 +644,11 @@ equips['13号対空電探'] = {
 	name: '13号対空電探',
 	icon: '電探',
 	category: '電探',
-	detail: [{
-		assistant: '時雨改二',
-		enableDays: [0, 4, 5, 6]
-	}, {
-		assistant: '五十鈴改二',
-		enableDays: [0, 1, 5, 6]
-	}, {
-		assistant: '秋月',
-		enableDays: [2, 3, 4]
-	}],
+	detail: [
+		{assistant: '時雨改二', enableDays: [0, 4, 5, 6]},
+		{assistant: '五十鈴改二', enableDays: [0, 1, 5, 6]},
+		{assistant: '秋月', enableDays: [2, 3, 4]}
+	],
 	remark: ''
 };
 
@@ -684,16 +656,11 @@ equips['13号対空電探改'] = {
 	name: '13号対空電探改',
 	icon: '電探',
 	category: '電探',
-	detail: [{
-		assistant: '磯風改',
-		enableDays: [4, 5, 6]
-	}, {
-		assistant: '初霜改二',
-		enableDays: [0, 5, 6]
-	}, {
-		assistant: '雪風',
-		enableDays: [0, 1, 2, 3]
-	}],
+	detail: [
+		{assistant: '磯風改', enableDays: [4, 5, 6]},
+		{assistant: '初霜改二', enableDays: [0, 5, 6]},
+		{assistant: '雪風', enableDays: [0, 1, 2, 3]}
+	],
 	remark: '消費:13号対空電探'
 };
 
@@ -701,13 +668,10 @@ equips['21号対空電探'] = {
 	name: '21号対空電探',
 	icon: '電探',
 	category: '電探',
-	detail: [{
-		assistant: '伊勢',
-		enableDays: [0, 1, 5, 6]
-	}, {
-		assistant: '日向',
-		enableDays: [3, 4, 5, 6]
-	}],
+	detail: [
+		{assistant: '伊勢', enableDays: [0, 1, 5, 6]},
+		{assistant: '日向', enableDays: [3, 4, 5, 6]}
+	],
 	remark: ''
 };
 
@@ -715,13 +679,10 @@ equips['21号対空電探改'] = {
 	name: '21号対空電探改',
 	icon: '電探',
 	category: '電探',
-	detail: [{
-		assistant: '大和',
-		enableDays: [0, 4, 5, 6]
-	}, {
-		assistant: '武蔵',
-		enableDays: [2, 3, 4, 5]
-	}],
+	detail: [
+		{assistant: '大和', enableDays: [0, 4, 5, 6]},
+		{assistant: '武蔵', enableDays: [2, 3, 4, 5]}
+	],
 	remark: '消費:21号対空電探'
 };
 
@@ -729,16 +690,11 @@ equips['22号対水上電探'] = {
 	name: '22号対水上電探',
 	icon: '電探',
 	category: '電探',
-	detail: [{
-		assistant: '日向',
-		enableDays: [0, 1, 5, 6]
-	}, {
-		assistant: '夕雲',
-		enableDays: [1, 2, 5, 6]
-	}, {
-		assistant: '島風',
-		enableDays: [3, 4, 5, 6]
-	}],
+	detail: [
+		{assistant: '日向', enableDays: [0, 1, 5, 6]},
+		{assistant: '夕雲', enableDays: [1, 2, 5, 6]},
+		{assistant: '島風', enableDays: [3, 4, 5, 6]}
+	],
 	remark: ''
 };
 
@@ -746,16 +702,11 @@ equips['22号対水上電探改四'] = {
 	name: '22号対水上電探改四',
 	icon: '電探',
 	category: '電探',
-	detail: [{
-		assistant: '妙高改二',
-		enableDays: [0, 4, 5, 6]
-	}, {
-		assistant: '羽黒改二',
-		enableDays: [0, 1, 5, 6]
-	}, {
-		assistant: '金剛改二',
-		enableDays: [2, 3, 4, 5]
-	}, ],
+	detail: [
+		{assistant: '妙高改二', enableDays: [0, 4, 5, 6]},
+		{assistant: '羽黒改二', enableDays: [0, 1, 5, 6]},
+		{assistant: '金剛改二', enableDays: [2, 3, 4, 5]}
+	],
 	remark: '消費(初期～):22号対水上電探\n消費(★6 ～):22号対水上電探改四'
 };
 
@@ -763,13 +714,10 @@ equips['32号対水上電探'] = {
 	name: '32号対水上電探',
 	icon: '電探',
 	category: '電探',
-	detail: [{
-		assistant: '伊勢',
-		enableDays: [3, 4, 5, 6]
-	}, {
-		assistant: '日向',
-		enableDays: [0, 1, 2]
-	}],
+	detail: [
+		{assistant: '伊勢', enableDays: [3, 4, 5, 6]},
+		{assistant: '日向', enableDays: [0, 1, 2]}
+	],
 	remark: '消費：22号対水上電探\n消費(更新)：32号対水上電探'
 };
 
@@ -777,14 +725,34 @@ equips['32号対水上電探改'] = {
 	name: '32号対水上電探改',
 	icon: '電探',
 	category: '電探',
-	detail: [{
-		assistant: '伊勢',
-		enableDays: [0, 1, 2]
-	}, {
-		assistant: '日向',
-		enableDays: [3, 4, 5, 6]
-	}],
+	detail: [
+		{assistant: '伊勢', enableDays: [0, 1, 2]},
+		{assistant: '日向', enableDays: [3, 4, 5, 6]}
+	],
 	remark: '消費(初期～)：22号対水上電探\n消費(★6 ～)：32号対水上電探'
+};
+
+equips['零式水上観測機'] = {
+	name: '零式水上観測機',
+	icon: '水上偵察機',
+	category: '特種裝備',
+	detail: [
+		{assistant: '瑞穂', enableDays: [0, 1, 2, 3, 6]},
+		{assistant: '武蔵', enableDays: [4, 5, 6]}
+	],
+	remark: '消費(初期～)：瑞雲\n消費(★6 ～)：零式水上観測機'
+};
+
+equips['Ro.43水偵'] = {
+	name: 'Ro.43水偵',
+	icon: '水上偵察機',
+	category: '特種裝備',
+	detail: [
+		{assistant: 'Zara改', enableDays: [1, 2, 3, 4, 5]},
+		{assistant: 'Italia', enableDays: [0, 6]},
+		{assistant: 'Roma改', enableDays: [2, 3]}
+	],
+	remark: '消費(初期～)：零式水上偵察機\n消費(★6 ～)：瑞雲'
 };
 
 equips = null;
