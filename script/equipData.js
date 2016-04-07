@@ -105,7 +105,8 @@ var kanColle = {
 				'対艦強化弾': 'armour-piercing-shell',
 				'電探': 'rader',
 				'探照灯': 'search-light',
-				'水上偵察機' : 'recon-sea-plane'
+				'水上偵察機' : 'recon-sea-plane',
+				'大発動艇' : 'landing-craft'
 			},
 
 			searchClass: function(category) {
@@ -755,4 +756,39 @@ equips['Ro.43水偵'] = {
 	remark: '消費(初期～)：零式水上偵察機\n消費(★6 ～)：瑞雲'
 };
 
+equips['大発動艇'] = {
+	name: '大発動艇',
+	icon: '大発動艇',
+	category: '特種裝備',
+	detail: [
+		{assistant: 'あきつ丸', enableDays: [0, 1, 2, 3, 4, 5, 6]},
+		{assistant: '皐月改二', enableDays: [0, 1, 2, 3]},
+		{assistant: '阿武隈改二', enableDays: [0, 1, 5, 6]}
+	],
+	remark: '消費(初期～)：ドラム缶(輸送用)\n消費(★6～)：7.7mm機銃\n消費(更新)：12.7mm単装機銃×3\n⇒大発動艇(八九式中戦車＆陸戦隊)'
+};
+
+equips['大発動艇(八九式中戦車＆陸戦隊)'] = {
+	name: '大発動艇(八九式中戦車＆陸戦隊)',
+	icon: '大発動艇',
+	category: '特種裝備',
+	detail: [
+		{assistant: 'あきつ丸', enableDays: [0, 1, 5, 6]},
+		{assistant: '皐月改二', enableDays: [4, 5, 6]},
+		{assistant: '阿武隈改二', enableDays: [2, 3, 4]}
+	],
+	remark: '消費(初期～)：25mm単装機銃\n消費(★6～)：12cm30連装噴進砲\n消費(更新)：7.7mm機銃\n⇒特二式内火艇'
+};
+
+equips['特二式内火艇'] = {
+	name: '特二式内火艇',
+	icon: '大発動艇',
+	category: '特種裝備',
+	detail: [
+		{assistant: '伊58', enableDays: [0, 1, 5, 6]},
+		{assistant: '伊8', enableDays: [3, 4, 5, 6]},
+		{assistant: '伊401', enableDays: [1, 2, 3, 4]},
+	],
+	remark: '消費(初期～)：7.7mm機銃\n消費(★6～)：12.7mm単装機銃'
+};
 equips = null;
