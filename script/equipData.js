@@ -596,6 +596,17 @@ equips['94式高射装置'] = {
 	remark: '消費装備:10cm連装高角砲'
 };
 
+equips['25mm单装機銃'] = {
+	name: '25mm单装機銃',
+	icon: '対空機銃',
+	category: '特種裝備',
+	detail: [
+		{assistant: '皋月/皋月改/皋月改二', enableDays: [0, 1, 5, 6]},
+		{assistant: '文月/文月改', enableDays: [3, 4, 5, 6]}
+	],
+	remark: ''
+};
+
 equips['25mm連装機銃'] = {
 	name: '25mm連装機銃',
 	icon: '対空機銃',
@@ -752,6 +763,19 @@ equips['Ro.43水偵'] = {
 		{assistant: 'Zara改', enableDays: [1, 2, 3, 4, 5]},
 		{assistant: 'Italia', enableDays: [0, 6]},
 		{assistant: 'Roma改', enableDays: [2, 3]}
+	],
+	remark: '消費(初期～)：零式水上偵察機\n消費(★6 ～)：瑞雲'
+};
+
+equips['零式水上偵察機'] = {
+	name: '零式水上偵察機',
+	icon: '水上偵察機',
+	category: '特種裝備',
+	detail: [
+		{assistant: '千歳甲', enableDays: [ 5, 6]},
+		{assistant: '千代田甲', enableDays: [3, 4]},
+		{assistant: '秋津洲改', enableDays: [0, 4, 5, 6]},
+		{assistant: '瑞穗/瑞穗改', enableDays: [0, 1, 2, 5, 6]}
 	],
 	remark: '消費(初期～)：零式水上偵察機\n消費(★6 ～)：瑞雲'
 };
