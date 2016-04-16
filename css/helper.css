@@ -31,6 +31,8 @@ label {	display: block; }
 .armour-piercing-shell { background-image: url("../image/APS.png") }
 .rader { background-image: url("../image/Rader.png")}
 .search-light { background-image: url("../image/SearchLight.png")}
+.recon-sea-plane {background-image: url("../image/ReconSeaplane.png")}
+.landing-craft{background-image: url("../image/landingCraft.png")}
 /* 文字不能选取 */
 .unselectable { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: pointer; }
 /* checkbox和文字水平对齐 */
