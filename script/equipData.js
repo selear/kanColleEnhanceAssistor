@@ -1,6 +1,6 @@
 var kanColle = {
 	remodel: {
-		categoryNameList: ['小口径主砲/副砲', '中口径主砲', '大口径主砲', '魚雷', '反潛裝備', '特種裝備', '電探'],
+		categoryNameList: ['小口径主砲/副砲', '中口径主砲', '大口径主砲', '魚雷', '反潛裝備', '特種裝備', '電探', '艦載機'],
 		defaultSelected: ['20.3cm(2号)連装砲', '20.3cm(3号)連装砲', '41cm連装砲', '46cm三連装砲', '61cm五連装(酸素)魚雷', '九一式徹甲弾'],
 
 		/*
@@ -106,7 +106,10 @@ var kanColle = {
 				'電探': 'rader',
 				'探照灯': 'search-light',
 				'水上偵察機' : 'recon-sea-plane',
-				'大発動艇' : 'landing-craft'
+				'大発動艇' : 'landing-craft',
+				'艦載機' : 'carrier-fighter',
+				'艦上戦闘機' : 'carrier-fighter'
+				
 			},
 
 			searchClass: function(category) {
@@ -815,4 +818,92 @@ equips['特二式内火艇'] = {
 	],
 	remark: '消費(初期～)：7.7mm機銃\n消費(★6～)：12.7mm単装機銃'
 };
+
+equips['九六式艦戦'] = {
+	name: '九六式艦戦',
+	icon: '艦上戦闘機',
+	category: '艦載機',
+	detail: [
+		{assistant: '鳳翔', enableDays: [0, 1, 2, 3, 4, 5, 6]},
+	],
+	remark: '消費(初期～)：九六式艦戦\n消費(★6～)：7.7mm機銃\n消費(更新)：同装備⇒零式艦戦21型★+3'
+};
+
+equips['零式艦戦21型'] = {
+	name: '零式艦戦21型',
+	icon: '艦上戦闘機',
+	category: '艦載機',
+	detail: [
+		{assistant: '赤城', enableDays: [4, 5, 6]},
+		{assistant: '加賀', enableDays: [0, 1, 2]},
+	],
+	remark: '消費：零式艦戦21型\n消費(更新)：7.7mm機銃\n⇒零式艦戦32型★+3'
+};
+
+equips['零式艦戦21型(熟練)'] = {
+	name: '零式艦戦21型(熟練)',
+	icon: '艦上戦闘機',
+	category: '艦載機',
+	detail: [
+		{assistant: '赤城', enableDays: [4, 5, 6]},
+		{assistant: '加賀', enableDays: [0, 1, 2]},
+	],
+	remark: '消費(初期～)：零式艦戦21型\n消費(★6 ～)：零式艦戦21型\n消費(更新)：7.7mm機銃\n⇒零式艦戦32型(熟練)★+3'
+};
+
+equips['零式艦戦32型'] = {
+	name: '零式艦戦32型',
+	icon: '艦上戦闘機',
+	category: '艦載機',
+	detail: [
+		{assistant: '赤城', enableDays: [0, 1]},
+		{assistant: '加賀', enableDays: [3, 4]},
+	],
+	remark: '消費(初期～)：零式艦戦21型\n消費(更新)：\n⇒零式艦戦52型'
+};
+
+equips['零式艦戦32型(熟練)'] = {
+	name: '零式艦戦32型(熟練)',
+	icon: '艦上戦闘機',
+	category: '艦載機',
+	detail: [
+		{assistant: '赤城', enableDays: [0, 1]},
+		{assistant: '加賀', enableDays: [3, 4]},
+	],
+	remark: '消費(初期～)：零式艦戦21型'
+};
+
+equips['零式艦戦52型'] = {
+	name: '零式艦戦52型',
+	icon: '艦上戦闘機',
+	category: '艦載機',
+	detail: [
+		{assistant: '翔鶴', enableDays: [4, 5, 6]},
+		{assistant: '瑞鶴', enableDays: [0, 1, 3]},
+	],
+	remark: '消費(初期～)：零式艦戦52型'
+};
+
+equips['零式艦戦52型(熟練)'] = {
+	name: '零式艦戦52型(熟練)',
+	icon: '艦上戦闘機',
+	category: '艦載機',
+	detail: [
+		{assistant: '翔鶴', enableDays: [4, 5, 6]},
+		{assistant: '瑞鶴', enableDays: [0, 1, 3]},
+	],
+	remark: '消費(初期～)：零式艦戦52型'
+};
+
+equips['零戦52型丙(六〇一空)'] = {
+	name: '零戦52型丙(六〇一空)',
+	icon: '艦上戦闘機',
+	category: '艦載機',
+	detail: [
+		{assistant: '大鳳', enableDays: [0, 1, 2, 3, 4, 5, 6]},
+		{assistant: '雲龍', enableDays: [3, 4, 5, 6]},
+	],
+	remark: '消費(初期～)：零式艦戦52型\n消費(★6 ～)：天山'
+};
+
 equips = null;
