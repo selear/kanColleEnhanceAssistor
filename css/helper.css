@@ -34,7 +34,7 @@ label {	display: block; }
 .recon-sea-plane {background-image: url("../image/ReconSeaplane.png")}
 .landing-craft{background-image: url("../image/landingCraft.png")}
 .carrier-fighter{background-image: url("../image/CarrierFighter.png")}
-.carrier-blasting{background-image: url("../image/Blasting.png")}
+.carrier-dive-bomber{background-image: url("../image/CarrierDiveBomber.png")}
 /* 文字不能选取 */
 .unselectable { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: pointer; }
 /* checkbox和文字水平对齐 */

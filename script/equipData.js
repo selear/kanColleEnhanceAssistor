@@ -109,7 +109,7 @@ var kanColle = {
 				'大発動艇' : 'landing-craft',
 				'艦載機' : 'carrier-fighter',
 				'艦上戦闘機' : 'carrier-fighter',
-				'艦上爆撃機' : 'carrier-blasting'
+				'艦上爆撃機' : 'carrier-dive-bomber'
 			},
 
 			searchClass: function(category) {
