@@ -108,8 +108,8 @@ var kanColle = {
 				'水上偵察機' : 'recon-sea-plane',
 				'大発動艇' : 'landing-craft',
 				'艦載機' : 'carrier-fighter',
-				'艦上戦闘機' : 'carrier-fighter'
-				
+				'艦上戦闘機' : 'carrier-fighter',
+				'艦上爆撃機' : 'carrier-blasting'
 			},
 
 			searchClass: function(category) {
@@ -434,6 +434,26 @@ equips['試製51cm連装砲'] = {
 	remark: '初期の改修から消費装備が必要\n消費装備:46cm三連装砲'
 };
 
+equips['16inch三連装砲 Mk.7'] = {
+	name: '16inch三連装砲 Mk.7',
+	icon: '大口径主砲',
+	category: '大口径主砲',
+	detail: [
+		{assistant: 'Iowa', enableDays: [0, 1, 2, 3, 4, 5, 6]},
+	],
+	remark: '消費(初期～)：41cm連装砲\n消費(★6 ～)：46cm三連装砲\n消費(更新)：32号対水上電探\n⇒16inch三連装砲 Mk.7＋GFCS'
+};
+
+equips['16inch三連装砲 Mk.7＋GFCS'] = {
+	name: '16inch三連装砲 Mk.7＋GFCS',
+	icon: '大口径主砲',
+	category: '大口径主砲',
+	detail: [
+		{assistant: 'Iowa', enableDays: [0, 4, 5, 6]},
+	],
+	remark: '消費(初期～)：22号対水上電探\n消費(★6 ～)：32号対水上電探'
+};
+
 /* 魚雷 */
 equips['61cm三連装魚雷'] = {
 	name: '61cm三連装魚雷',
@@ -484,6 +504,17 @@ equips['61cm五連装(酸素)魚雷'] = {
 		{assistant: '島風', enableDays: [3, 4]}
 	],
 	remark: ''
+};
+
+equips['試製61cm六連装(酸素)魚雷'] = {
+	name: '試製61cm六連装(酸素)魚雷',
+	icon: '魚雷',
+	category: '魚雷',
+	detail: [
+		{assistant: '初月', enableDays: [3, 4, 5, 6]},
+		{assistant: '島風', enableDays: [0, 6]}
+	],
+	remark: '消費(初期～)：61cm四連装(酸素)魚雷\n消費(★6 ～)：61cm五連装(酸素)魚雷'
 };
 
 /* 聲呐 */
@@ -906,4 +937,54 @@ equips['零戦52型丙(六〇一空)'] = {
 	remark: '消費(初期～)：零式艦戦52型\n消費(★6 ～)：天山'
 };
 
+equips['零戦52型丙(付岩井小隊)'] = {
+	name: '零戦52型丙(付岩井小隊)',
+	icon: '艦上戦闘機',
+	category: '艦載機',
+	detail: [
+		{assistant: '瑞鶴', enableDays: [2, 4]},
+	],
+	remark: '消費：零式艦戦52型'
+};
+
+equips['零戦52型甲(付岩本小隊)'] = {
+	name: '零戦52型甲(付岩本小隊)',
+	icon: '艦上戦闘機',
+	category: '艦載機',
+	detail: [
+		{assistant: '瑞鶴', enableDays: [5, 6]},
+	],
+	remark: '消費：零式艦戦52型'
+};
+
+equips['零式艦戦53型(岩本隊)'] = {
+	name: '零式艦戦53型(岩本隊)',
+	icon: '艦上戦闘機',
+	category: '艦載機',
+	detail: [
+		{assistant: '瑞鶴', enableDays: [5, 6]},
+	],
+	remark: '消費：零式艦戦52型'
+};
+
+equips['零式艦戦62型(爆戦)'] = {
+	name: '零式艦戦62型(爆戦)',
+	icon: '艦上爆撃機',
+	category: '艦載機',
+	detail: [
+		{assistant: '隼鷹', enableDays: [0, 5, 6]},
+		{assistant: '翔鶴', enableDays: [0, 1]},
+	],
+	remark: '消費(初期～)：零式艦戦52型\n消費(★6 ～)：彗星'
+};
+
+equips['零戦62型(爆戦／岩井隊)'] = {
+	name: '零戦62型(爆戦／岩井隊)',
+	icon: '艦上爆撃機',
+	category: '艦載機',
+	detail: [
+		{assistant: '瑞鶴', enableDays: [2, 4]},
+	],
+	remark: '消費(初期～)：零式艦戦52型\n消費(★6 ～)：彗星'
+};
 equips = null;
