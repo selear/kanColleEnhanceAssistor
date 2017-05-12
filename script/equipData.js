@@ -137,7 +137,7 @@ var kanColle = {
         '高角砲': 'high-angle-gun',
         '副砲': 'secondary-canon',
         '魚雷': 'torpedo',
-        '艦上戦闘機': 'carrier-fighter'
+        '艦上戦闘機': 'carrier-fighter',
         '艦上爆撃機': 'carrier-dive-bomber',
         '艦上偵察機': 'carrier-recon-plane',
         '水上偵察機': 'sea-plane-recon',
@@ -178,9 +178,9 @@ var kanColle = {
 
         return clazz;
       },
- 
-      searchCategory: function(classStr) {
 
+      searchCategory: function(classStr) {
+ 
         var map = this.map;
 
         for (var key in map) {
