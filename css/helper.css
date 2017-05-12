@@ -23,17 +23,23 @@ label {	display: block; }
 .main-cannon-heavy { background-image: url("../image/MainCanonHeavy.png"); }
 .high-angle-gun { background-image: url("../image/HighAngleGun.png"); }
 .secondary-canon { background-image: url("../image/SecondaryCanon.png"); }
+.torpedo { background-image: url("../image/Torpedo.png"); }
+.carrier-fighter{ background-image: url("../image/CarrierFighter.png"); }
+.carrier-dive-bomber{ background-image: url("../image/CarrierDiveBomber.png")} 
+.carrier-recon-plane{ background-image: url("../image/CarrierReconPlane.png")} 
+.sea-plane-recon { background-image: url("../image/SeaPlaneRecon.png"); }
+.sea-plane-fighter { background-image: url("../image/SeaPlaneFighter.png"); } 
+.rader { background-image: url("../image/Rader.png"); }
+.soner { background-image: url("../image/Soner.png"); }
+.anti-sub-weapon { background-image: url("../image/ASW.png"); }
+.armour-piercing-shell { background-image: url("../image/APS.png"); }
 .anti-air-gun { background-image: url("../image/AAGun.png"); }
 .anti-air-fire-director { background-image: url("../image/AntiAircraftFireDirector.png"); }
-.torpedo { background-image: url("../image/Torpedo.png"); }
-.anti-sub-weapon { background-image: url("../image/ASW.png"); }
-.soner { background-image: url("../image/Soner.png"); }
-.armour-piercing-shell { background-image: url("../image/APS.png") }
-.rader { background-image: url("../image/Rader.png")}
-.search-light { background-image: url("../image/SearchLight.png")}
-.recon-sea-plane {background-image: url("../image/ReconSeaplane.png")}
-.landing-craft{background-image: url("../image/landingCraft.png")}
-.carrier-fighter{background-image: url("../image/CarrierFighter.png")}
+.landing-craft{ background-image: url("../image/landingCraft.png"); }
+.search-light { background-image: url("../image/SearchLight.png"); }
+.anti-torpedo-bulge { background-image: url("../image/AntiTorpedoBulge.png"); } 
+.engine-improvement { background-image: url("../image/EngineImprovement.png"); } 
+.submarine-radar { background-image: url("../image/SubmarineRadar"); } 
 /* 文字不能选取 */
 .unselectable { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: pointer; }
 /* checkbox和文字水平对齐 */
