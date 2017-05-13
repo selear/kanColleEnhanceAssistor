@@ -131,6 +131,7 @@ var kanColle = {
           JetPowerededBomber2 - 噴式戦闘爆撃機(橘花, 喷式景云图标不一样)
           Submarine Radar - 潜水艇装备, Submarine Radar & Waterproof Telescope, Submarine Radar & Passive Radiolocator 
         */
+        'default': 'default',
         '小口径主砲': 'main-cannon-light',
         '中口径主砲': 'main-cannon-medium',
         '大口径主砲': 'main-cannon-heavy',
@@ -153,6 +154,7 @@ var kanColle = {
         'バルジ': 'anti-torpedo-bulge',
         '機関部強化': 'engine-improvement',
         '潜水艦装備': 'submarine-radar',
+        '特二式内火艇': 'amphibious-landing-craft',
 
         // groupName
         '小口径主炮/鱼雷'           : 'main-cannon-light',
@@ -238,7 +240,7 @@ kanColle.remodel.equips = {
   },
   "10cm高角砲＋高射装置": {
     "name": "10cm高角砲＋高射装置",
-    "icon": "小口径主砲",
+    "icon": "高角砲",
     "category": "小口径主炮/鱼雷",
     "detail": [
       {
@@ -575,7 +577,7 @@ kanColle.remodel.equips = {
   },
   "90mm単装高角砲": {
     "name": "90mm単装高角砲",
-    "icon": "副砲",
+    "icon": "高角砲",
     "category": "中口径主炮/副炮",
     "detail": [
       {
@@ -659,7 +661,7 @@ kanColle.remodel.equips = {
   },
   "12.7cm連装高角砲": {
     "name": "12.7cm連装高角砲",
-    "icon": "副砲",
+    "icon": "高角砲",
     "category": "中口径主炮/副炮",
     "detail": [
       {
@@ -690,7 +692,7 @@ kanColle.remodel.equips = {
   },
   "8cm高角砲": {
     "name": "8cm高角砲",
-    "icon": "副砲",
+    "icon": "高角砲",
     "category": "中口径主炮/副炮",
     "detail": [
       {
@@ -741,7 +743,7 @@ kanColle.remodel.equips = {
   },
   "8cm高角砲改＋増設機銃": {
     "name": "8cm高角砲改＋増設機銃",
-    "icon": "副砲",
+    "icon": "高角砲",
     "category": "中口径主炮/副炮",
     "detail": [
       {
@@ -2431,7 +2433,7 @@ kanColle.remodel.equips = {
   },
   "特二式内火艇": {
     "name": "特二式内火艇",
-    "icon": "上陸用舟艇",
+    "icon": "特二式内火艇",
     "category": "登陆艇/探照灯/装甲带/轮机",
     "detail": [
       {

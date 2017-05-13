@@ -18,6 +18,7 @@ label {	display: block; }
 该属性使得空元素, 也能够正确显示图片, 也考虑过使用<img>的方式来完成, 但是个人认为不便于DOM操作, 且需要JS配合不方便, 该处使用padding-right与该效果相同 */
 .category-icon { padding-left: 44px; background-repeat: no-repeat; }
 .equip-icon { padding-left: 25px; background-repeat: no-repeat; background-size: contain; }
+.default { background-image: url("../image/default.png") }
 .main-cannon-light { background-image: url("../image/MainCanonLight.png"); }
 .main-cannon-medium { background-image: url("../image/MainCanonMedium.png"); }
 .main-cannon-heavy { background-image: url("../image/MainCanonHeavy.png"); }
@@ -25,21 +26,22 @@ label {	display: block; }
 .secondary-canon { background-image: url("../image/SecondaryCanon.png"); }
 .torpedo { background-image: url("../image/Torpedo.png"); }
 .carrier-fighter{ background-image: url("../image/CarrierFighter.png"); }
-.carrier-dive-bomber{ background-image: url("../image/CarrierDiveBomber.png")} 
-.carrier-recon-plane{ background-image: url("../image/CarrierReconPlane.png")} 
+.carrier-dive-bomber{ background-image: url("../image/CarrierDiveBomber.png")}
+.carrier-recon-plane{ background-image: url("../image/CarrierReconPlane.png")}
 .sea-plane-recon { background-image: url("../image/SeaPlaneRecon.png"); }
-.sea-plane-fighter { background-image: url("../image/SeaPlaneFighter.png"); } 
+.sea-plane-fighter { background-image: url("../image/SeaPlaneFighter.png"); }
 .rader { background-image: url("../image/Rader.png"); }
 .soner { background-image: url("../image/Soner.png"); }
 .anti-sub-weapon { background-image: url("../image/ASW.png"); }
 .armour-piercing-shell { background-image: url("../image/APS.png"); }
 .anti-air-gun { background-image: url("../image/AAGun.png"); }
 .anti-air-fire-director { background-image: url("../image/AntiAircraftFireDirector.png"); }
-.landing-craft{ background-image: url("../image/landingCraft.png"); }
+.landing-craft{ background-image: url("../image/LandingCraft.png"); }
 .search-light { background-image: url("../image/SearchLight.png"); }
-.anti-torpedo-bulge { background-image: url("../image/AntiTorpedoBulge.png"); } 
-.engine-improvement { background-image: url("../image/EngineImprovement.png"); } 
-.submarine-radar { background-image: url("../image/SubmarineRadar.png"); } 
+.anti-torpedo-bulge { background-image: url("../image/AntiTorpedoBulge.png"); }
+.engine-improvement { background-image: url("../image/EngineImprovement.png"); }
+.submarine-radar { background-image: url("../image/SubmarineRadar.png"); }
+.amphibious-landing-craft { background-image: url("../image/AmphibiousLandingCraft.png") }
 /* 文字不能选取 */
 .unselectable { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: pointer; }
 /* checkbox和文字水平对齐 */
