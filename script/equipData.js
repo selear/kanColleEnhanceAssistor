@@ -142,6 +142,7 @@ var kanColle = {
         '艦上爆撃機': 'carrier-dive-bomber',
         '艦上偵察機': 'carrier-recon-plane',
         '水上偵察機': 'sea-plane-recon',
+        '水上爆撃機': 'sea-plane-recon',
         '水上戦闘機': 'sea-plane-fighter',
         '電探': 'rader',
         'ソナ｜': 'soner',
@@ -162,7 +163,7 @@ var kanColle = {
         '大口径主炮/强化弹'         : 'main-cannon-heavy',
         '舰战'                      : 'carrier-fighter',
         '舰爆/舰侦'                 : 'carrier-dive-bomber',
-        '水侦/水战'                 : 'sea-plane-recon',
+        '水侦/水战/水爆'                 : 'sea-plane-recon',
         '电探'                      : 'rader',
         '机枪/高射装置'             : 'anti-air-fire-director',
         '声纳/爆雷/潜水艇装备'      : 'anti-sub-weapon',
@@ -198,7 +199,7 @@ var kanColle = {
 };
 
 kanColle.remodel.categoryNameList = ['小口径主炮/鱼雷', '中口径主炮/副炮',
-      '大口径主炮/强化弹', '舰战', '舰爆/舰侦', '水侦/水战', '电探',
+      '大口径主炮/强化弹', '舰战', '舰爆/舰侦', '水侦/水战/水爆', '电探',
       '机枪/高射装置', '声纳/爆雷/潜水艇装备', '登陆艇/探照灯/装甲带/轮机'];
 kanColle.remodel.defaultSelected = ['20.3cm(2号)連装砲', '20.3cm(3号)連装砲', '41cm連装砲', '46cm三連装砲', '61cm五連装(酸素)魚雷', '九一式徹甲弾'];
 kanColle.remodel.equips = {
@@ -219,8 +220,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：同装備\n⇒12.7cm連装砲B型改二"
+    ]
   },
   "12.7cm連装砲B型改二": {
     "name": "12.7cm連装砲B型改二",
@@ -235,8 +235,7 @@ kanColle.remodel.equips = {
           3
         ]
       }
-    ],
-    "remark": "消費：同装備"
+    ]
   },
   "10cm高角砲＋高射装置": {
     "name": "10cm高角砲＋高射装置",
@@ -261,8 +260,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：10cm連装高角砲"
+    ]
   },
   "61cm三連装魚雷": {
     "name": "61cm三連装魚雷",
@@ -270,7 +268,7 @@ kanColle.remodel.equips = {
     "category": "小口径主炮/鱼雷",
     "detail": [
       {
-        "assistant": "吹雪*18",
+        "assistant": "吹雪*25",
         "enableDays": [
           4,
           5,
@@ -285,8 +283,7 @@ kanColle.remodel.equips = {
           2
         ]
       }
-    ],
-    "remark": "消費：同装備\n⇒61cm三連装(酸素)魚雷"
+    ]
   },
   "61cm三連装(酸素)魚雷": {
     "name": "61cm三連装(酸素)魚雷",
@@ -301,8 +298,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：61cm三連装魚雷\n消費(更新)：61cm四連装魚雷\n⇒61cm四連装(酸素)魚雷★+5"
+    ]
   },
   "61cm四連装魚雷": {
     "name": "61cm四連装魚雷",
@@ -319,8 +315,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：同装備\n⇒61cm四連装(酸素)魚雷★+3"
+    ]
   },
   "61cm四連装(酸素)魚雷": {
     "name": "61cm四連装(酸素)魚雷",
@@ -339,8 +334,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：同装備\n⇒61cm五連装(酸素)魚雷"
+    ]
   },
   "61cm五連装(酸素)魚雷": {
     "name": "61cm五連装(酸素)魚雷",
@@ -354,8 +348,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費：同装備"
+    ]
   },
   "試製61cm六連装(酸素)魚雷": {
     "name": "試製61cm六連装(酸素)魚雷",
@@ -378,8 +371,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費(初期～)：61cm四連装(酸素)魚雷\n消費(★6 ～)：61cm五連装(酸素)魚雷"
+    ]
   },
   "14cm単装砲": {
     "name": "14cm単装砲",
@@ -398,8 +390,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：同装備\n⇒14cm連装砲"
+    ]
   },
   "14cm連装砲": {
     "name": "14cm連装砲",
@@ -413,8 +404,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費：同装備"
+    ]
   },
   "15.2cm連装砲": {
     "name": "15.2cm連装砲",
@@ -447,8 +437,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費：同装備\n消費(更新)：22号対水上電探\n⇒15.2cm連装砲改"
+    ]
   },
   "15.2cm連装砲改": {
     "name": "15.2cm連装砲改",
@@ -473,8 +462,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：15.2cm連装砲"
+    ]
   },
   "15.5cm三連装砲": {
     "name": "15.5cm三連装砲",
@@ -492,11 +480,27 @@ kanColle.remodel.equips = {
         "assistant": "大淀",
         "enableDays": [
           0,
-          1
+          1,
+          5,
+          6
         ]
       }
-    ],
-    "remark": "消費：同装備"
+    ]
+  },
+  "15.5cm三連装砲改": {
+    "name": "15.5cm三連装砲改",
+    "icon": "中口径主砲",
+    "category": "中口径主炮/副炮",
+    "detail": [
+      {
+        "assistant": "大淀改",
+        "enableDays": [
+          0,
+          5,
+          6
+        ]
+      }
+    ]
   },
   "20.3cm連装砲": {
     "name": "20.3cm連装砲",
@@ -524,8 +528,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：同装備\n⇒20.3cm(2号)連装砲"
+    ]
   },
   "20.3cm(2号)連装砲": {
     "name": "20.3cm(2号)連装砲",
@@ -540,8 +543,7 @@ kanColle.remodel.equips = {
           2
         ]
       }
-    ],
-    "remark": "消費：同装備\n⇒20.3cm(3号)連装砲"
+    ]
   },
   "20.3cm(3号)連装砲": {
     "name": "20.3cm(3号)連装砲",
@@ -555,8 +557,7 @@ kanColle.remodel.equips = {
           3
         ]
       }
-    ],
-    "remark": "消費：同装備"
+    ]
   },
   "203mm／53 連装砲": {
     "name": "203mm／53 連装砲",
@@ -572,8 +573,7 @@ kanColle.remodel.equips = {
           3
         ]
       }
-    ],
-    "remark": "消費(初期～)：20.3cm連装砲\n消費(★6 ～)：20.3cm(2号)連装砲"
+    ]
   },
   "90mm単装高角砲": {
     "name": "90mm単装高角砲",
@@ -598,8 +598,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：10cm連装高角砲"
+    ]
   },
   "15.2cm単装砲": {
     "name": "15.2cm単装砲",
@@ -630,8 +629,57 @@ kanColle.remodel.equips = {
           2
         ]
       }
-    ],
-    "remark": "消費：同装備\n⇒15.2cm連装砲"
+    ]
+  },
+  "15.5cm三連装副砲": {
+    "name": "15.5cm三連装副砲",
+    "icon": "副砲",
+    "category": "中口径主炮/副炮",
+    "detail": [
+      {
+        "assistant": "大和",
+        "enableDays": [
+          5,
+          6
+        ]
+      },
+      {
+        "assistant": "武蔵",
+        "enableDays": [
+          0,
+          5,
+          6
+        ]
+      },
+      {
+        "assistant": "武蔵改",
+        "enableDays": [
+          5,
+          6
+        ]
+      }
+    ]
+  },
+  "15.5cm三連装副砲改": {
+    "name": "15.5cm三連装副砲改",
+    "icon": "副砲",
+    "category": "中口径主炮/副炮",
+    "detail": [
+      {
+        "assistant": "大和改",
+        "enableDays": [
+          5,
+          6
+        ]
+      },
+      {
+        "assistant": "武蔵改",
+        "enableDays": [
+          0,
+          1
+        ]
+      }
+    ]
   },
   "OTO 152mm三連装速射砲": {
     "name": "OTO 152mm三連装速射砲",
@@ -656,8 +704,7 @@ kanColle.remodel.equips = {
           5
         ]
       }
-    ],
-    "remark": "消費：15.5cm三連装砲"
+    ]
   },
   "12.7cm連装高角砲": {
     "name": "12.7cm連装高角砲",
@@ -687,8 +734,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：同装備\n消費(更新)：10cm連装高角砲\n⇒8cm高角砲"
+    ]
   },
   "8cm高角砲": {
     "name": "8cm高角砲",
@@ -696,10 +742,25 @@ kanColle.remodel.equips = {
     "category": "中口径主炮/副炮",
     "detail": [
       {
+        "assistant": "鈴谷改二",
+        "enableDays": [
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "assistant": "熊野改二",
+        "enableDays": [
+          1,
+          2,
+          3
+        ]
+      },
+      {
         "assistant": "阿賀野",
         "enableDays": [
           0,
-          1,
           4,
           5,
           6
@@ -721,25 +782,8 @@ kanColle.remodel.equips = {
           1,
           2
         ]
-      },
-      {
-        "assistant": "鈴谷改二",
-        "enableDays": [
-          2,
-          3,
-          4
-        ]
-      },
-      {
-        "assistant": "鈴谷航改二",
-        "enableDays": [
-          2,
-          3,
-          4
-        ]
       }
-    ],
-    "remark": "消費：10cm連装高角砲\n消費(更新)：25mm単装機銃\n⇒8cm高角砲改＋増設機銃\n矢矧のみ？更新可能"
+    ]
   },
   "8cm高角砲改＋増設機銃": {
     "name": "8cm高角砲改＋増設機銃",
@@ -747,14 +791,6 @@ kanColle.remodel.equips = {
     "category": "中口径主炮/副炮",
     "detail": [
       {
-        "assistant": "矢矧 / 酒匂",
-        "enableDays": [
-          2,
-          3,
-          4
-        ]
-      },
-      {
         "assistant": "鈴谷改二",
         "enableDays": [
           2,
@@ -763,15 +799,22 @@ kanColle.remodel.equips = {
         ]
       },
       {
-        "assistant": "鈴谷航改二",
+        "assistant": "熊野改二",
+        "enableDays": [
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "assistant": "矢矧 / 酒匂",
         "enableDays": [
           2,
           3,
           4
         ]
       }
-    ],
-    "remark": "消費(初期～)：10cm連装高角砲\n消費(★6 ～)：25mm単装機銃"
+    ]
   },
   "35.6cm連装砲": {
     "name": "35.6cm連装砲",
@@ -786,8 +829,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：同装備\n⇒試製35.6cm三連装砲"
+    ]
   },
   "35.6cm連装砲(ダズル迷彩)": {
     "name": "35.6cm連装砲(ダズル迷彩)",
@@ -804,8 +846,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：35.6cm連装砲"
+    ]
   },
   "試製35.6cm三連装砲": {
     "name": "試製35.6cm三連装砲",
@@ -844,8 +885,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：35.6cm連装砲"
+    ]
   },
   "38cm連装砲": {
     "name": "38cm連装砲",
@@ -860,8 +900,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：35.6cm連装砲\n消費(更新)：41cm連装砲\n⇒38cm連装砲改★+3"
+    ]
   },
   "38cm連装砲改": {
     "name": "38cm連装砲改",
@@ -876,8 +915,7 @@ kanColle.remodel.equips = {
           2
         ]
       }
-    ],
-    "remark": "消費：41cm連装砲"
+    ]
   },
   "38.1cm Mk.I連装砲": {
     "name": "38.1cm Mk.I連装砲",
@@ -893,8 +931,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費(初期～)：35.6cm連装砲\n消費(★6 ～)：41cm連装砲\n消費(更新)：25mm単装機銃\n⇒38.1cm Mk.I/N連装砲改"
+    ]
   },
   "38.1cm Mk.I/N連装砲改": {
     "name": "38.1cm Mk.I/N連装砲改",
@@ -910,8 +947,7 @@ kanColle.remodel.equips = {
           5
         ]
       }
-    ],
-    "remark": "消費：41cm連装砲"
+    ]
   },
   "381mm/50 三連装砲": {
     "name": "381mm/50 三連装砲",
@@ -935,8 +971,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：35.6cm連装砲\n消費(更新)：25mm連装機銃\n⇒381mm/50 三連装砲改★+3"
+    ]
   },
   "381mm/50 三連装砲改": {
     "name": "381mm/50 三連装砲改",
@@ -960,8 +995,7 @@ kanColle.remodel.equips = {
           5
         ]
       }
-    ],
-    "remark": "消費：41cm連装砲"
+    ]
   },
   "41cm連装砲": {
     "name": "41cm連装砲",
@@ -984,8 +1018,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費：同装備"
+    ]
   },
   "試製41cm三連装砲": {
     "name": "試製41cm三連装砲",
@@ -1010,8 +1043,22 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：41cm連装砲"
+    ]
+  },
+  "41cm三連装砲改": {
+    "name": "41cm三連装砲改",
+    "icon": "大口径主砲",
+    "category": "大口径主炮/强化弹",
+    "detail": [
+      {
+        "assistant": "長門改二",
+        "enableDays": [
+          1,
+          2,
+          3
+        ]
+      }
+    ]
   },
   "16inch三連装砲 Mk.7": {
     "name": "16inch三連装砲 Mk.7",
@@ -1030,8 +1077,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費(初期～)：41cm連装砲\n消費(★6 ～)：46cm三連装砲\n消費(更新)：32号対水上電探\n⇒16inch三連装砲 Mk.7＋GFCS"
+    ]
   },
   "16inch三連装砲 Mk.7＋GFCS": {
     "name": "16inch三連装砲 Mk.7＋GFCS",
@@ -1047,8 +1093,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費(初期～)：22号対水上電探\n消費(★6 ～)：32号対水上電探"
+    ]
   },
   "試製46cm連装砲": {
     "name": "試製46cm連装砲",
@@ -1069,8 +1114,7 @@ kanColle.remodel.equips = {
           3
         ]
       }
-    ],
-    "remark": "消費：41cm連装砲\n⇒46cm三連装砲★+5"
+    ]
   },
   "46cm三連装砲": {
     "name": "46cm三連装砲",
@@ -1080,8 +1124,19 @@ kanColle.remodel.equips = {
       {
         "assistant": "大和",
         "enableDays": [
+          2,
+          3,
+          4,
           5,
           6
+        ]
+      },
+      {
+        "assistant": "大和改",
+        "enableDays": [
+          2,
+          3,
+          4
         ]
       },
       {
@@ -1091,8 +1146,7 @@ kanColle.remodel.equips = {
           1
         ]
       }
-    ],
-    "remark": "消費：同装備"
+    ]
   },
   "試製51cm連装砲": {
     "name": "試製51cm連装砲",
@@ -1113,8 +1167,7 @@ kanColle.remodel.equips = {
           3
         ]
       }
-    ],
-    "remark": "消費：46cm三連装砲"
+    ]
   },
   "九一式徹甲弾": {
     "name": "九一式徹甲弾",
@@ -1139,8 +1192,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：同装備\n⇒一式徹甲弾"
+    ]
   },
   "一式徹甲弾": {
     "name": "一式徹甲弾",
@@ -1163,8 +1215,7 @@ kanColle.remodel.equips = {
           3
         ]
       }
-    ],
-    "remark": "消費(初期～)：九一式徹甲弾\n消費(★6 ～)：一式徹甲弾"
+    ]
   },
   "九六式艦戦": {
     "name": "九六式艦戦",
@@ -1183,8 +1234,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費(初期～)：同装備\n消費(★6 ～)：7.7mm機銃\n消費(更新)：同装備\n⇒零式艦戦21型★+3"
+    ]
   },
   "零式艦戦21型": {
     "name": "零式艦戦21型",
@@ -1207,8 +1257,7 @@ kanColle.remodel.equips = {
           2
         ]
       }
-    ],
-    "remark": "消費：同装備\n消費(更新)：7.7mm機銃\n⇒零式艦戦32型★+3"
+    ]
   },
   "零式艦戦21型(熟練)": {
     "name": "零式艦戦21型(熟練)",
@@ -1231,8 +1280,7 @@ kanColle.remodel.equips = {
           2
         ]
       }
-    ],
-    "remark": "消費：零式艦戦21型\n消費(更新)：7.7mm機銃\n⇒零式艦戦32型(熟練)★+3"
+    ]
   },
   "零式艦戦32型": {
     "name": "零式艦戦32型",
@@ -1253,8 +1301,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費：零式艦戦21型\n消費(更新)：同装備\n⇒零式艦戦52型★+3"
+    ]
   },
   "零式艦戦32型(熟練)": {
     "name": "零式艦戦32型(熟練)",
@@ -1275,8 +1322,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費：零式艦戦21型\n消費(更新)：零式艦戦32型\n⇒零式艦戦52型(熟練)★+3"
+    ]
   },
   "零式艦戦52型": {
     "name": "零式艦戦52型",
@@ -1299,8 +1345,7 @@ kanColle.remodel.equips = {
           3
         ]
       }
-    ],
-    "remark": "消費：同装備"
+    ]
   },
   "零式艦戦52型(熟練)": {
     "name": "零式艦戦52型(熟練)",
@@ -1323,8 +1368,7 @@ kanColle.remodel.equips = {
           3
         ]
       }
-    ],
-    "remark": "消費：零式艦戦52型"
+    ]
   },
   "零戦52型丙(六〇一空)": {
     "name": "零戦52型丙(六〇一空)",
@@ -1352,8 +1396,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費(初期～)：零式艦戦52型\n消費(★6 ～)：天山"
+    ]
   },
   "零戦52型丙(付岩井小隊)": {
     "name": "零戦52型丙(付岩井小隊)",
@@ -1367,8 +1410,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費：零式艦戦52型"
+    ]
   },
   "零戦52型甲(付岩本小隊)": {
     "name": "零戦52型甲(付岩本小隊)",
@@ -1382,8 +1424,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：零式艦戦52型"
+    ]
   },
   "零式艦戦53型(岩本隊)": {
     "name": "零式艦戦53型(岩本隊)",
@@ -1397,8 +1438,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：零式艦戦52型"
+    ]
   },
   "F4F-3": {
     "name": "F4F-3",
@@ -1422,8 +1462,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費(★6 ～)：九六式艦戦\n消費(更新)：12.7mm単装機銃\n⇒F4F-4"
+    ]
   },
   "F4F-4": {
     "name": "F4F-4",
@@ -1445,8 +1484,7 @@ kanColle.remodel.equips = {
           3
         ]
       }
-    ],
-    "remark": "消費(初期～)：零式艦戦21型\n消費(★6 ～)：零式艦戦32型\n消費(更新)：零式艦戦52型\n⇒F6F-3"
+    ]
   },
   "F6F-3": {
     "name": "F6F-3",
@@ -1461,8 +1499,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費(初期～)：零式艦戦52型\n消費(★6 ～)：紫電改二"
+    ]
   },
   "零式艦戦62型(爆戦)": {
     "name": "零式艦戦62型(爆戦)",
@@ -1470,29 +1507,21 @@ kanColle.remodel.equips = {
     "category": "舰爆/舰侦",
     "detail": [
       {
+        "assistant": "翔鶴鈴谷航改二",
+        "enableDays": [
+          0,
+          1
+        ]
+      },
+      {
         "assistant": "隼鷹",
         "enableDays": [
           0,
           5,
           6
         ]
-      },
-      {
-        "assistant": "翔鶴",
-        "enableDays": [
-          0,
-          1
-        ]
-      },
-      {
-        "assistant": "鈴谷航改二",
-        "enableDays": [
-          0,
-          1
-        ]
       }
-    ],
-    "remark": "消費(初期～)：零式艦戦52型\n消費(★6 ～)：彗星\n消費(更新)：烈風\n⇒零式艦戦63型(爆戦)\n鈴谷航改二のみ更新可能"
+    ]
   },
   "零戦62型(爆戦／岩井隊)": {
     "name": "零戦62型(爆戦／岩井隊)",
@@ -1506,8 +1535,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費(初期～)：零式艦戦52型\n消費(★6 ～)：彗星"
+    ]
   },
   "零式艦戦63型(爆戦)": {
     "name": "零式艦戦63型(爆戦)",
@@ -1522,9 +1550,17 @@ kanColle.remodel.equips = {
           3,
           4
         ]
+      },
+      {
+        "assistant": "熊野航改二",
+        "enableDays": [
+          2,
+          3,
+          4,
+          5
+        ]
       }
-    ],
-    "remark": "消費(初期～)：零式艦戦52型\n消費(★6 ～)：烈風"
+    ]
   },
   "試製景雲(艦偵型)": {
     "name": "試製景雲(艦偵型)",
@@ -1547,23 +1583,22 @@ kanColle.remodel.equips = {
           2
         ]
       }
-    ],
-    "remark": "消費(初期～)：流星\n消費(★6 ～)：烈風\n消費(更新)：ネ式エンジン*19\n⇒噴式景雲改"
+    ]
   },
   "零式水上偵察機": {
     "name": "零式水上偵察機",
     "icon": "水上偵察機",
-    "category": "水侦/水战",
+    "category": "水侦/水战/水爆",
     "detail": [
       {
-        "assistant": "千歳甲*20",
+        "assistant": "千歳甲*27",
         "enableDays": [
           5,
           6
         ]
       },
       {
-        "assistant": "千代田甲*21",
+        "assistant": "千代田甲*28",
         "enableDays": [
           3,
           4
@@ -1586,13 +1621,12 @@ kanColle.remodel.equips = {
           3
         ]
       }
-    ],
-    "remark": "消費：同装備\n消費(更新)：零式艦戦21型\n⇒二式水戦改"
+    ]
   },
   "零式水上観測機": {
     "name": "零式水上観測機",
     "icon": "水上偵察機",
-    "category": "水侦/水战",
+    "category": "水侦/水战/水爆",
     "detail": [
       {
         "assistant": "武蔵",
@@ -1610,13 +1644,12 @@ kanColle.remodel.equips = {
           3
         ]
       }
-    ],
-    "remark": "消費(初期～)：瑞雲\n消費(★6 ～)：零式水上観測機"
+    ]
   },
   "九八式水上偵察機(夜偵)": {
     "name": "九八式水上偵察機(夜偵)",
     "icon": "水上偵察機",
-    "category": "水侦/水战",
+    "category": "水侦/水战/水爆",
     "detail": [
       {
         "assistant": "川内改二",
@@ -1628,13 +1661,12 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：零式水上偵察機"
+    ]
   },
   "Ro.43水偵": {
     "name": "Ro.43水偵",
     "icon": "水上偵察機",
-    "category": "水侦/水战",
+    "category": "水侦/水战/水爆",
     "detail": [
       {
         "assistant": "Italia",
@@ -1651,7 +1683,7 @@ kanColle.remodel.equips = {
         ]
       },
       {
-        "assistant": "Zara改*22",
+        "assistant": "Zara改*29",
         "enableDays": [
           1,
           2,
@@ -1668,13 +1700,12 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費(初期～)：零式水上偵察機\n消費(★6 ～)：瑞雲\n消費(更新)：零式水上偵察機\n⇒Ro.44水上戦闘機"
+    ]
   },
   "二式水戦改": {
     "name": "二式水戦改",
     "icon": "水上戦闘機",
-    "category": "水侦/水战",
+    "category": "水侦/水战/水爆",
     "detail": [
       {
         "assistant": "瑞穂",
@@ -1684,13 +1715,12 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費(初期～)：零式艦戦21型\n消費(★6 ～)：零式水上偵察機\n消費(更新)：瑞雲\n⇒強風改"
+    ]
   },
   "二式水戦改(熟練)": {
     "name": "二式水戦改(熟練)",
     "icon": "水上戦闘機",
-    "category": "水侦/水战",
+    "category": "水侦/水战/水爆",
     "detail": [
       {
         "assistant": "瑞穂",
@@ -1700,13 +1730,12 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費(初期～)：零式艦戦32型\n消費(★6 ～)：瑞雲"
+    ]
   },
   "強風改": {
     "name": "強風改",
     "icon": "水上戦闘機",
-    "category": "水侦/水战",
+    "category": "水侦/水战/水爆",
     "detail": [
       {
         "assistant": "瑞穂",
@@ -1717,7 +1746,7 @@ kanColle.remodel.equips = {
         ]
       },
       {
-        "assistant": "鈴谷改二*23",
+        "assistant": "鈴谷改二*30",
         "enableDays": [
           1,
           2,
@@ -1725,13 +1754,12 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費：紫電改二"
+    ]
   },
   "Ro.44水上戦闘機": {
     "name": "Ro.44水上戦闘機",
     "icon": "水上戦闘機",
-    "category": "水侦/水战",
+    "category": "水侦/水战/水爆",
     "detail": [
       {
         "assistant": "Zara due",
@@ -1742,13 +1770,12 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：瑞雲\n消費(更新)：同装備\n⇒Ro.44水上戦闘機bis"
+    ]
   },
   "Ro.44水上戦闘機bis": {
     "name": "Ro.44水上戦闘機bis",
     "icon": "水上戦闘機",
-    "category": "水侦/水战",
+    "category": "水侦/水战/水爆",
     "detail": [
       {
         "assistant": "Zara due",
@@ -1757,8 +1784,61 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費(初期～)：瑞雲\n消費(★6 ～)：Ro.44水上戦闘機"
+    ]
+  },
+  "瑞雲": {
+    "name": "瑞雲",
+    "icon": "水上爆撃機",
+    "category": "水侦/水战/水爆",
+    "detail": [
+      {
+        "assistant": "伊勢改日向改",
+        "enableDays": [
+          0,
+          5,
+          6
+        ]
+      },
+      {
+        "assistant": "最上改",
+        "enableDays": [
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  },
+  "瑞雲(六三四空)": {
+    "name": "瑞雲(六三四空)",
+    "icon": "水上爆撃機",
+    "category": "水侦/水战/水爆",
+    "detail": [
+      {
+        "assistant": "伊勢改日向改",
+        "enableDays": [
+          0,
+          5,
+          6
+        ]
+      }
+    ]
+  },
+  "瑞雲(六三四空／熟練)": {
+    "name": "瑞雲(六三四空／熟練)",
+    "icon": "水上爆撃機",
+    "category": "水侦/水战/水爆",
+    "detail": [
+      {
+        "assistant": "日向改",
+        "enableDays": [
+          0,
+          5,
+          6
+        ]
+      }
+    ]
   },
   "13号対空電探": {
     "name": "13号対空電探",
@@ -1799,8 +1879,7 @@ kanColle.remodel.equips = {
           3
         ]
       }
-    ],
-    "remark": "消費：同装備\n消費(更新)：21号対空電探\n⇒13号対空電探改"
+    ]
   },
   "13号対空電探改": {
     "name": "13号対空電探改",
@@ -1832,8 +1911,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：13号対空電探"
+    ]
   },
   "22号対水上電探": {
     "name": "22号対水上電探",
@@ -1847,6 +1925,12 @@ kanColle.remodel.equips = {
           1,
           5,
           6
+        ]
+      },
+      {
+        "assistant": "日向改",
+        "enableDays": [
+          1
         ]
       },
       {
@@ -1866,8 +1950,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：同装備\n⇒22号対水上電探改四"
+    ]
   },
   "22号対水上電探改四": {
     "name": "22号対水上電探改四",
@@ -1901,8 +1984,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費(初期～)：22号対水上電探\n消費(★6 ～)：22号対水上電探改四"
+    ]
   },
   "21号対空電探": {
     "name": "21号対空電探",
@@ -1919,6 +2001,12 @@ kanColle.remodel.equips = {
         ]
       },
       {
+        "assistant": "伊勢改",
+        "enableDays": [
+          1
+        ]
+      },
+      {
         "assistant": "日向",
         "enableDays": [
           3,
@@ -1926,9 +2014,15 @@ kanColle.remodel.equips = {
           5,
           6
         ]
+      },
+      {
+        "assistant": "日向改",
+        "enableDays": [
+          3,
+          4
+        ]
       }
-    ],
-    "remark": "消費：同装備\n⇒21号対空電探改"
+    ]
   },
   "21号対空電探改": {
     "name": "21号対空電探改",
@@ -1939,9 +2033,7 @@ kanColle.remodel.equips = {
         "assistant": "大和",
         "enableDays": [
           0,
-          4,
-          5,
-          6
+          4
         ]
       },
       {
@@ -1949,12 +2041,10 @@ kanColle.remodel.equips = {
         "enableDays": [
           2,
           3,
-          4,
-          5
+          4
         ]
       }
-    ],
-    "remark": "消費：21号対空電探"
+    ]
   },
   "32号対水上電探": {
     "name": "32号対水上電探",
@@ -1977,9 +2067,15 @@ kanColle.remodel.equips = {
           1,
           2
         ]
+      },
+      {
+        "assistant": "日向改",
+        "enableDays": [
+          1,
+          2
+        ]
       }
-    ],
-    "remark": "消費：22号対水上電探\n消費(更新)：32号対水上電探\n⇒32号対水上電探改"
+    ]
   },
   "32号対水上電探改": {
     "name": "32号対水上電探改",
@@ -2002,9 +2098,15 @@ kanColle.remodel.equips = {
           5,
           6
         ]
+      },
+      {
+        "assistant": "日向改",
+        "enableDays": [
+          3,
+          4
+        ]
       }
-    ],
-    "remark": "消費(初期～)：22号対水上電探\n消費(★6 ～)：32号対水上電探"
+    ]
   },
   "25mm単装機銃": {
     "name": "25mm単装機銃",
@@ -2012,7 +2114,7 @@ kanColle.remodel.equips = {
     "category": "机枪/高射装置",
     "detail": [
       {
-        "assistant": "鬼怒改二",
+        "assistant": "鬼怒",
         "enableDays": [
           4
         ]
@@ -2034,8 +2136,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：同装備\n⇒25mm連装機銃★+5"
+    ]
   },
   "25mm連装機銃": {
     "name": "25mm連装機銃",
@@ -2050,7 +2151,7 @@ kanColle.remodel.equips = {
         ]
       },
       {
-        "assistant": "鬼怒改二",
+        "assistant": "鬼怒",
         "enableDays": [
           3
         ]
@@ -2070,8 +2171,7 @@ kanColle.remodel.equips = {
           2
         ]
       }
-    ],
-    "remark": "消費：同装備\n⇒25mm三連装機銃★+3"
+    ]
   },
   "25mm三連装機銃": {
     "name": "25mm三連装機銃",
@@ -2118,8 +2218,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費：同装備\n⇒25mm三連装機銃 集中配備\n摩耶/摩耶改は更新不可"
+    ]
   },
   "25mm三連装機銃 集中配備": {
     "name": "25mm三連装機銃 集中配備",
@@ -2142,8 +2241,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：25mm三連装機銃"
+    ]
   },
   "91式高射装置": {
     "name": "91式高射装置",
@@ -2168,8 +2266,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：12.7cm連装高角砲\n消費(更新)：10cm連装高角砲\n⇒94式高射装置"
+    ]
   },
   "94式高射装置": {
     "name": "94式高射装置",
@@ -2205,8 +2302,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：10cm連装高角砲\n二番艦で更新先が分岐\n⇒10cm高角砲＋高射装置"
+    ]
   },
   "九三式水中聴音機": {
     "name": "九三式水中聴音機",
@@ -2227,8 +2323,7 @@ kanColle.remodel.equips = {
           6
         ]
       }
-    ],
-    "remark": "消費：同装備\n二番艦で更新先が分岐\n※五十鈴改二では曜日で更新先が分岐\n⇒三式水中探信儀★+3"
+    ]
   },
   "三式水中探信儀": {
     "name": "三式水中探信儀",
@@ -2250,8 +2345,7 @@ kanColle.remodel.equips = {
           3
         ]
       }
-    ],
-    "remark": "消費：同装備"
+    ]
   },
   "四式水中聴音機": {
     "name": "四式水中聴音機",
@@ -2285,8 +2379,7 @@ kanColle.remodel.equips = {
           3
         ]
       }
-    ],
-    "remark": "消費(初期～)：九三式水中聴音機\n消費(★6 ～)：四式水中聴音機"
+    ]
   },
   "九四式爆雷投射機": {
     "name": "九四式爆雷投射機",
@@ -2300,8 +2393,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費：同装備\n⇒三式爆雷投射機★+3"
+    ]
   },
   "三式爆雷投射機": {
     "name": "三式爆雷投射機",
@@ -2315,8 +2407,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費：同装備"
+    ]
   },
   "潜水艦搭載電探＆水防式望遠鏡": {
     "name": "潜水艦搭載電探＆水防式望遠鏡",
@@ -2332,8 +2423,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費(初期～)：22号対水上電探\n消費(★6 ～)：熟練見張員"
+    ]
   },
   "大発動艇": {
     "name": "大発動艇",
@@ -2341,13 +2431,10 @@ kanColle.remodel.equips = {
     "category": "登陆艇/探照灯/装甲带/轮机",
     "detail": [
       {
-        "assistant": "あきつ丸",
+        "assistant": "阿武隈改二",
         "enableDays": [
           0,
           1,
-          2,
-          3,
-          4,
           5,
           6
         ]
@@ -2362,16 +2449,18 @@ kanColle.remodel.equips = {
         ]
       },
       {
-        "assistant": "阿武隈改二",
+        "assistant": "あきつ丸",
         "enableDays": [
           0,
           1,
+          2,
+          3,
+          4,
           5,
           6
         ]
       }
-    ],
-    "remark": "消費(初期～)：ドラム缶(輸送用)\n消費(★6 ～)：7.7mm機銃\n消費(更新)：12.7mm単装機銃\n二番艦で更新先が分岐\n⇒大発動艇(八九式中戦車＆陸戦隊)"
+    ]
   },
   "大発動艇(八九式中戦車＆陸戦隊)": {
     "name": "大発動艇(八九式中戦車＆陸戦隊)",
@@ -2379,12 +2468,11 @@ kanColle.remodel.equips = {
     "category": "登陆艇/探照灯/装甲带/轮机",
     "detail": [
       {
-        "assistant": "あきつ丸",
+        "assistant": "阿武隈改二",
         "enableDays": [
-          0,
-          1,
-          5,
-          6
+          2,
+          3,
+          4
         ]
       },
       {
@@ -2396,15 +2484,15 @@ kanColle.remodel.equips = {
         ]
       },
       {
-        "assistant": "阿武隈改二",
+        "assistant": "あきつ丸",
         "enableDays": [
-          2,
-          3,
-          4
+          0,
+          1,
+          5,
+          6
         ]
       }
-    ],
-    "remark": "消費(初期～)：25mm単装機銃\n消費(★6 ～)：12cm30連装噴進砲\n消費(更新)：7.7mm機銃\n⇒特二式内火艇"
+    ]
   },
   "特大発動艇": {
     "name": "特大発動艇",
@@ -2428,8 +2516,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費(初期～)：ドラム缶(輸送用)\n消費(★6 ～)：大発動艇"
+    ]
   },
   "特二式内火艇": {
     "name": "特二式内火艇",
@@ -2437,19 +2524,19 @@ kanColle.remodel.equips = {
     "category": "登陆艇/探照灯/装甲带/轮机",
     "detail": [
       {
-        "assistant": "伊58",
+        "assistant": "伊8",
         "enableDays": [
-          0,
-          1,
+          3,
+          4,
           5,
           6
         ]
       },
       {
-        "assistant": "伊8",
+        "assistant": "伊58",
         "enableDays": [
-          3,
-          4,
+          0,
+          1,
           5,
           6
         ]
@@ -2463,8 +2550,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費(初期～)：7.7mm機銃\n消費(★6 ～)：12.7mm単装機銃"
+    ]
   },
   "探照灯": {
     "name": "探照灯",
@@ -2472,11 +2558,11 @@ kanColle.remodel.equips = {
     "category": "登陆艇/探照灯/装甲带/轮机",
     "detail": [
       {
-        "assistant": "暁",
+        "assistant": "青葉 / 綾波",
         "enableDays": [
-          4,
-          5,
-          6
+          1,
+          2,
+          3
         ]
       },
       {
@@ -2488,15 +2574,14 @@ kanColle.remodel.equips = {
         ]
       },
       {
-        "assistant": "青葉 / 綾波",
+        "assistant": "暁",
         "enableDays": [
-          1,
-          2,
-          3
+          4,
+          5,
+          6
         ]
       }
-    ],
-    "remark": "消費：同装備\n消費(更新)：熟練見張員\n⇒96式150cm探照灯"
+    ]
   },
   "96式150cm探照灯": {
     "name": "96式150cm探照灯",
@@ -2521,8 +2606,7 @@ kanColle.remodel.equips = {
           5
         ]
       }
-    ],
-    "remark": "消費：探照灯"
+    ]
   },
   "増設バルジ(中型艦)": {
     "name": "増設バルジ(中型艦)",
@@ -2530,9 +2614,8 @@ kanColle.remodel.equips = {
     "category": "登陆艇/探照灯/装甲带/轮机",
     "detail": [
       {
-        "assistant": "Верный",
+        "assistant": "Zara due",
         "enableDays": [
-          0,
           1,
           2,
           3
@@ -2548,15 +2631,15 @@ kanColle.remodel.equips = {
         ]
       },
       {
-        "assistant": "Zara due",
+        "assistant": "Верный",
         "enableDays": [
+          0,
           1,
           2,
           3
         ]
       }
-    ],
-    "remark": "消費：同装備\n消費(更新)：同装備\n⇒艦本新設計 増設バルジ(中型艦)"
+    ]
   },
   "艦本新設計 増設バルジ(中型艦)": {
     "name": "艦本新設計 増設バルジ(中型艦)",
@@ -2571,8 +2654,7 @@ kanColle.remodel.equips = {
           4
         ]
       }
-    ],
-    "remark": "消費：増設バルジ(中型艦)"
+    ]
   },
   "増設バルジ(大型艦)": {
     "name": "増設バルジ(大型艦)",
@@ -2580,7 +2662,7 @@ kanColle.remodel.equips = {
     "category": "登陆艇/探照灯/装甲带/轮机",
     "detail": [
       {
-        "assistant": "長門",
+        "assistant": "長門 / 武蔵",
         "enableDays": [
           4,
           5,
@@ -2588,15 +2670,14 @@ kanColle.remodel.equips = {
         ]
       },
       {
-        "assistant": "武蔵",
+        "assistant": "陸奥 / 大和",
         "enableDays": [
+          3,
           4,
-          5,
-          6
+          5
         ]
       }
-    ],
-    "remark": "消費(初期～)：増設バルジ(中型艦)\n消費(★6 ～)：同装備\n消費(更新)：同装備\n⇒艦本新設計 増設バルジ(大型艦)"
+    ]
   },
   "艦本新設計 増設バルジ(大型艦)": {
     "name": "艦本新設計 増設バルジ(大型艦)",
@@ -2617,8 +2698,7 @@ kanColle.remodel.equips = {
           2
         ]
       }
-    ],
-    "remark": "消費：増設バルジ(大型艦)"
+    ]
   },
   "強化型艦本式缶": {
     "name": "強化型艦本式缶",
@@ -2644,8 +2724,7 @@ kanColle.remodel.equips = {
           3
         ]
       }
-    ],
-    "remark": "消費(初期～)：改良型艦本式タービン\n消費(★6 ～)：同装備\n消費(更新)：同装備\n⇒新型高温高圧缶"
+    ]
   },
   "新型高温高圧缶": {
     "name": "新型高温高圧缶",
@@ -2668,7 +2747,6 @@ kanColle.remodel.equips = {
           5
         ]
       }
-    ],
-    "remark": "消費(初期～)：改良型艦本式タービン\n消費(★6 ～)：強化型艦本式缶"
+    ]
   }
 };

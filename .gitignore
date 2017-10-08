@@ -44,3 +44,7 @@ Temporary Items
 lib/qunit-1.17.1.css
 test.html
 lib/qunit-1.17.1.js
+
+#ignore idea configures
+.idea/
+

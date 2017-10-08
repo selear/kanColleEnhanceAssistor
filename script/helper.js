@@ -99,6 +99,28 @@ function report() {
 	var today = getWeekdayInJapan();
 	var tomorrow = today + 1;
 
+
+	$('input[type=checkbox]').each(function() {
+
+		if (this.checked) {
+			checkedSts += 1;
+			record(this);
+		} else {
+			checkedSts += 0;
+		}
+	});
+
+	//TODO 修改
+	saveCheckedSts();
+
+	var report = '改修报告 :\n\n' + generateAssistShipsReport(availiableEquips);
+	report = report.replace(/\n/g, '<br>');
+	report = report.replace(/\t/g, '<br>&emsp;-->&emsp;');
+
+	$('.g-sd').html(report);
+
+	//DEBUG console.log('勾选装备序列 : ' + checkedSts + '\n\t\t' + storage.getItem('checkedSts'));
+
 	function getWeekdayInJapan() {
 
 		Date.prototype.getDateInJapan = function() {
@@ -118,19 +140,6 @@ function report() {
 		return japanDate.getDay();
 	}
 
-	$('input[type=checkbox]').each(function() {
-
-		if (this.checked) {
-			checkedSts += 1;
-			record(this);
-		} else {
-			checkedSts += 0;
-		}
-	});
-
-	//TODO 修改
-	saveCheckedSts();
-
 	function saveCheckedSts() {
 
 		var storage = getLocalStorage();
@@ -148,16 +157,6 @@ function report() {
 		document.cookie = cookieName + '=' + cookieVal + ';expires=' + expireDate.toGMTString();
 		//DEBUG console.log('checkedSts saved in cookie : ' + cookieVal);
 	}
-
-	var report = '';
-	report += '改修报告 :\n\n' + generateAssistShipsReport(availiableEquips);
-
-	report = report.replace(/\n/g, '<br>');
-	report = report.replace(/\t/g, '<br>&emsp;-->&emsp;');
-
-	$('.g-sd').html(report);
-
-	//DEBUG console.log('勾选装备序列 : ' + checkedSts + '\n\t\t' + storage.getItem('checkedSts'));
 
 	function generateAssistShipsReport(array) {
 
