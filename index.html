@@ -3,38 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>装备改修助手</title>
-
 </head>
 <body>
 
 <div id="app">
-    <category></category>
+    <category-list></category-list>
 </div>
+
+<template id="categoryList">
+    <div>
+        <h2>这是categoryList组件</h2>
+        <category></category>
+    </div>
+</template>
 
 <template id="category">
     <div>
-        <h3>这是category组件</h3>
-        <equip></equip>
+        <h3>这是category组件, 是categoryList的局部组件</h3>
         <equip></equip>
         <equip></equip>
     </div>
 </template>
 
 <template id="equip">
-    <h4>这是equip组件</h4>
+    <h4>这是equip组件, 是category的局部组件</h4>
 </template>
 
 <script src="./lib/vue.js"></script>
 <script>
 
-  let equip = {
+  let comEquip = {
     template: '#equip'
   };
 
-  Vue.component('category', {
+  let comCategory = {
     template: '#category',
     components: {
-      equip
+      equip: comEquip
+    }
+  };
+
+  Vue.component('categoryList', {
+    template: '#categoryList',
+    components: {
+      category: comCategory,
     }
   });
 
