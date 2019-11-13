@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>装备改修助手</title>
+
+</head>
+<body>
+
+<div id="app">
+    <category></category>
+</div>
+
+<template id="category">
+    <h3>这是category组件</h3>
+</template>
+
+<template id="equip">
+    <h4>这是equip组件</h4>
+</template>
+
+<script src="./lib/vue.js"></script>
+<script>
+
+  Vue.component('category', {
+    template: '#category',
+  });
+
+  let vm = new Vue({
+    el: '#app'
+  });
+</script>
+</body>
+</html>
