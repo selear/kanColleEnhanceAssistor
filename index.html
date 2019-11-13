@@ -12,7 +12,12 @@
 </div>
 
 <template id="category">
-    <h3>这是category组件</h3>
+    <div>
+        <h3>这是category组件</h3>
+        <equip></equip>
+        <equip></equip>
+        <equip></equip>
+    </div>
 </template>
 
 <template id="equip">
@@ -22,8 +27,15 @@
 <script src="./lib/vue.js"></script>
 <script>
 
+  let equip = {
+    template: '#equip'
+  };
+
   Vue.component('category', {
     template: '#category',
+    components: {
+      equip
+    }
   });
 
   let vm = new Vue({
