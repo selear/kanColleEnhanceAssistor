@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>装备改修助手</title>
+    <style>
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: all 0.4s ease;
+        }
+
+        .v-enter-active,
+        .v-leave-active {
+            transition: all 0.25s ease;
+        }
+    </style>
 </head>
 <body>
 
@@ -21,12 +34,14 @@
 
 <template id="category">
     <div>
-        <h3>{{ cName }} -- {{ equipIds.length }} </h3>
-        <ul>
-            <equip v-for="id in equipIds" :key="id"
+        <h3 @click="display=!display">{{ cName }} -- {{ equipIds.length }} </h3>
+        <transition-group tag="ul">
+            <equip v-for="id in equipIds"
+                   v-show="display"
+                   :key="id"
                    :id="id">
             </equip>
-        </ul>
+        </transition-group>
     </div>
 </template>
 
@@ -46,6 +61,11 @@
 
   let comCategory = {
     template: '#category',
+    data() {
+      return {
+        display: false
+      };
+    },
     components: {
       equip: comEquip
     },
