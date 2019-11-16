@@ -7,20 +7,22 @@
 <body>
 
 <div id="app">
-    <category-list></category-list>
+    <category-list :c-arr="CATEGORY"></category-list>
 </div>
 
 <template id="categoryList">
     <div>
-        <h2>这是categoryList组件</h2>
-        <category></category>
+        <h2>这是categoryList</h2>
+        <category v-for="(entity, id) in cArr"
+                  :key="id"
+                  :entity="entity[1]">
+        </category>
     </div>
 </template>
 
 <template id="category">
     <div>
-        <h3>这是category组件, 是categoryList的局部组件</h3>
-        <!--<equip></equip>-->
+        <h3>{{ entity.name }} -- {{ entity.equipIds.length }}</h3>
     </div>
 </template>
 
@@ -41,13 +43,15 @@
     components: {
       equip: comEquip
     },
+    props: ['entity']
   };
 
   Vue.component('categoryList', {
     template: '#categoryList',
     components: {
       category: comCategory,
-    }
+    },
+    props: ['cArr']
   });
 
   let vm = new Vue({
