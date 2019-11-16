@@ -20,8 +20,7 @@
 <template id="category">
     <div>
         <h3>这是category组件, 是categoryList的局部组件</h3>
-        <equip></equip>
-        <equip></equip>
+        <!--<equip></equip>-->
     </div>
 </template>
 
@@ -29,7 +28,8 @@
     <h4>这是equip组件, 是category的局部组件</h4>
 </template>
 
-<script src="./lib/vue.js"></script>
+<script src="lib/vue.js"></script>
+<script src="lib/equips.js"></script>
 <script>
 
   let comEquip = {
@@ -40,7 +40,7 @@
     template: '#category',
     components: {
       equip: comEquip
-    }
+    },
   };
 
   Vue.component('categoryList', {
@@ -51,8 +51,18 @@
   });
 
   let vm = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+      CATEGORY: undefined,
+      EQUIP: undefined,
+      flag: 'is page loaded?'
+    },
+    mounted() {
+      this.CATEGORY = new Map(JSON.parse(META[0]));
+      this.EQUIP = new Map(JSON.parse(META[1]));
+    }
   });
+
 </script>
 </body>
 </html>
