@@ -13,8 +13,7 @@
 <template id="categoryList">
     <div>
         <h2>这是categoryList</h2>
-        <category v-for="(entity, id) in cArr"
-                  :key="id"
+        <category v-for="(entity, id) in cArr" :key="id"
                   :entity="entity[1]">
         </category>
     </div>
@@ -22,12 +21,17 @@
 
 <template id="category">
     <div>
-        <h3>{{ entity.name }} -- {{ entity.equipIds.length }}</h3>
+        <h3>{{ cName }} -- {{ equipIds.length }} </h3>
+        <ul>
+            <equip v-for="id in equipIds" :key="id"
+                   :id="id">
+            </equip>
+        </ul>
     </div>
 </template>
 
 <template id="equip">
-    <h4>这是equip组件, 是category的局部组件</h4>
+    <li>{{ id }}</li>
 </template>
 
 <script src="lib/vue.js"></script>
@@ -35,7 +39,9 @@
 <script>
 
   let comEquip = {
-    template: '#equip'
+    template: '#equip',
+    props: ['id'],
+    computed: {}
   };
 
   let comCategory = {
@@ -43,7 +49,15 @@
     components: {
       equip: comEquip
     },
-    props: ['entity']
+    props: ['entity'],
+    computed: {
+      cName: function () {
+        return this.entity.name;
+      },
+      equipIds: function () {
+        return this.entity.equipIds;
+      }
+    }
   };
 
   Vue.component('categoryList', {
