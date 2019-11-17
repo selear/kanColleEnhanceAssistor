@@ -20,14 +20,15 @@
 <body>
 
 <div id="app">
-    <category-list :c-arr="CATEGORY"></category-list>
+    <category-list :c-map="categoryMap" :e-map="equipMap"></category-list>
 </div>
 
 <template id="categoryList">
     <div>
         <h2>这是categoryList</h2>
-        <category v-for="(entity, id) in cArr" :key="id"
-                  :entity="entity[1]">
+        <category v-for="(cEntity, id) in cMap" :key="id"
+                  :c-entity="cEntity[1]"
+                  :equip-map="equipFilterBy(cEntity[1].equipIds)">
         </category>
     </div>
 </template>
@@ -39,26 +40,38 @@
             <equip v-for="id in equipIds"
                    v-show="display"
                    :key="id"
-                   :id="id">
+                   :eid="id"
+                   :e-entity="findEquipBy(id)">
             </equip>
         </transition-group>
     </div>
 </template>
 
 <template id="equip">
-    <li>{{ id }}</li>
+    <li>
+        <label>
+            <code>{{ eEntity.name }}</code>
+            <input type="checkbox" @change="checked=!checked">
+        </label>
+    </li>
 </template>
 
 <script src="lib/vue.js"></script>
 <script src="lib/equips.js"></script>
 <script>
 
+  // component equip
   let comEquip = {
     template: '#equip',
-    props: ['id'],
-    computed: {}
+    data() {
+      return {
+        checked: false
+      }
+    },
+    props: ['eid', 'eEntity']
   };
 
+  // component category
   let comCategory = {
     template: '#category',
     data() {
@@ -66,38 +79,52 @@
         display: false
       };
     },
-    components: {
-      equip: comEquip
+    props: ['cEntity', 'equipMap'],
+    methods: {
+      findEquipBy(eid) {
+        return this.equipMap.get(eid);
+      }
     },
-    props: ['entity'],
     computed: {
       cName: function () {
-        return this.entity.name;
+        return this.cEntity.name;
       },
       equipIds: function () {
-        return this.entity.equipIds;
+        return this.cEntity.equipIds;
       }
+    },
+    components: {
+      equip: comEquip
     }
   };
 
+  // component category-list
   Vue.component('categoryList', {
     template: '#categoryList',
+    props: ['cMap', 'eMap'],
+    methods: {
+      equipFilterBy: function (eidArr) {
+        let equipsInACategory = new Map();
+        eidArr.forEach(eid => {
+          equipsInACategory.set(eid, this.eMap.get(eid));
+        });
+        return equipsInACategory;
+      }
+    },
     components: {
       category: comCategory,
-    },
-    props: ['cArr']
+    }
   });
 
   let vm = new Vue({
     el: '#app',
-    data: {
-      CATEGORY: undefined,
-      EQUIP: undefined,
-      flag: 'is page loaded?'
-    },
-    mounted() {
-      this.CATEGORY = new Map(JSON.parse(META[0]));
-      this.EQUIP = new Map(JSON.parse(META[1]));
+    computed: {
+      categoryMap() {
+        return new Map(JSON.parse(META[0]));
+      },
+      equipMap() {
+        return new Map(JSON.parse(META[1]))
+      }
     }
   });
 
