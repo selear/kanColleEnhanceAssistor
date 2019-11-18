@@ -41,7 +41,8 @@
                    v-show="display"
                    :key="id"
                    :eid="id"
-                   :e-entity="findEquipBy(id)">
+                   :e-entity="findEquipBy(id)"
+                   @cb-changed="equipChecked">
             </equip>
         </transition-group>
     </div>
@@ -51,7 +52,10 @@
     <li>
         <label>
             <code>{{ eEntity.name }}</code>
-            <input type="checkbox" @change="checked=!checked">
+            <input type="checkbox"
+                   v-model="inputChecked"
+                   :value="eid"
+                   @change="cbChanged">
         </label>
     </li>
 </template>
@@ -65,10 +69,15 @@
     template: '#equip',
     data() {
       return {
-        checked: false
+        inputChecked: false
       }
     },
-    props: ['eid', 'eEntity']
+    props: ['eid', 'eEntity'],
+    methods: {
+      cbChanged() {
+        this.$emit('cb-changed', this.eid, this.inputChecked);
+      }
+    }
   };
 
   // component category
@@ -76,11 +85,21 @@
     template: '#category',
     data() {
       return {
+        selectedEquipIdArr: [],
         display: false
       };
     },
     props: ['cEntity', 'equipMap'],
     methods: {
+      equipChecked: function (eid, selected) {
+        if (selected && (!this.selectedEquipIdArr.includes(eid))) {
+          this.selectedEquipIdArr.push(eid);
+        } else if ((!selected) && this.selectedEquipIdArr.includes(eid)) {
+          this.selectedEquipIdArr = this.selectedEquipIdArr.filter(equipId => {
+            return equipId !== eid;
+          });
+        }
+      },
       findEquipBy(eid) {
         return this.equipMap.get(eid);
       }
