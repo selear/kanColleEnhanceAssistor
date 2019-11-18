@@ -37,12 +37,13 @@
     <div>
         <h3 @click="display=!display">{{ cName }} -- {{ equipIds.length }} </h3>
         <transition-group tag="ul">
-            <equip v-for="id in equipIds"
+            <equip v-for="(id, idx) in equipIds"
                    v-show="display"
                    :key="id"
                    :eid="id"
+                   :idx="idx"
                    :e-entity="findEquipBy(id)"
-                   @cb-changed="equipChecked">
+                   @cb-changed="updateEquipIds">
             </equip>
         </transition-group>
     </div>
@@ -53,7 +54,7 @@
         <label>
             <code>{{ eEntity.name }}</code>
             <input type="checkbox"
-                   v-model="inputChecked"
+                   v-model="cbChecked"
                    :value="eid"
                    @change="cbChanged">
         </label>
@@ -69,13 +70,13 @@
     template: '#equip',
     data() {
       return {
-        inputChecked: false
+        cbChecked: false
       }
     },
-    props: ['eid', 'eEntity'],
+    props: ['eid', 'eEntity', 'idx'],
     methods: {
       cbChanged() {
-        this.$emit('cb-changed', this.eid, this.inputChecked);
+        this.$emit('cb-changed', this.idx, this.eid, this.cbChecked);
       }
     }
   };
@@ -85,20 +86,22 @@
     template: '#category',
     data() {
       return {
+        reduced: [],
         selectedEquipIdArr: [],
         display: false
       };
     },
     props: ['cEntity', 'equipMap'],
     methods: {
-      equipChecked: function (eid, selected) {
-        if (selected && (!this.selectedEquipIdArr.includes(eid))) {
-          this.selectedEquipIdArr.push(eid);
-        } else if ((!selected) && this.selectedEquipIdArr.includes(eid)) {
-          this.selectedEquipIdArr = this.selectedEquipIdArr.filter(equipId => {
-            return equipId !== eid;
-          });
+      updateEquipIds: function (idx, eid, isChecked) {
+        if (isChecked) {
+          this.selectedEquipIdArr[idx] = eid;
+        } else {
+          this.selectedEquipIdArr[idx] = undefined;
         }
+        this.reduced = this.selectedEquipIdArr.filter(elem => {
+          return !!(elem);
+        });
       },
       findEquipBy(eid) {
         return this.equipMap.get(eid);
@@ -135,7 +138,7 @@
     }
   });
 
-  let vm = new Vue({
+  const vm = new Vue({
     el: '#app',
     computed: {
       categoryMap() {
