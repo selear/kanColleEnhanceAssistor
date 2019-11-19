@@ -7,35 +7,71 @@
 </head>
 <body>
 
+<!--
++-----------------------+ Page +-----------------------+
+|                                                      |
+|  +---+ Category List +--+  +--+ Enhance Today +---+  |
+|  |                      |  |                      |  |
+|  | +--+ Category#1 +--+ |  | Equip#2  [UpgradeTo] |  |
+|  | |                  | |  |                      |  |
+|  | +---------------+--+ |  |                      |  |
+|  | |[ ] Equip#1    |    |  |                      |  |
+|  | +---------------+    |  |                      |  |
+|  | |[x] Equip#2    |    |  |                      |  |
+|  | +---------------+    |  |                      |  |
+|  |                      |  |                      |  |
+|  | +--+ Category#2 +--+ |  |                      |  |
+|  | |                  | |  |                      |  |
+|  | +---------------+--+ |  |                      |  |
+|  | |[x] Equip#3    |    |  |                      |  |
+|  | +---------------+    |  |                      |  |
+|  |                      |  |                      |  |
+|  |      ......          |  |      ......          |  |
+|  |                      |  |                      |  |
+|  +----------------------+  +----------------------+  |
+|                                                      |
++------------------------------------------------------+
+
++----------------------+ Remark +----------------------+
+|           Suppose it's MON today.                    |
+|           Only Equip#2 can enhance today.            |
++------------------------------------------------------+
+-->
+
 <div id="app" class="container">
     <category-list :c-map="categoryMap"
                    :e-map="equipMap"></category-list>
-    <enhance-today></enhance-today>
+    <enhance-today :e-map="equipMap"></enhance-today>
 </div>
 
 <template id="categoryList">
     <div :class="styleObj">
         <h2>这是categoryList</h2>
-        <category v-for="(cEntity, id) in cMap" :key="id"
+        <category v-for="(cEntity, cIdx) in cMap" :key="cIdx"
                   :c-entity="cEntity[1]"
+                  :c-idx="cIdx"
                   :equip-map="equipFilterBy(cEntity[1].equipIds)">
         </category>
     </div>
 </template>
 
 <template id="enhanceToday">
-    <div :class="styleObj">Here comes CALC RESULTS</div>
+    <div :class="styleObj">
+        <div>Here comes CALC RESULTS</div>
+        <pre v-for="(e, idx) in flat" :key="idx">{{ e.name }}</pre>
+    </div>
 </template>
 
 <template id="category">
     <div>
-        <h3 @click="display=!display">{{ cName }} -- {{ equipIds.length }} </h3>
+        <h3 @click="display=!display">{{ cName }}</h3>
         <transition-group tag="ul">
+            <!-- @cb-changed事件发生时, 调用方法updateEquipIds -->
             <equip v-show="display"
-                   v-for="(id, idx) in equipIds" :key="id"
-                   :eid="id"
+                   v-for="(eid, idx) in equipIds" :key="eid"
+                   :eid="eid"
                    :idx="idx"
-                   :e-entity="findEquipBy(id)"
+                   :e-entity="findEquipBy(eid)"
                    @cb-changed="updateEquipIds">
             </equip>
         </transition-group>
@@ -45,11 +81,13 @@
 <template id="equip">
     <li>
         <label>
-            <code>{{ eEntity.name }}</code>
+            <!-- checkbox状态发生变化时, 调用方法cbChanged,
+                    该方法发出事件'cb-changed', 交由上一层category处理 -->
             <input type="checkbox"
                    v-model="cbChecked"
                    :value="eid"
                    @change="cbChanged">
+            <code>{{ eEntity.name }}</code>
         </label>
     </li>
 </template>
@@ -58,7 +96,7 @@
 <script src="lib/equips.js"></script>
 <script>
 
-  // component equip
+  // 组件equip, 基础组件, 是组件Category的组成部分
   let comEquip = {
     template: '#equip',
     data() {
@@ -69,12 +107,14 @@
     props: ['eid', 'eEntity', 'idx'],
     methods: {
       cbChanged() {
+        // 发出事件checkbox-changed, 附带参数idx, eid, cbChecked
         this.$emit('cb-changed', this.idx, this.eid, this.cbChecked);
       }
     }
   };
 
-  // component category
+  // 组件category
+  // 组件category下每一个子组件equip都附带参数: idx, eid,
   let comCategory = {
     template: '#category',
     data() {
@@ -84,17 +124,18 @@
         display: false
       };
     },
-    props: ['cEntity', 'equipMap'],
+    props: ['cEntity', 'equipMap', 'cIdx'],
     methods: {
-      updateEquipIds: function (idx, eid, isChecked) {
+      updateEquipIds: function (eIdx, eid, isChecked) {
         if (isChecked) {
-          this.selectedEquipIdArr[idx] = eid;
+          this.selectedEquipIdArr[eIdx] = eid;
         } else {
-          this.selectedEquipIdArr[idx] = undefined;
+          this.selectedEquipIdArr[eIdx] = undefined;
         }
         this.reduced = this.selectedEquipIdArr.filter(elem => {
           return !!(elem);
         });
+        this.$eventBus.$emit('update-today-enhance', this.cIdx, this.reduced);
       },
       findEquipBy(eid) {
         return this.equipMap.get(eid);
@@ -113,7 +154,8 @@
     }
   };
 
-  // component category-list
+  // 组件category-list
+  // 附带参数: cMap, eMap
   Vue.component('categoryList', {
     template: '#categoryList',
     data() {
@@ -138,18 +180,43 @@
     }
   });
 
-  // component enhance-today
+  // 组件enhance-today
   Vue.component('enhanceToday', {
     template: '#enhanceToday',
     data() {
       return {
+        reducedList: [],
+        categoryToList: [],
         styleObj: {
           'list-panel': true
         }
       }
     },
+    props: ['eMap'],
+    computed: {
+      flat() {
+        let flattedEquipArr = []
+        this.reducedList.flat().forEach(eid => {
+          flattedEquipArr.push(this.eMap.get(eid));
+        });
+        return flattedEquipArr;
+      }
+    },
+    created() {
+      this.$eventBus.$on('update-today-enhance', (cIdx, reduced) => {
+        this.categoryToList[cIdx] = reduced;
+        this.reducedList = this.categoryToList.filter((elem = []) => {
+          return !!(elem.length);
+        });
+      });
+    }
   });
 
+  // 全局事件总线, 可以传递很多东西, 不仅仅是数据
+  Vue.prototype.$eventBus = new Vue();
+
+  // 文件/lib/equips.js存在一个字符串数组META, 其中包含了两个元素
+  // META[0], META[1]转化为JSON后, 可以序列化为Map, 作为数据源供调用与查询
   const vm = new Vue({
     el: '#app',
     computed: {
@@ -163,5 +230,6 @@
   });
 
 </script>
+
 </body>
 </html>
