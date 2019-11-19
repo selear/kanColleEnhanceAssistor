@@ -1,0 +1,32 @@
+/* Vue动画相关 */
+.v-enter,
+.v-leave-to {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: all 0.4s ease;
+}
+
+.v-enter-active,
+.v-leave-active {
+    transition: all 0.25s ease;
+}
+
+/* 容器相关 */
+body {
+    background-color: #98d4c8;
+}
+
+.container {
+    width: 640px;
+    margin: 0 auto;
+}
+
+.list-panel {
+    margin: 8px;
+    padding: 16px;
+    opacity: 0.85;
+    width: 42%;
+    min-height: 90vh;
+    background-color: #fff;
+    float: left;
+}

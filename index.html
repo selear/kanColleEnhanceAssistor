@@ -3,29 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>装备改修助手</title>
-    <style>
-        .v-enter,
-        .v-leave-to {
-            opacity: 0;
-            transform: translateY(-100%);
-            transition: all 0.4s ease;
-        }
-
-        .v-enter-active,
-        .v-leave-active {
-            transition: all 0.25s ease;
-        }
-    </style>
+    <link rel="stylesheet" href="lib/assistor.css">
 </head>
 <body>
 
-<div id="app">
-    <category-list :c-map="categoryMap" :e-map="equipMap"></category-list>
+<div id="app" class="container">
+    <category-list :c-map="categoryMap"
+                   :e-map="equipMap"></category-list>
     <enhance-today></enhance-today>
 </div>
 
 <template id="categoryList">
-    <div>
+    <div :class="styleObj">
         <h2>这是categoryList</h2>
         <category v-for="(cEntity, id) in cMap" :key="id"
                   :c-entity="cEntity[1]"
@@ -35,16 +24,15 @@
 </template>
 
 <template id="enhanceToday">
-    <div>Here comes CALC RESULTS</div>
+    <div :class="styleObj">Here comes CALC RESULTS</div>
 </template>
 
 <template id="category">
     <div>
         <h3 @click="display=!display">{{ cName }} -- {{ equipIds.length }} </h3>
         <transition-group tag="ul">
-            <equip v-for="(id, idx) in equipIds"
-                   v-show="display"
-                   :key="id"
+            <equip v-show="display"
+                   v-for="(id, idx) in equipIds" :key="id"
                    :eid="id"
                    :idx="idx"
                    :e-entity="findEquipBy(id)"
@@ -128,6 +116,13 @@
   // component category-list
   Vue.component('categoryList', {
     template: '#categoryList',
+    data() {
+      return {
+        styleObj: {
+          'list-panel': true
+        }
+      }
+    },
     props: ['cMap', 'eMap'],
     methods: {
       equipFilterBy: function (eidArr) {
@@ -145,7 +140,14 @@
 
   // component enhance-today
   Vue.component('enhanceToday', {
-    template: '#enhanceToday'
+    template: '#enhanceToday',
+    data() {
+      return {
+        styleObj: {
+          'list-panel': true
+        }
+      }
+    },
   });
 
   const vm = new Vue({
