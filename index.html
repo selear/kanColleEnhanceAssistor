@@ -21,6 +21,7 @@
 
 <div id="app">
     <category-list :c-map="categoryMap" :e-map="equipMap"></category-list>
+    <enhance-today></enhance-today>
 </div>
 
 <template id="categoryList">
@@ -31,6 +32,10 @@
                   :equip-map="equipFilterBy(cEntity[1].equipIds)">
         </category>
     </div>
+</template>
+
+<template id="enhanceToday">
+    <div>Here comes CALC RESULTS</div>
 </template>
 
 <template id="category">
@@ -136,6 +141,11 @@
     components: {
       category: comCategory,
     }
+  });
+
+  // component enhance-today
+  Vue.component('enhanceToday', {
+    template: '#enhanceToday'
   });
 
   const vm = new Vue({
