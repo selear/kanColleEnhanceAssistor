@@ -16,8 +16,18 @@ body {
     background-color: #98d4c8;
 }
 
+ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+li {
+    padding: 8px;
+}
+
 .container {
-    width: 640px;
+    width: 700px;
     margin: 0 auto;
 }
 

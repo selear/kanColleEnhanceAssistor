@@ -10,26 +10,30 @@
 <div id="app" class="container">
     <category-list :c-map="categoryMap"
                    :e-map="equipMap"></category-list>
-    <enhance-today></enhance-today>
+    <enhance-today :e-map="equipMap"></enhance-today>
 </div>
 
 <template id="categoryList">
     <div :class="styleObj">
         <h2>这是categoryList</h2>
-        <category v-for="(cEntity, id) in cMap" :key="id"
+        <category v-for="(cEntity, idx) in cMap" :key="idx"
                   :c-entity="cEntity[1]"
+                  :c-idx="idx"
                   :equip-map="equipFilterBy(cEntity[1].equipIds)">
         </category>
     </div>
 </template>
 
 <template id="enhanceToday">
-    <div :class="styleObj">Here comes CALC RESULTS</div>
+    <div :class="styleObj">
+        <div>Here comes CALC RESULTS</div>
+        <pre v-for="(e, idx) in flat" :key="idx">{{ e.name }}</pre>
+    </div>
 </template>
 
 <template id="category">
     <div>
-        <h3 @click="display=!display">{{ cName }} -- {{ equipIds.length }} </h3>
+        <h3 @click="display=!display">{{ cName }} -- {{ equipIds.length }}</h3>
         <transition-group tag="ul">
             <equip v-show="display"
                    v-for="(id, idx) in equipIds" :key="id"
@@ -84,17 +88,18 @@
         display: false
       };
     },
-    props: ['cEntity', 'equipMap'],
+    props: ['cEntity', 'equipMap', 'cIdx'],
     methods: {
-      updateEquipIds: function (idx, eid, isChecked) {
+      updateEquipIds: function (eIdx, eid, isChecked) {
         if (isChecked) {
-          this.selectedEquipIdArr[idx] = eid;
+          this.selectedEquipIdArr[eIdx] = eid;
         } else {
-          this.selectedEquipIdArr[idx] = undefined;
+          this.selectedEquipIdArr[eIdx] = undefined;
         }
         this.reduced = this.selectedEquipIdArr.filter(elem => {
           return !!(elem);
         });
+        this.$eventBus.$emit('update-today-enhance', this.cIdx, this.reduced);
       },
       findEquipBy(eid) {
         return this.equipMap.get(eid);
@@ -143,12 +148,35 @@
     template: '#enhanceToday',
     data() {
       return {
+        reducedList: [],
+        categoryToList: [],
         styleObj: {
           'list-panel': true
         }
       }
     },
+    props: ['eMap'],
+    computed: {
+      flat() {
+        let flattedEquipArr = []
+        this.reducedList.flat().forEach(eid => {
+          flattedEquipArr.push(this.eMap.get(eid));
+        });
+        return flattedEquipArr;
+      }
+    },
+    created() {
+      this.$eventBus.$on('update-today-enhance', (cIdx, reduced) => {
+        this.categoryToList[cIdx] = reduced;
+        this.reducedList = this.categoryToList.filter((elem = []) => {
+          return !!(elem.length);
+        });
+      });
+    }
   });
+
+  // 全局事件总线, 可以传递很多东西, 不仅仅是数据
+  Vue.prototype.$eventBus = new Vue();
 
   const vm = new Vue({
     el: '#app',
