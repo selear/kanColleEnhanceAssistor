@@ -45,7 +45,7 @@
 </div>
 
 <template id="categoryList">
-    <div :class="styleObj">
+    <div :class="customStyle">
         <h2>这是categoryList</h2>
         <category v-for="(cEntity, cIdx) in cMap" :key="cIdx"
                   :c-entity="cEntity[1]"
@@ -56,9 +56,12 @@
 </template>
 
 <template id="enhanceToday">
-    <div :class="styleObj">
-        <div>Here comes CALC RESULTS</div>
+    <div :class="customStyle">
+        <div>Here comes ALL SELECTED EQUIPS</div>
         <pre v-for="(e, idx) in flat" :key="idx">{{ e.name }}</pre>
+        <hr>
+        <div>Here comes CALC RESULTS</div>
+        <pre v-for="(e, idx) in calc" :key="idx">{{ e.name }}</pre>
     </div>
 </template>
 
@@ -95,6 +98,20 @@
 <script src="lib/vue.js"></script>
 <script src="lib/equips.js"></script>
 <script>
+  const TOOLS = {
+    jpDate: function () {
+      const JP_TIMEZONE = 9;
+      let curr = new Date();
+      return new Date(
+        curr.getUTCFullYear(),
+        curr.getUTCMonth(),
+        curr.getUTCDate(),
+        curr.getUTCHours() + JP_TIMEZONE,
+        curr.getUTCMinutes(),
+        curr.getUTCSeconds()
+      );
+    }
+  };
 
   // 组件equip, 基础组件, 是组件Category的组成部分
   let comEquip = {
@@ -119,7 +136,7 @@
     template: '#category',
     data() {
       return {
-        reduced: [],
+        reducedArr: [],
         selectedEquipIdArr: [],
         display: false
       };
@@ -132,10 +149,10 @@
         } else {
           this.selectedEquipIdArr[eIdx] = undefined;
         }
-        this.reduced = this.selectedEquipIdArr.filter(elem => {
+        this.reducedArr = this.selectedEquipIdArr.filter(elem => {
           return !!(elem);
         });
-        this.$eventBus.$emit('update-today-enhance', this.cIdx, this.reduced);
+        this.$eventBus.$emit('update-today-enhance', this.cIdx, this.reducedArr);
       },
       findEquipBy(eid) {
         return this.equipMap.get(eid);
@@ -160,7 +177,7 @@
     template: '#categoryList',
     data() {
       return {
-        styleObj: {
+        customStyle: {
           'list-panel': true
         }
       }
@@ -185,27 +202,61 @@
     template: '#enhanceToday',
     data() {
       return {
-        reducedList: [],
-        categoryToList: [],
-        styleObj: {
+        localReducedIdxArr: [],
+        checkedEquipIdxArr: [],
+        customStyle: {
           'list-panel': true
         }
       }
     },
     props: ['eMap'],
     computed: {
-      flat() {
-        let flattedEquipArr = []
-        this.reducedList.flat().forEach(eid => {
+      flat() {  // TODO 测试用, 进一步开发之后可以删除
+        let flattedEquipArr = [];
+        this.localReducedIdxArr.flat().forEach(eid => {
           flattedEquipArr.push(this.eMap.get(eid));
         });
         return flattedEquipArr;
+      },
+      calc() {  // 返回当天可以改修的装备; 应当使用新的实体, 来包装已经经过计算筛选的数据
+        let equipArrEnhanceToday = [];
+        let weekday = TOOLS.jpDate().getDay();
+        // this.localReducedIdxArr.flat().forEach(eid => {
+        //
+        //   let eEntity = this.eMap.get(eid);
+        //   let displayEntity = {
+        //     'canEnhanceToday': false
+        //   };
+        //
+        //   let enhanceSum = [];
+        //   eEntity.enhancements.forEach(enhancement => {
+        //
+        //     let eachEnhanceInfo = [];
+        //     enhancement.assistShips.forEach(ship => {
+        //
+        //       let canEnhanceEntity = {};
+        //       // TODO 可以删除, ship.accessDay 可改修时间, 数组
+        //       if (ship.accessDay.includes(weekday)) {
+        //         canEnhanceEntity['shipName'] = ship.name;
+        //         eachEnhanceInfo.push(canEnhanceEntity);    // 改修舰
+        //       }
+        //     });
+        //   });
+        //
+        //   if(displayEntity.canEnhanceToday) {
+        //     displayEntity['name'] = eEntity.name;
+        //     equipArrEnhanceToday.push(displayEntity);
+        //   }
+        // });
+
+        return equipArrEnhanceToday;
       }
     },
     created() {
-      this.$eventBus.$on('update-today-enhance', (cIdx, reduced) => {
-        this.categoryToList[cIdx] = reduced;
-        this.reducedList = this.categoryToList.filter((elem = []) => {
+      // 每一次点击, 触发'update-today-enhance', 自动计算
+      this.$eventBus.$on('update-today-enhance', (cIdx, reducedArr) => {
+        this.checkedEquipIdxArr[cIdx] = reducedArr;
+        this.localReducedIdxArr = this.checkedEquipIdxArr.filter((elem = []) => {
           return !!(elem.length);
         });
       });
@@ -224,7 +275,7 @@
         return new Map(JSON.parse(META[0]));
       },
       equipMap() {
-        return new Map(JSON.parse(META[1]))
+        return new Map(JSON.parse(META[1]));
       }
     }
   });
