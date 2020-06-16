@@ -60,7 +60,7 @@
         <div>Here comes ALL SELECTED EQUIPS</div>
         <pre v-for="(e, idx) in flat" :key="idx">{{ e.name }}</pre>
         <hr>
-        <div>Here comes CALC RESULTS</div>
+        <div>Here comes CALC SELECTED EQUIPS</div>
         <pre v-for="(e, idx) in calc" :key="idx">{{ e.name }}</pre>
     </div>
 </template>
@@ -97,6 +97,9 @@
 
 <script src="lib/vue.js"></script>
 <script src="lib/equips.js"></script>
+<script src="lib/js.store/jsstore.js"></script>
+<script src="lib/initJsDb.js"></script>
+<!--suppress JSAnnotator -->
 <script>
   const TOOLS = {
     jpDate: function () {
