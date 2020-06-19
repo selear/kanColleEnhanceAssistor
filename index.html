@@ -222,37 +222,42 @@
         return flattedEquipArr;
       },
       calc() {  // 返回当天可以改修的装备; 应当使用新的实体, 来包装已经经过计算筛选的数据
-        let equipArrEnhanceToday = [];
-        let weekday = TOOLS.jpDate().getDay();
-        // this.localReducedIdxArr.flat().forEach(eid => {
-        //
-        //   let eEntity = this.eMap.get(eid);
-        //   let displayEntity = {
-        //     'canEnhanceToday': false
-        //   };
-        //
-        //   let enhanceSum = [];
-        //   eEntity.enhancements.forEach(enhancement => {
-        //
-        //     let eachEnhanceInfo = [];
-        //     enhancement.assistShips.forEach(ship => {
-        //
-        //       let canEnhanceEntity = {};
-        //       // TODO 可以删除, ship.accessDay 可改修时间, 数组
-        //       if (ship.accessDay.includes(weekday)) {
-        //         canEnhanceEntity['shipName'] = ship.name;
-        //         eachEnhanceInfo.push(canEnhanceEntity);    // 改修舰
-        //       }
-        //     });
-        //   });
-        //
-        //   if(displayEntity.canEnhanceToday) {
-        //     displayEntity['name'] = eEntity.name;
-        //     equipArrEnhanceToday.push(displayEntity);
-        //   }
-        // });
+        let debugFlag = true;
+        let debug = (flag, msg) => {
+          if (flag) {
+            console.log(msg);
+          }
+        };
 
-        return equipArrEnhanceToday;
+        let weekday = TOOLS.jpDate().getDay();
+
+        //在WHERE中使用数组陈列条件强化AND, 原始查询语句为:
+        //  SELECT * FROM assist WHERE accessDayStr = ${ weekday } AND equipId IN [ ... ]
+        //使用查询条件:
+        //  where: {
+        //    accessDayStr: { like: `%${ weekday }%` },
+        //    equipId: { in: this.localReducedIdxArr.flat() }
+        //  }
+        //在 equipId : [] 的情况下会返回单一契合 accessDayStr条件的数据数组, 与实际需求不符
+        return connection.select({
+          from: 'ASSIST',
+          where: [
+            { accessDayStr: { like: `%${ weekday }%` } },
+            { equipId: { in: this.localReducedIdxArr.flat() } }
+          ]
+        }).then(results => {
+          // results will be array of objects.
+          if (results.length > 0) {
+            debug(debugFlag, `> ${ results }`);
+            debug(debugFlag, `> assist data of selected equips : ${ results.length }\n${ this.localReducedIdxArr.flat() }`);
+          } else if (results.length === 0) {
+            debug(debugFlag, 'NO data found / NO equip selected.');
+          }
+          debug(debugFlag, '--- calc() executed ---')
+          return results;
+        }).catch(error => {
+          console.error(error.message);
+        });
       }
     },
     created() {
