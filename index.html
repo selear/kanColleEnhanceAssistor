@@ -58,10 +58,10 @@
 <template id="enhanceToday">
     <div :class="customStyle">
         <div>Here comes ALL SELECTED EQUIPS</div>
-        <pre v-for="(e, idx) in flat" :key="idx">{{ e.name }}</pre>
+        <pre v-for="(e, idx) in selected" :key="idx">{{ e.name }}</pre>
         <hr>
         <div>Here comes CALC SELECTED EQUIPS</div>
-        <pre v-for="(e, idx) in calc" :key="idx">{{ e.name }}</pre>
+        <pre v-for="(e, id) in qResults" :key="id">{{ e.id }} - {{ e.name }}</pre>
     </div>
 </template>
 
@@ -205,23 +205,24 @@
     template: '#enhanceToday',
     data() {
       return {
-        localReducedIdxArr: [],
         checkedEquipIdxArr: [],
+        selected: undefined,
+        qResults: undefined,
         customStyle: {
           'list-panel': true
         }
       }
     },
     props: ['eMap'],
-    computed: {
-      flat() {  // TODO 测试用, 进一步开发之后可以删除
-        let flattedEquipArr = [];
-        this.localReducedIdxArr.flat().forEach(eid => {
-          flattedEquipArr.push(this.eMap.get(eid));
+    methods: {
+      flat(reducedIdxArr) { // TODO 测试用, 进一步开发之后可以删除
+        let flatEquipArr = [];
+        reducedIdxArr.flat().forEach(eid => {
+          flatEquipArr.push(this.eMap.get(eid));
         });
-        return flattedEquipArr;
+        this.selected = flatEquipArr;
       },
-      calc() {  // 返回当天可以改修的装备; 应当使用新的实体, 来包装已经经过计算筛选的数据
+      calc(reducedIdxArr) {  // 返回当天可以改修的装备; 应当使用新的实体, 来包装已经经过计算筛选的数据
         let debugFlag = true;
         let debug = (flag, msg) => {
           if (flag) {
@@ -243,18 +244,22 @@
           from: 'ASSIST',
           where: [
             { accessDayStr: { like: `%${ weekday }%` } },
-            { equipId: { in: this.localReducedIdxArr.flat() } }
-          ]
+            { equipId: { in: reducedIdxArr.flat() } }
+          ],
+          order: {
+            by: 'id',
+            type: 'asc'
+          }
         }).then(results => {
           // results will be array of objects.
           if (results.length > 0) {
             debug(debugFlag, `> ${ results }`);
-            debug(debugFlag, `> assist data of selected equips : ${ results.length }\n${ this.localReducedIdxArr.flat() }`);
+            debug(debugFlag, `> assist data of selected equips : ${ results.length }\n${ reducedIdxArr.flat() }`);
           } else if (results.length === 0) {
             debug(debugFlag, 'NO data found / NO equip selected.');
           }
-          debug(debugFlag, '--- calc() executed ---')
-          return results;
+          debug(debugFlag, '--- calc() executed ---');
+          this.qResults = results;
         }).catch(error => {
           console.error(error.message);
         });
@@ -264,9 +269,12 @@
       // 每一次点击, 触发'update-today-enhance', 自动计算
       this.$eventBus.$on('update-today-enhance', (cIdx, reducedArr) => {
         this.checkedEquipIdxArr[cIdx] = reducedArr;
-        this.localReducedIdxArr = this.checkedEquipIdxArr.filter((elem = []) => {
+        let reducedIdxArr = this.checkedEquipIdxArr.filter((elem = []) => {
           return !!(elem.length);
         });
+
+        this.flat(reducedIdxArr)
+        this.calc(reducedIdxArr);
       });
     }
   });
