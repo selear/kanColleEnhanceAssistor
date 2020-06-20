@@ -58,10 +58,10 @@
 <template id="enhanceToday">
     <div :class="customStyle">
         <div>Here comes ALL SELECTED EQUIPS</div>
-        <pre v-for="(e, idx) in selected" :key="idx">{{ e.name }}</pre>
+        <pre v-for="e in selected" :key="e.name">{{ e.name }}</pre>
         <hr>
         <div>Here comes CALC SELECTED EQUIPS</div>
-        <pre v-for="(e, id) in qResults" :key="id">{{ e.id }} - {{ e.name }}</pre>
+        <pre v-for="e in qResults" :key="e.id">{{ e.id }} - {{ e.name }}</pre>
     </div>
 </template>
 
