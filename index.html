@@ -7,6 +7,37 @@
 </head>
 <body>
 
+<!--
++-----------------------+ Page +-----------------------+
+|                                                      |
+|  +---+ Category List +--+  +--+ Enhance Today +---+  |
+|  |                      |  |                      |  |
+|  | +--+ Category#1 +--+ |  | Equip#2  [UpgradeTo] |  |
+|  | |                  | |  |                      |  |
+|  | +---------------+--+ |  |                      |  |
+|  | |[ ] Equip#1    |    |  |                      |  |
+|  | +---------------+    |  |                      |  |
+|  | |[x] Equip#2    |    |  |                      |  |
+|  | +---------------+    |  |                      |  |
+|  |                      |  |                      |  |
+|  | +--+ Category#2 +--+ |  |                      |  |
+|  | |                  | |  |                      |  |
+|  | +---------------+--+ |  |                      |  |
+|  | |[x] Equip#3    |    |  |                      |  |
+|  | +---------------+    |  |                      |  |
+|  |                      |  |                      |  |
+|  |      ......          |  |      ......          |  |
+|  |                      |  |                      |  |
+|  +----------------------+  +----------------------+  |
+|                                                      |
++------------------------------------------------------+
+
++----------------------+ Remark +----------------------+
+|           Suppose it's MON today.                    |
+|           Only Equip#2 can enhance today.            |
++------------------------------------------------------+
+-->
+
 <div id="app" class="container">
     <category-list :c-map="categoryMap"
                    :e-map="equipMap"></category-list>
@@ -14,32 +45,36 @@
 </div>
 
 <template id="categoryList">
-    <div :class="styleObj">
+    <div :class="customStyle">
         <h2>这是categoryList</h2>
-        <category v-for="(cEntity, idx) in cMap" :key="idx"
+        <category v-for="(cEntity, cIdx) in cMap" :key="cIdx"
                   :c-entity="cEntity[1]"
-                  :c-idx="idx"
+                  :c-idx="cIdx"
                   :equip-map="equipFilterBy(cEntity[1].equipIds)">
         </category>
     </div>
 </template>
 
 <template id="enhanceToday">
-    <div :class="styleObj">
-        <div>Here comes CALC RESULTS</div>
-        <pre v-for="(e, idx) in flat" :key="idx">{{ e.name }}</pre>
+    <div :class="customStyle">
+        <div>Here comes ALL SELECTED EQUIPS</div>
+        <pre v-for="e in selected" :key="e.name">{{ e.name }}</pre>
+        <hr>
+        <div>Here comes CALC SELECTED EQUIPS</div>
+        <pre v-for="e in qResults" :key="e.id">{{ e.id }} - {{ e.name }}</pre>
     </div>
 </template>
 
 <template id="category">
     <div>
-        <h3 @click="display=!display">{{ cName }} -- {{ equipIds.length }}</h3>
+        <h3 @click="display=!display">{{ cName }}</h3>
         <transition-group tag="ul">
+            <!-- @cb-changed事件发生时, 调用方法updateEquipIds -->
             <equip v-show="display"
-                   v-for="(id, idx) in equipIds" :key="id"
-                   :eid="id"
+                   v-for="(eid, idx) in equipIds" :key="eid"
+                   :eid="eid"
                    :idx="idx"
-                   :e-entity="findEquipBy(id)"
+                   :e-entity="findEquipBy(eid)"
                    @cb-changed="updateEquipIds">
             </equip>
         </transition-group>
@@ -49,20 +84,39 @@
 <template id="equip">
     <li>
         <label>
-            <code>{{ eEntity.name }}</code>
+            <!-- checkbox状态发生变化时, 调用方法cbChanged,
+                    该方法发出事件'cb-changed', 交由上一层category处理 -->
             <input type="checkbox"
                    v-model="cbChecked"
                    :value="eid"
                    @change="cbChanged">
+            <code>{{ eEntity.name }}</code>
         </label>
     </li>
 </template>
 
 <script src="lib/vue.js"></script>
 <script src="lib/equips.js"></script>
+<script src="lib/js.store/jsstore.js"></script>
+<script src="lib/initJsDb.js"></script>
+<!--suppress JSAnnotator -->
 <script>
+  const TOOLS = {
+    jpDate: function () {
+      const JP_TIMEZONE = 9;
+      let curr = new Date();
+      return new Date(
+        curr.getUTCFullYear(),
+        curr.getUTCMonth(),
+        curr.getUTCDate(),
+        curr.getUTCHours() + JP_TIMEZONE,
+        curr.getUTCMinutes(),
+        curr.getUTCSeconds()
+      );
+    }
+  };
 
-  // component equip
+  // 组件equip, 基础组件, 是组件Category的组成部分
   let comEquip = {
     template: '#equip',
     data() {
@@ -73,17 +127,19 @@
     props: ['eid', 'eEntity', 'idx'],
     methods: {
       cbChanged() {
+        // 发出事件checkbox-changed, 附带参数idx, eid, cbChecked
         this.$emit('cb-changed', this.idx, this.eid, this.cbChecked);
       }
     }
   };
 
-  // component category
+  // 组件category
+  // 组件category下每一个子组件equip都附带参数: idx, eid,
   let comCategory = {
     template: '#category',
     data() {
       return {
-        reduced: [],
+        reducedArr: [],
         selectedEquipIdArr: [],
         display: false
       };
@@ -96,10 +152,10 @@
         } else {
           this.selectedEquipIdArr[eIdx] = undefined;
         }
-        this.reduced = this.selectedEquipIdArr.filter(elem => {
+        this.reducedArr = this.selectedEquipIdArr.filter(elem => {
           return !!(elem);
         });
-        this.$eventBus.$emit('update-today-enhance', this.cIdx, this.reduced);
+        this.$eventBus.$emit('update-today-enhance', this.cIdx, this.reducedArr);
       },
       findEquipBy(eid) {
         return this.equipMap.get(eid);
@@ -118,12 +174,13 @@
     }
   };
 
-  // component category-list
+  // 组件category-list
+  // 附带参数: cMap, eMap
   Vue.component('categoryList', {
     template: '#categoryList',
     data() {
       return {
-        styleObj: {
+        customStyle: {
           'list-panel': true
         }
       }
@@ -143,34 +200,81 @@
     }
   });
 
-  // component enhance-today
+  // 组件enhance-today
   Vue.component('enhanceToday', {
     template: '#enhanceToday',
     data() {
       return {
-        reducedList: [],
-        categoryToList: [],
-        styleObj: {
+        checkedEquipIdxArr: [],
+        selected: undefined,
+        qResults: undefined,
+        customStyle: {
           'list-panel': true
         }
       }
     },
     props: ['eMap'],
-    computed: {
-      flat() {
-        let flattedEquipArr = []
-        this.reducedList.flat().forEach(eid => {
-          flattedEquipArr.push(this.eMap.get(eid));
+    methods: {
+      flat(reducedIdxArr) { // TODO 测试用, 进一步开发之后可以删除
+        let flatEquipArr = [];
+        reducedIdxArr.flat().forEach(eid => {
+          flatEquipArr.push(this.eMap.get(eid));
         });
-        return flattedEquipArr;
+        this.selected = flatEquipArr;
+      },
+      calc(reducedIdxArr) {  // 返回当天可以改修的装备; 应当使用新的实体, 来包装已经经过计算筛选的数据
+        let debugFlag = true;
+        let debug = (flag, msg) => {
+          if (flag) {
+            console.log(msg);
+          }
+        };
+
+        let weekday = TOOLS.jpDate().getDay();
+
+        //在WHERE中使用数组陈列条件强化AND, 原始查询语句为:
+        //  SELECT * FROM assist WHERE accessDayStr = ${ weekday } AND equipId IN [ ... ]
+        //使用查询条件:
+        //  where: {
+        //    accessDayStr: { like: `%${ weekday }%` },
+        //    equipId: { in: this.localReducedIdxArr.flat() }
+        //  }
+        //在 equipId : [] 的情况下会返回单一契合 accessDayStr条件的数据数组, 与实际需求不符
+        return connection.select({
+          from: 'ASSIST',
+          where: [
+            { accessDayStr: { like: `%${ weekday }%` } },
+            { equipId: { in: reducedIdxArr.flat() } }
+          ],
+          order: {
+            by: 'id',
+            type: 'asc'
+          }
+        }).then(results => {
+          // results will be array of objects.
+          if (results.length > 0) {
+            debug(debugFlag, `> ${ results }`);
+            debug(debugFlag, `> assist data of selected equips : ${ results.length }\n${ reducedIdxArr.flat() }`);
+          } else if (results.length === 0) {
+            debug(debugFlag, 'NO data found / NO equip selected.');
+          }
+          debug(debugFlag, '--- calc() executed ---');
+          this.qResults = results;
+        }).catch(error => {
+          console.error(error.message);
+        });
       }
     },
     created() {
-      this.$eventBus.$on('update-today-enhance', (cIdx, reduced) => {
-        this.categoryToList[cIdx] = reduced;
-        this.reducedList = this.categoryToList.filter((elem = []) => {
+      // 每一次点击, 触发'update-today-enhance', 自动计算
+      this.$eventBus.$on('update-today-enhance', (cIdx, reducedArr) => {
+        this.checkedEquipIdxArr[cIdx] = reducedArr;
+        let reducedIdxArr = this.checkedEquipIdxArr.filter((elem = []) => {
           return !!(elem.length);
         });
+
+        this.flat(reducedIdxArr);
+        this.calc(reducedIdxArr);
       });
     }
   });
@@ -178,6 +282,8 @@
   // 全局事件总线, 可以传递很多东西, 不仅仅是数据
   Vue.prototype.$eventBus = new Vue();
 
+  // 文件/lib/equips.js存在一个字符串数组META, 其中包含了两个元素
+  // META[0], META[1]转化为JSON后, 可以序列化为Map, 作为数据源供调用与查询
   const vm = new Vue({
     el: '#app',
     computed: {
@@ -185,11 +291,12 @@
         return new Map(JSON.parse(META[0]));
       },
       equipMap() {
-        return new Map(JSON.parse(META[1]))
+        return new Map(JSON.parse(META[1]));
       }
     }
   });
 
 </script>
+
 </body>
 </html>

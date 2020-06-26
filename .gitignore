@@ -1,6 +1,11 @@
 #ignore idea configures
 .idea/
 /lib
+/sample
 
 #files
 gitCommitMsg.txt
+gitTagMsg.txt
+
+#include files
+!lib/initJsDb.js
