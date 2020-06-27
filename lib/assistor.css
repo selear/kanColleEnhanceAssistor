@@ -31,6 +31,10 @@ li {
     margin: 0 auto;
 }
 
+.title-panel {
+    padding: 16px;
+}
+
 .list-panel {
     margin: 8px;
     padding: 16px;

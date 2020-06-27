@@ -39,10 +39,22 @@
 -->
 
 <div id="app" class="container">
+    <title-panel></title-panel>
     <category-list :c-map="categoryMap"
                    :e-map="equipMap"></category-list>
     <enhance-today :e-map="equipMap"></enhance-today>
 </div>
+
+<template id="titlePanel">
+    <div class="title-panel">
+        <span>
+            Here comes title
+        </span>
+        <span>
+            Here comes OPTIONS icon
+        </span>
+    </div>
+</template>
 
 <template id="categoryList">
     <div :class="customStyle">
@@ -96,7 +108,7 @@
 </template>
 
 <script src="lib/vue.js"></script>
-<script src="lib/equips.js"></script>
+<script src="lib/equips.data.js"></script>
 <script src="lib/js.store/jsstore.js"></script>
 <script src="lib/initJsDb.js"></script>
 <!--suppress JSAnnotator -->
@@ -173,6 +185,11 @@
       equip: comEquip
     }
   };
+
+  // 组件title-panel
+  Vue.component('titlePanel', {
+    template: '#titlePanel'
+  });
 
   // 组件category-list
   // 附带参数: cMap, eMap
