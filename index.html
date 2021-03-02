@@ -74,6 +74,9 @@
         <hr>
         <div>Here comes CALC SELECTED EQUIPS</div>
         <pre v-for="e in qResults" :key="e.id">{{ e.id }} - {{ e.name }}</pre>
+        <hr>
+        <div>Here comes FORMATTED & CALCULATED selected equips</div>
+
     </div>
 </template>
 
@@ -270,12 +273,12 @@
         }).then(results => {
           // results will be array of objects.
           if (results.length > 0) {
-            debug(debugFlag, `> ${ results }`);
-            debug(debugFlag, `> assist data of selected equips : ${ results.length }\n${ reducedIdxArr.flat() }`);
+            debug(debugFlag, `> ${ results }`); //TODO 预定删除本行调试, 在控制台中反馈的内容仅为[object, Object]
+            debug(debugFlag, `> 选中装备数: ${ results.length }\n> ${ reducedIdxArr.flat().join(', ') }`);
           } else if (results.length === 0) {
-            debug(debugFlag, 'NO data found / NO equip selected.');
+            debug(debugFlag, '没有查询到相关数据 / 没有装备被勾选');
           }
-          debug(debugFlag, '--- calc() executed ---');
+          debug(debugFlag, '--- calc() 执行完毕 ---');
           this.qResults = results;
         }).catch(error => {
           console.error(error.message);

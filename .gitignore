@@ -4,8 +4,8 @@
 /sample
 
 #files
-gitCommitMsg.txt
-gitTagMsg.txt
+GIT_COMMIT_MSG.txt
+GIT_TAG_MSG.txt
 
 #include files
 !lib/initJsDb.js
