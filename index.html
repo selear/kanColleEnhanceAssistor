@@ -111,7 +111,7 @@
 </template>
 
 <script src="lib/vue.js"></script>
-<script src="lib/equips.data.js"></script>
+<script src="lib/equips.js"></script>
 <script src="lib/js.store/jsstore.js"></script>
 <script src="lib/initJsDb.js"></script>
 <!--suppress JSAnnotator -->
@@ -228,6 +228,7 @@
         checkedEquipIdxArr: [],
         selected: undefined,
         qResults: undefined,
+        qFiltered: undefined,
         customStyle: {
           'list-panel': true
         }
@@ -273,13 +274,26 @@
         }).then(results => {
           // results will be array of objects.
           if (results.length > 0) {
-            debug(debugFlag, `> ${ results }`); //TODO 预定删除本行调试, 在控制台中反馈的内容仅为[object, Object]
+            debug(debugFlag, `> ${ JSON.stringify(results) }`); //TODO 预定删除本行调试, 在控制台中反馈的内容仅为[object, Object]
             debug(debugFlag, `> 选中装备数: ${ results.length }\n> ${ reducedIdxArr.flat().join(', ') }`);
           } else if (results.length === 0) {
             debug(debugFlag, '没有查询到相关数据 / 没有装备被勾选');
           }
           debug(debugFlag, '--- calc() 执行完毕 ---');
           this.qResults = results;
+
+          // 遍历查询结果, 创建过滤一些字段查询结果, TODO 还可以进一步完善, 对写入的数据进行格式化, 将相同装备ID的数据分为一组, 方便数据进行展示
+          let filtered = [];
+          results.forEach(function (item) {
+            filtered.push({
+              "id": item.id,
+              "name": item.name,
+              "equipId": item.equipId
+            });
+          });
+          debug(debugFlag, `> ${ JSON.stringify(filtered) }`);
+          this.qFiltered = filtered;
+
         }).catch(error => {
           console.error(error.message);
         });
