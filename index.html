@@ -73,7 +73,7 @@
         <pre v-for="e in selected" :key="e.name">{{ e.name }}</pre>
         <hr>
         <div>Here comes CALC SELECTED EQUIPS</div>
-        <pre v-for="e in qResults" :key="e.id">{{ e.id }} - {{ e.name }}</pre>
+        <pre v-for="e in qResults" :key="e.id">{{ e.id }} - {{ e.assistName }}</pre>
         <hr>
         <div>Here comes FORMATTED & CALCULATED selected equips</div>
 
@@ -254,22 +254,23 @@
         let weekday = TOOLS.jpDate().getDay();
 
         //在WHERE中使用数组陈列条件强化AND, 原始查询语句为:
-        //  SELECT * FROM assist WHERE accessDayStr = ${ weekday } AND equipId IN [ ... ]
+        //  SELECT * FROM assist WHERE accessDayStr = ${ weekday } AND eid IN [ ... ]
         //使用查询条件:
         //  where: {
         //    accessDayStr: { like: `%${ weekday }%` },
-        //    equipId: { in: this.localReducedIdxArr.flat() }
+        //    eid: { in: this.localReducedIdxArr.flat() }
         //  }
-        //在 equipId : [] 的情况下会返回单一契合 accessDayStr条件的数据数组, 与实际需求不符
+        //在 eid : [] 的情况下会返回单一契合 accessDayStr条件的数据数组, 与实际需求不符
+        debug(debugFlag, '--- calc() 执行开始 ---');
         return connection.select({
-          from: 'ASSIST',
+          from: 'assist',
           where: [
             { accessDayStr: { like: `%${ weekday }%` } },
-            { equipId: { in: reducedIdxArr.flat() } }
+            { eid: { in: reducedIdxArr.flat() } }
           ],
-          order: {
-            by: 'id',
-            type: 'asc'
+          join: {
+            with: 'equipName',
+            on: 'assist.eid=equipName.eid'
           }
         }).then(results => {
           // results will be array of objects.
@@ -279,7 +280,6 @@
           } else if (results.length === 0) {
             debug(debugFlag, '没有查询到相关数据 / 没有装备被勾选');
           }
-          debug(debugFlag, '--- calc() 执行完毕 ---');
           this.qResults = results;
 
           // 遍历查询结果, 创建过滤一些字段查询结果, TODO 还可以进一步完善, 对写入的数据进行格式化, 将相同装备ID的数据分为一组, 方便数据进行展示
@@ -287,8 +287,8 @@
           results.forEach(function (item) {
             filtered.push({
               "id": item.id,
-              "name": item.name,
-              "equipId": item.equipId
+              "assistName": item.assistName,
+              "eid": item.eid
             });
           });
           debug(debugFlag, `> ${ JSON.stringify(filtered) }`);
