@@ -76,7 +76,7 @@
         <pre v-for="e in qResults" :key="e.id">{{ e.id }} - {{ e.assistName }}</pre>
         <hr>
         <div>Here comes FORMATTED & CALCULATED selected equips</div>
-
+        <pre v-for="(eEntry, eIdx) in qFiltered" :key="eIdx">{{ eEntry[0] }}{{ eEntry[1] }}</pre>
     </div>
 </template>
 
@@ -283,15 +283,15 @@
           this.qResults = results;
 
           // 遍历查询结果, 创建过滤一些字段查询结果, TODO 还可以进一步完善, 对写入的数据进行格式化, 将相同装备ID的数据分为一组, 方便数据进行展示
-          let filtered = [];
+          let filtered = new Map();
           results.forEach(function (item) {
-            filtered.push({
-              "id": item.id,
-              "assistName": item.assistName,
-              "eid": item.eid
-            });
+            if (!filtered.has(item.equipName)) {
+              filtered.set(item.equipName, []);
+            }
+            let entry = filtered.get(item.equipName);
+            entry.push({ id: item.id, aName: item.assistName });
           });
-          debug(debugFlag, `> ${ JSON.stringify(filtered) }`);
+          debug(debugFlag, `> ${ JSON.stringify([...filtered]) }`);
           this.qFiltered = filtered;
 
         }).catch(error => {
