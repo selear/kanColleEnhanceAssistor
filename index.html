@@ -271,7 +271,14 @@
           join: {
             with: 'equipName',
             on: 'assist.eid=equipName.eid'
-          }
+          },
+          order: [{
+            by: 'assist.eid',
+            type: 'asc'
+          }, {
+            by: 'assist.id',
+            type: 'asc'
+          }]
         }).then(results => {
           // results will be array of objects.
           if (results.length > 0) {
