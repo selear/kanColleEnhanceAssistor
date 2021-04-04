@@ -69,14 +69,11 @@
 
 <template id="enhanceToday">
     <div :class="customStyle">
-        <div>Here comes ALL SELECTED EQUIPS</div>
-        <pre v-for="e in selected" :key="e.name">{{ e.name }}</pre>
-        <hr>
-        <div>Here comes CALC SELECTED EQUIPS</div>
-        <pre v-for="e in qResults" :key="e.uid">{{ e.uid }} - {{ e.assistName }}</pre>
-        <hr>
         <div>Here comes FORMATTED & CALCULATED selected equips</div>
-        <pre v-for="(eEntry, eIdx) in qFiltered" :key="eIdx">{{ eEntry[0] }}{{ eEntry[1] }}</pre>
+        <enabled-equip
+                v-for="(entry, idx) in qFiltered" :key="idx"
+                :e-name="entry[0]" :assists="entry[1]">
+        </enabled-equip>
     </div>
 </template>
 
@@ -108,6 +105,15 @@
             <code>{{ eEntity.name }}</code>
         </label>
     </li>
+</template>
+
+<template id="enabledEquip">
+    <div>
+        <div>{{ eName }}</div>
+        <span v-for="(assist, idx) in assists" :key="idx">
+            <pre>{{ assist.aName }}</pre>
+        </span>
+    </div>
 </template>
 
 <script src="lib/vue.js"></script>
@@ -189,6 +195,11 @@
     }
   };
 
+  let comEnabledEquip = {
+    template: '#enabledEquip',
+    props: ['eName', 'assists']
+  };
+
   // 组件title-panel
   Vue.component('titlePanel', {
     template: '#titlePanel'
@@ -226,8 +237,6 @@
     data() {
       return {
         checkedEquipIdxArr: [],
-        selected: undefined,
-        qResults: undefined,
         qFiltered: undefined,
         customStyle: {
           'list-panel': true
@@ -236,13 +245,6 @@
     },
     props: ['eMap'],
     methods: {
-      flat(reducedIdxArr) { // TODO 测试用, 进一步开发之后可以删除
-        let flatEquipArr = [];
-        reducedIdxArr.flat().forEach(eid => {
-          flatEquipArr.push(this.eMap.get(eid));
-        });
-        this.selected = flatEquipArr;
-      },
       calc(reducedIdxArr) {  // 返回当天可以改修的装备; 应当使用新的实体, 来包装已经经过计算筛选的数据
         let debugFlag = true;
         let debug = (flag, msg) => {
@@ -284,7 +286,6 @@
           } else if (results.length === 0) {
             debug(debugFlag, '没有查询到相关数据 / 没有装备被勾选');
           }
-          this.qResults = results;
 
           // 遍历查询结果, 创建过滤一些字段查询结果, TODO 还可以进一步完善, 对写入的数据进行格式化, 将相同装备ID的数据分为一组, 方便数据进行展示
           let filtered = new Map();
@@ -310,10 +311,11 @@
         let reducedIdxArr = this.checkedEquipIdxArr.filter((elem = []) => {
           return !!(elem.length);
         });
-
-        this.flat(reducedIdxArr);
         this.calc(reducedIdxArr);
       });
+    },
+    components: {
+      enabledEquip: comEnabledEquip
     }
   });
 
