@@ -12,21 +12,21 @@
 |                                                      |
 |  +---+ Category List +--+  +--+ Enhance Today +---+  |
 |  |                      |  |                      |  |
-|  | +--+ Category#1 +--+ |  | Equip#2  [UpgradeTo] |  |
-|  | |                  | |  |                      |  |
-|  | +---------------+--+ |  |                      |  |
+|  | +--+ Category#1 +--+ |  | Equip#2->[UpgradeTo] |  |
+|  | |                  | |  | -------------------- |  |
+|  | +---------------+--+ |  | [ship1][ship2][ship3]|  |
 |  | |[ ] Equip#1    |    |  |                      |  |
 |  | +---------------+    |  |                      |  |
-|  | |[x] Equip#2    |    |  |                      |  |
-|  | +---------------+    |  |                      |  |
-|  |                      |  |                      |  |
+|  | |[x] Equip#2    |    |  | Equip#5->[UpgradeTo] |  |
+|  | +---------------+    |  | -------------------- |  |
+|  |                      |  | [ship1][ship3]       |  |
 |  | +--+ Category#2 +--+ |  |                      |  |
 |  | |                  | |  |                      |  |
-|  | +---------------+--+ |  |                      |  |
+|  | +---------------+--+ |  |        ......        |  |
 |  | |[x] Equip#3    |    |  |                      |  |
 |  | +---------------+    |  |                      |  |
 |  |                      |  |                      |  |
-|  |      ......          |  |      ......          |  |
+|  |        ......        |  |                      |  |
 |  |                      |  |                      |  |
 |  +----------------------+  +----------------------+  |
 |                                                      |
@@ -127,7 +127,7 @@
 <!--suppress JSAnnotator -->
 <script>
   const TOOLS = {
-    jpDate: function () {
+    jpDate: function() {
       const JP_TIMEZONE = 9;
       let curr = new Date();
       return new Date(
@@ -171,8 +171,8 @@
     },
     props: ['cEntity', 'equipMap', 'cIdx'],
     methods: {
-      updateEquipIds: function (eIdx, eid, isChecked) {
-        if (isChecked) {
+      updateEquipIds: function(eIdx, eid, isChecked) {
+        if(isChecked) {
           this.selectedEquipIdArr[eIdx] = eid;
         } else {
           this.selectedEquipIdArr[eIdx] = undefined;
@@ -187,10 +187,10 @@
       }
     },
     computed: {
-      cName: function () {
+      cName: function() {
         return this.cEntity.name;
       },
-      equipIds: function () {
+      equipIds: function() {
         return this.cEntity.equipIds;
       }
     },
@@ -222,7 +222,7 @@
     },
     props: ['cMap', 'eMap'],
     methods: {
-      equipFilterBy: function (eidArr) {
+      equipFilterBy: function(eidArr) {
         let equipsInACategory = new Map();
         eidArr.forEach(eid => {
           equipsInACategory.set(eid, this.eMap.get(eid));
@@ -252,7 +252,7 @@
       calc(reducedIdxArr) {  // 返回当天可以改修的装备; 应当使用新的实体, 来包装已经经过计算筛选的数据
         let debugFlag = true;
         let debug = (flag, msg) => {
-          if (flag) {
+          if(flag) {
             console.log(msg);
           }
         };
@@ -271,34 +271,34 @@
         return connection.select({
           from: 'assist',
           where: [
-            { accessDayStr: { like: `%${ weekday }%` } },
-            { eid: { in: reducedIdxArr.flat() } }
+            {accessDayStr: {like: `%${ weekday }%`}},
+            {eid: {in: reducedIdxArr.flat()}}
           ],
           join: {
             with: 'equipName',
             on: 'assist.eid=equipName.eid'
           },
           order: [
-            { by: 'assist.eid', type: 'asc' },
-            { by: 'assist.uid', type: 'asc' }
+            {by: 'assist.eid', type: 'asc'},
+            {by: 'assist.uid', type: 'asc'}
           ]
         }).then(results => {
           // results will be array of objects.
-          if (results.length > 0) {
+          if(results.length > 0) {
             debug(debugFlag, `> ${ JSON.stringify(results) }`); //TODO 预定删除本行调试, 在控制台中反馈的内容仅为[object, Object]
             debug(debugFlag, `> 选中装备数: ${ results.length }\n> ${ reducedIdxArr.flat().join(', ') }`);
-          } else if (results.length === 0) {
+          } else if(results.length === 0) {
             debug(debugFlag, '没有查询到相关数据 / 没有装备被勾选');
           }
 
           // 遍历查询结果, 创建过滤一些字段查询结果, TODO 还可以进一步完善, 对写入的数据进行格式化, 将相同装备ID的数据分为一组, 方便数据进行展示
           let filtered = new Map();
-          results.forEach(function (item) {
-            if (!filtered.has(item.equipName)) {
+          results.forEach(function(item) {
+            if(!filtered.has(item.equipName)) {
               filtered.set(item.equipName, []);
             }
             let entry = filtered.get(item.equipName);
-            entry.push({ uid: item.uid, aName: item.assistName });
+            entry.push({uid: item.uid, aName: item.assistName});
           });
           debug(debugFlag, `> ${ JSON.stringify([...filtered]) }`);
           this.qFiltered = filtered;
