@@ -108,11 +108,15 @@
 </template>
 
 <template id="enabledEquip">
-    <div>
-        <div>{{ eName }}</div>
-        <span v-for="(assist, idx) in assists" :key="idx">
-            <pre>{{ assist.aName }}</pre>
-        </span>
+    <div class="search-entity">
+        <div class="equip-name">{{ eName }}</div>
+        <div class="assists">
+            <div class="assist"
+                 v-for="(assist, idx) in assists"
+                 :key="idx">
+                {{ assist.aName }}
+            </div>
+        </div>
     </div>
 </template>
 

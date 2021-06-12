@@ -44,3 +44,76 @@ li {
     background-color: #fff;
     float: left;
 }
+
+.search-entity {
+    border: rosybrown solid 1px;
+    border-radius: 4px;
+    padding: 4px 4px 2px 2px;
+    margin: 8px 8px 2px 2px;
+}
+
+.search-entity div {
+    margin: 2px;
+    padding: 2px;
+}
+
+.equip-name {
+    border-bottom: gray solid 1px;
+}
+
+.assist {
+    display: inline-block;
+    border-radius: 8px;
+    min-width: 48px;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: small;
+    font-weight: bold;
+    text-align: center;
+    color: #fffff0;
+    background-color: #a9a9a9;
+}
+
+.assist:hover {
+    background-color: #808080;
+}
+
+.red {
+    background-color: #8b0000;
+}
+
+.red:hover {
+    background-color: #ff0000;
+}
+
+.yellow {
+    background-color: #b8860b;
+}
+
+.yellow:hover {
+    background-color: #daa520;
+}
+
+.green {
+    background-color: #006400;
+}
+
+.green:hover {
+    background-color: #008000;
+}
+
+.blue {
+    background-color: #00008b;
+}
+
+.blue:hover {
+    background-color: #0000ff;
+}
+
+.purple {
+    background-color: #8b008b;
+}
+
+.purple:hover {
+    background-color: #ff00ff;
+}
