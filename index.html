@@ -48,17 +48,17 @@
 <template id="titlePanel">
     <div class="title-panel">
         <span>
-            Here comes title
+            # title #
         </span>
         <span>
-            Here comes OPTIONS icon
+            # OPTIONS icon #
         </span>
     </div>
 </template>
 
 <template id="categoryList">
     <div :class="customStyle">
-        <h2>这是categoryList</h2>
+        <h2># categoryList #</h2>
         <category v-for="(cEntity, cIdx) in cMap" :key="cIdx"
                   :c-entity="cEntity[1]"
                   :c-idx="cIdx"
@@ -69,7 +69,7 @@
 
 <template id="enhanceToday">
     <div :class="customStyle">
-        <div>Here comes FORMATTED & CALCULATED selected equips</div>
+        <div># FORMATTED & CALCULATED selected equips #</div>
         <enabled-equip
                 v-for="(entry, idx) in qFiltered" :key="idx"
                 :e-name="entry[0]" :assists="entry[1]">
