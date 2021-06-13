@@ -138,7 +138,46 @@
         curr.getUTCMinutes(),
         curr.getUTCSeconds()
       );
-    }
+    },
+    colorShuffle: function(arrLength) {
+      if(arrLength === 0) {
+        return [];
+      }
+
+      const COLOR_CLAZZ_ARR = ['red', 'yellow', 'green', 'blue', 'purple'];
+
+      let limitShuffle = function(limit = 0) {
+        let copy = COLOR_CLAZZ_ARR.slice();
+        let currIdx = copy.length;
+        let randIdx;
+
+        while(0 !== currIdx) {
+          randIdx = Math.floor(Math.random() * currIdx);
+          currIdx--;
+          [copy[currIdx], copy[randIdx]] = [copy[randIdx], copy[currIdx]];
+        }
+
+        // !!0 表示 false, 使用.slice()创建一个数组的新副本
+        if(!!limit && limit < copy.length) {
+          return (copy.slice(0, limit));
+        } else {
+          return copy;
+        }
+      };
+
+      let newArr = [];
+      let limitBorder = arrLength;
+      do {
+        if(limitBorder > COLOR_CLAZZ_ARR.length) {
+          newArr.push(limitShuffle(COLOR_CLAZZ_ARR));
+        } else {
+          newArr.push(limitShuffle(COLOR_CLAZZ_ARR, limitBorder))
+        }
+        limitBorder = limitBorder - COLOR_CLAZZ_ARR.length;
+      } while(limitBorder > 0);
+
+      return (newArr.flat());
+    },
   };
 
   // 组件equip, 基础组件, 是组件Category的组成部分
