@@ -113,6 +113,7 @@
         <div class="assists">
             <div class="assist"
                  v-for="(assist, idx) in assists"
+                 :class="colorArr[idx]"
                  :key="idx">
                 {{ assist.aName }}
             </div>
@@ -240,7 +241,12 @@
 
   let comEnabledEquip = {
     template: '#enabledEquip',
-    props: ['eName', 'assists']
+    props: ['eName', 'assists'],
+    computed: {
+      colorArr: function() {
+        return (TOOLS.colorShuffle(this.assists.length));
+      }
+    },
   };
 
   // 组件title-panel
